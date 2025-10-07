@@ -108,7 +108,8 @@ class TestUserResource < Minitest::Test
   def test_passwd
     VCR.use_cassette("user/passwd") do
       # Create user first, then change password
-      @client.users.add("passwdtest", givenname: "Password", sn: "Test", cn: "Password Test", userpassword: "OldPass123")
+      @client.users.add("passwdtest", givenname: "Password", sn: "Test", cn: "Password Test",
+                                      userpassword: "OldPass123")
       result = @client.users.passwd("passwdtest", "NewPass123", "OldPass123")
 
       assert_nil result["error"]

@@ -2,6 +2,8 @@
 
 A Ruby client for the FreeIPA JSON-RPC API.
 
+Docs: [FreeIPA JSON-RPC API](https://freeipa.readthedocs.io/en/latest/api/json-rpc.html)
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -185,12 +187,6 @@ This will run all tests and generate a coverage report in `coverage/index.html`.
 - Line coverage tracking
 - Branch coverage tracking
 - VCR cassettes for testing against FreeIPA sandbox
-
-You can also run tests using rake:
-
-```bash
-rake test
-```
 
 ### Other Development Commands
 
