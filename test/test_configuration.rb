@@ -8,37 +8,34 @@ class TestConfiguration < Minitest::Test
   end
 
   def test_initialize_with_parameters
-    config = Fripa::Configuration.new(host: "ipa.example.com", username: "admin", password: "secret")
+    config = Fripa::Configuration.new(host: "ipa.example.com", verify_ssl: false)
     assert_equal "ipa.example.com", config.host
-    assert_equal "admin", config.username
-    assert_equal "secret", config.password
-    assert_equal true, config.verify_ssl
+    assert_equal false, config.verify_ssl
   end
 
   def test_configure_with_block
     Fripa.configure do |config|
       config.host = "test.example.com"
-      config.username = "testuser"
+      config.verify_ssl = false
     end
 
     assert_equal "test.example.com", Fripa.config.host
-    assert_equal "testuser", Fripa.config.username
+    assert_equal false, Fripa.config.verify_ssl
   end
 
   def test_config_assignment_with_hash
-    Fripa.config = { host: "hash.example.com", username: "hashuser", password: "secret" }
+    Fripa.config = { host: "hash.example.com", verify_ssl: false }
 
     assert_equal "hash.example.com", Fripa.config.host
-    assert_equal "hashuser", Fripa.config.username
-    assert_equal "secret", Fripa.config.password
+    assert_equal false, Fripa.config.verify_ssl
   end
 
   def test_config_direct_attribute_modification
     Fripa.config.host = "direct.example.com"
-    Fripa.config.username = "directuser"
+    Fripa.config.verify_ssl = false
 
     assert_equal "direct.example.com", Fripa.config.host
-    assert_equal "directuser", Fripa.config.username
+    assert_equal false, Fripa.config.verify_ssl
   end
 
   def test_urls_construction
@@ -46,5 +43,12 @@ class TestConfiguration < Minitest::Test
     assert_equal "https://ipa.example.com", config.base_url.to_s
     assert_equal "https://ipa.example.com/ipa/session/login_password", config.login_url.to_s
     assert_equal "https://ipa.example.com/ipa/session/json", config.api_url.to_s
+  end
+
+  def test_config_assignment_raises_on_invalid_type
+    error = assert_raises(ArgumentError) do
+      Fripa.config = "invalid"
+    end
+    assert_equal "config must be a Hash or Configuration instance", error.message
   end
 end

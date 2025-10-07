@@ -12,4 +12,6 @@ gem "minitest", "~> 5.16"
 
 gem "rubocop", "~> 1.21"
 
+gem "simplecov"
+
 gem "vcr", "~> 6.0"

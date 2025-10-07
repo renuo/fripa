@@ -6,14 +6,11 @@ require "uri"
 module Fripa
   # Configuration for Fripa
   class Configuration
-    attr_accessor :host, :username, :password, :verify_ssl, :session_cookie
+    attr_accessor :host, :verify_ssl
 
-    def initialize(host: nil, username: nil, password: nil, verify_ssl: true)
+    def initialize(host: nil, verify_ssl: true)
       @host = host
-      @username = username
-      @password = password
       @verify_ssl = verify_ssl
-      @session_cookie = nil
     end
 
     def base_url

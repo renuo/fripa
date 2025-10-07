@@ -1,0 +1,138 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/login_password
+    body:
+      encoding: US-ASCII
+      string: user=admin&password=<PASSWORD>
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Tue, 07 Oct 2025 13:50:35 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      set-cookie:
+      - ipa_session=MagBearerToken=ejR4YAUC5ywBrD5EaVCwpAxG7d9B0CK97KbYpdh%2fZEThKZW6gyo5HPM7a4n7DepQeG0GLKxrYl0cl3YtM5vzLdSIwSsczP%2feTEfVQQlfsUdkUaMH9IDwIy744R5UrIfTLrw4qHB9QwBkvFDYLzOOlrVWu%2fM9fGy5MqGRvM2E2jVcaMOYJayeInb9FjGM54pNf1MZwiuN711cAW5g8rf2%2bJdVXhEdplraZrMGl9FM%2b6g%3d;path=/ipa;httponly;secure;
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - text/plain; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 07 Oct 2025 13:50:36 GMT
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"group_add","params":[["temp_delete_group"],{"description":"Temp
+        group","version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=ejR4YAUC5ywBrD5EaVCwpAxG7d9B0CK97KbYpdh%2fZEThKZW6gyo5HPM7a4n7DepQeG0GLKxrYl0cl3YtM5vzLdSIwSsczP%2feTEfVQQlfsUdkUaMH9IDwIy744R5UrIfTLrw4qHB9QwBkvFDYLzOOlrVWu%2fM9fGy5MqGRvM2E2jVcaMOYJayeInb9FjGM54pNf1MZwiuN711cAW5g8rf2%2bJdVXhEdplraZrMGl9FM%2b6g%3d;path=/ipa;httponly;secure;
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Tue, 07 Oct 2025 13:50:36 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"result": {"ipauniqueid": ["9a0fb77a-a384-11f0-9f39-06c75374d591"],
+        "cn": ["temp_delete_group"], "gidnumber": ["1142401988"], "objectclass": ["top",
+        "groupofnames", "nestedgroup", "ipausergroup", "ipaobject", "posixgroup"],
+        "description": ["Temp group"], "dn": "cn=temp_delete_group,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        "value": "temp_delete_group", "summary": "Added group \"temp_delete_group\""},
+        "error": null, "id": 0, "principal": "admin@DEMO1.FREEIPA.ORG", "version":
+        "4.11.1"}'
+  recorded_at: Tue, 07 Oct 2025 13:50:36 GMT
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"group_del","params":[["temp_delete_group"],{"version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=ejR4YAUC5ywBrD5EaVCwpAxG7d9B0CK97KbYpdh%2fZEThKZW6gyo5HPM7a4n7DepQeG0GLKxrYl0cl3YtM5vzLdSIwSsczP%2feTEfVQQlfsUdkUaMH9IDwIy744R5UrIfTLrw4qHB9QwBkvFDYLzOOlrVWu%2fM9fGy5MqGRvM2E2jVcaMOYJayeInb9FjGM54pNf1MZwiuN711cAW5g8rf2%2bJdVXhEdplraZrMGl9FM%2b6g%3d;path=/ipa;httponly;secure;
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Tue, 07 Oct 2025 13:50:36 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"result": {"failed": []}, "value": ["temp_delete_group"],
+        "summary": "Deleted group \"temp_delete_group\""}, "error": null, "id": 0,
+        "principal": "admin@DEMO1.FREEIPA.ORG", "version": "4.11.1"}'
+  recorded_at: Tue, 07 Oct 2025 13:50:36 GMT
+recorded_with: VCR 6.3.1

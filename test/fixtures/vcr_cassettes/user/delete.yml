@@ -1,0 +1,147 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/login_password
+    body:
+      encoding: US-ASCII
+      string: user=admin&password=<PASSWORD>
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Tue, 07 Oct 2025 13:50:28 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      set-cookie:
+      - ipa_session=MagBearerToken=RW8NAs4xZiNiwCH3YuelELqICUzGxbkx5scFVjEVIFzwkq7rj6qZBtL59quEHhI1QIGdQUgdDVYbjX7l5GVRRmU7JOqLZiUcap3geehGln59AKlLG8F271UnXHvWRMnoul8bzETZ5f5Zqg8Mv5I%2bCJP29%2fQSUkqm7mE9TScFCZjdYV7cpEVcjORlIXmNbM1HJNzM%2fae%2fk6EasqoRF%2fP6eHFwqe%2b%2fsQ19VBAmxKVVpK4%3d;path=/ipa;httponly;secure;
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - text/plain; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 07 Oct 2025 13:50:28 GMT
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"user_add","params":[["temp_delete_user"],{"givenname":"Temp","sn":"User","cn":"Temp
+        User","version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=RW8NAs4xZiNiwCH3YuelELqICUzGxbkx5scFVjEVIFzwkq7rj6qZBtL59quEHhI1QIGdQUgdDVYbjX7l5GVRRmU7JOqLZiUcap3geehGln59AKlLG8F271UnXHvWRMnoul8bzETZ5f5Zqg8Mv5I%2bCJP29%2fQSUkqm7mE9TScFCZjdYV7cpEVcjORlIXmNbM1HJNzM%2fae%2fk6EasqoRF%2fP6eHFwqe%2b%2fsQ19VBAmxKVVpK4%3d;path=/ipa;httponly;secure;
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Tue, 07 Oct 2025 13:50:28 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"result": {"givenname": ["Temp"], "cn": ["Temp User"],
+        "krbprincipalname": ["temp_delete_user@DEMO1.FREEIPA.ORG"], "homedirectory":
+        ["/home/temp_delete_user"], "displayname": ["Temp User"], "sn": ["User"],
+        "gidnumber": ["1142401987"], "mail": ["temp_delete_user@demo1.freeipa.org"],
+        "ipauniqueid": ["95caab20-a384-11f0-8d74-06c75374d591"], "gecos": ["Temp User"],
+        "uid": ["temp_delete_user"], "loginshell": ["/bin/sh"], "uidnumber": ["1142401987"],
+        "initials": ["TU"], "objectclass": ["top", "person", "organizationalperson",
+        "inetorgperson", "inetuser", "posixaccount", "krbprincipalaux", "krbticketpolicyaux",
+        "ipaobject", "ipasshuser", "ipaSshGroupOfPubKeys", "mepOriginEntry", "ipantuserattrs"],
+        "krbcanonicalname": ["temp_delete_user@DEMO1.FREEIPA.ORG"], "mepmanagedentry":
+        ["cn=temp_delete_user,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"],
+        "has_password": false, "has_keytab": false, "memberof_group": ["ipausers"],
+        "dn": "uid=temp_delete_user,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        "value": "temp_delete_user", "summary": "Added user \"temp_delete_user\""},
+        "error": null, "id": 0, "principal": "admin@DEMO1.FREEIPA.ORG", "version":
+        "4.11.1"}'
+  recorded_at: Tue, 07 Oct 2025 13:50:29 GMT
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"user_del","params":[["temp_delete_user"],{"version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=RW8NAs4xZiNiwCH3YuelELqICUzGxbkx5scFVjEVIFzwkq7rj6qZBtL59quEHhI1QIGdQUgdDVYbjX7l5GVRRmU7JOqLZiUcap3geehGln59AKlLG8F271UnXHvWRMnoul8bzETZ5f5Zqg8Mv5I%2bCJP29%2fQSUkqm7mE9TScFCZjdYV7cpEVcjORlIXmNbM1HJNzM%2fae%2fk6EasqoRF%2fP6eHFwqe%2b%2fsQ19VBAmxKVVpK4%3d;path=/ipa;httponly;secure;
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Tue, 07 Oct 2025 13:50:29 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"result": {"failed": []}, "value": ["temp_delete_user"],
+        "summary": "Deleted user \"temp_delete_user\""}, "error": null, "id": 0, "principal":
+        "admin@DEMO1.FREEIPA.ORG", "version": "4.11.1"}'
+  recorded_at: Tue, 07 Oct 2025 13:50:29 GMT
+recorded_with: VCR 6.3.1

@@ -19,11 +19,11 @@ http_interactions:
       message: Success
     headers:
       date:
-      - Tue, 07 Oct 2025 13:50:27 GMT
+      - Tue, 07 Oct 2025 13:50:31 GMT
       server:
       - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
       set-cookie:
-      - ipa_session=MagBearerToken=C2PuhgferruNaTkuxmZ42tHhMesNFKOjvaA1wL4Jkq0yVixVvQY4MTpMCd4cB7EQgndJ12jHSRBmCDPAv%2byuAAyrH%2fHZSDUOpic3x8uPL6sJuv%2fWsfQWC0TiUETdR5U1PLk%2bB4DOwif1FZE5tFsnQxT2oreSr25uhsMADXXb6Vaz07Ljbfk1G0HYJfbTHoL2OIr5NN%2fcyEpIcIzX6vnRaDMveZ6yX5CqNmnoAYd7HCA%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=1j5yRG%2bbz%2frJBNCYQg%2bYmsx1UqPmx7Z81hpNdyQWiKdzr27xau0px%2bCxyth4%2f7JYK3w8SQ2dRjnNmeHZEqs4xatxmmboQH67BtzQxcIV3hgWwcYkith9yyCvvo7D%2fb9MbRP26L4sAHPiFPf73pZEGbGR77kCs6rYwidTy2LJ5Ti%2b%2bJKYieQPb2XCKxCF7zOMvtP1eeNssAmpLgoOwz44AAhcrXz2%2baBqTPsOVH0dKqQ%3d;path=/ipa;httponly;secure;
       x-frame-options:
       - DENY
       content-security-policy:
@@ -41,13 +41,13 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Tue, 07 Oct 2025 13:50:27 GMT
+  recorded_at: Tue, 07 Oct 2025 13:50:31 GMT
 - request:
     method: post
     uri: https://ipa.demo1.freeipa.org/ipa/session/json
     body:
       encoding: UTF-8
-      string: '{"method":"user_find","params":[["admin"],{"version":"2.251"}],"id":0}'
+      string: '{"method":"user_show","params":[["admin"],{"version":"2.251"}],"id":0}'
     headers:
       User-Agent:
       - Faraday v2.14.0
@@ -56,14 +56,14 @@ http_interactions:
       Referer:
       - https://ipa.demo1.freeipa.org/ipa
       Cookie:
-      - ipa_session=MagBearerToken=C2PuhgferruNaTkuxmZ42tHhMesNFKOjvaA1wL4Jkq0yVixVvQY4MTpMCd4cB7EQgndJ12jHSRBmCDPAv%2byuAAyrH%2fHZSDUOpic3x8uPL6sJuv%2fWsfQWC0TiUETdR5U1PLk%2bB4DOwif1FZE5tFsnQxT2oreSr25uhsMADXXb6Vaz07Ljbfk1G0HYJfbTHoL2OIr5NN%2fcyEpIcIzX6vnRaDMveZ6yX5CqNmnoAYd7HCA%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=1j5yRG%2bbz%2frJBNCYQg%2bYmsx1UqPmx7Z81hpNdyQWiKdzr27xau0px%2bCxyth4%2f7JYK3w8SQ2dRjnNmeHZEqs4xatxmmboQH67BtzQxcIV3hgWwcYkith9yyCvvo7D%2fb9MbRP26L4sAHPiFPf73pZEGbGR77kCs6rYwidTy2LJ5Ti%2b%2bJKYieQPb2XCKxCF7zOMvtP1eeNssAmpLgoOwz44AAhcrXz2%2baBqTPsOVH0dKqQ%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Tue, 07 Oct 2025 13:50:27 GMT
+      - Tue, 07 Oct 2025 13:50:31 GMT
       server:
       - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
       x-frame-options:
@@ -82,11 +82,13 @@ http_interactions:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"result": {"result": [{"nsaccountlock": false, "uid": ["admin"], "gidnumber":
-        ["1142400000"], "krbprincipalname": ["admin@DEMO1.FREEIPA.ORG", "root@DEMO1.FREEIPA.ORG"],
-        "loginshell": ["/bin/bash"], "uidnumber": ["1142400000"], "homedirectory":
-        ["/home/admin"], "sn": ["Administrator"], "dn": "uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"}],
-        "count": 1, "truncated": false, "summary": "1 user matched"}, "error": null,
-        "id": 0, "principal": "admin@DEMO1.FREEIPA.ORG", "version": "4.11.1"}'
-  recorded_at: Tue, 07 Oct 2025 13:50:28 GMT
+      string: '{"result": {"result": {"loginshell": ["/bin/bash"], "sn": ["Administrator"],
+        "krbprincipalname": ["admin@DEMO1.FREEIPA.ORG", "root@DEMO1.FREEIPA.ORG"],
+        "homedirectory": ["/home/admin"], "uidnumber": ["1142400000"], "uid": ["admin"],
+        "nsaccountlock": false, "gidnumber": ["1142400000"], "has_password": true,
+        "has_keytab": true, "memberof_group": ["trust admins", "admins"], "memberofindirect_sudorule":
+        ["admin-access"], "dn": "uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        "value": "admin", "summary": null}, "error": null, "id": 0, "principal": "admin@DEMO1.FREEIPA.ORG",
+        "version": "4.11.1"}'
+  recorded_at: Tue, 07 Oct 2025 13:50:31 GMT
 recorded_with: VCR 6.3.1

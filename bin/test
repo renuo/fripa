@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+
+# Load SimpleCov first
+require "simplecov"
+
+# Now load test helper (which loads the code)
+$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
+$LOAD_PATH.unshift File.expand_path("../test", __dir__)
+
+require "test_helper"
+
+# Require all test files
+Dir.glob("test/test_*.rb").each { |file| require File.expand_path("../#{file}", __dir__) }
+
+# Run minitest
+require "minitest/autorun"

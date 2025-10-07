@@ -4,58 +4,47 @@ require "test_helper"
 
 class TestAuthenticator < Minitest::Test
   def setup
-    Fripa.config = Fripa::Configuration.new(
-      host: "ipa.demo1.freeipa.org",
-      username: "admin",
-      password: "Secret123"
-    )
-    @authenticator = Fripa::Authenticator.new
+    Fripa.config = Fripa::Configuration.new(host: "ipa.demo1.freeipa.org")
+    @client = Fripa::Client.new(username: "admin", password: "Secret123")
   end
 
-  def test_initialize_with_default_config
-    authenticator = Fripa::Authenticator.new
-    assert_equal Fripa.config, authenticator.config
-  end
-
-  def test_initialize_with_custom_config
-    custom_config = Fripa::Configuration.new(host: "custom.example.com")
-    authenticator = Fripa::Authenticator.new(custom_config)
-    assert_equal custom_config, authenticator.config
+  def test_authenticator_returns_client
+    assert_equal @client, @client.authenticator.client
   end
 
   def test_login_raises_on_blank_username
-    Fripa.config.username = ""
+    client = Fripa::Client.new(username: "", password: "Secret123")
 
     error = assert_raises(ArgumentError) do
-      @authenticator.login!
+      client.authenticator.login!
     end
     assert_equal "Username cannot be blank", error.message
   end
 
   def test_login_raises_on_blank_password
-    Fripa.config.password = nil
+    client = Fripa::Client.new(username: "admin", password: nil)
 
     error = assert_raises(ArgumentError) do
-      @authenticator.login!
+      client.authenticator.login!
     end
     assert_equal "Password cannot be blank", error.message
   end
 
   def test_login_success
     VCR.use_cassette("authenticator/login_success") do
-      @authenticator.login!
+      session_cookie = @client.authenticator.login!
 
-      refute_nil Fripa.config.session_cookie
-      assert_match(/ipa_session=/, Fripa.config.session_cookie)
+      refute_nil session_cookie
+      assert_match(/ipa_session=/, session_cookie)
     end
   end
 
   def test_login_with_invalid_credentials
-    Fripa.config.password = "WrongPassword"
+    client = Fripa::Client.new(username: "admin", password: "WrongPassword")
 
     VCR.use_cassette("authenticator/login_invalid_credentials") do
       error = assert_raises(Fripa::AuthenticationError) do
-        @authenticator.login!
+        client.authenticator.login!
       end
       assert_match(/Login failed/, error.message)
     end

@@ -19,11 +19,11 @@ http_interactions:
       message: Success
     headers:
       date:
-      - Tue, 07 Oct 2025 11:25:31 GMT
+      - Tue, 07 Oct 2025 13:50:27 GMT
       server:
       - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
       set-cookie:
-      - ipa_session=MagBearerToken=xAHKB8fUwXbAipjU73ePBQzXoTssFm1EfNaQdUyhdRDTz%2bzx8ep3aHtNr0tRIkK4ADmOewOfCTY5hm0EuxPc5btGsOjeW8B63vUIcErvmDiwoSEiTJbhdZFCy9O34KQe3rkuFiOdhBQljRtZBZAu7aRUeF13%2bxQZVSygsrMfUPaVuTc5moDLLhvlZPRseQEgrVSi2rc9%2fP1BCnc52IGqJrRQ05yX1AxNhEQIuWXOiZc%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=L6lUtmfaoyHPPAgqkgbLlAYMtCZRJYlPZIRpueriPkSO574tkc%2fmx43nJIBgCC6cDPwujPQ0nt8tdYqUKd4HwjZIK5FYc2Xvc5u773%2faHpP705N3IauYjtHTGrR%2beEzwLWQ6%2fDmbKt0MzLqYcvIZVjqCyj7tUGdyov3D693u9FP8xvQY8lpJdG%2fER86CaGawO1wARazdf%2b%2bQDuFaSKJ9L%2brgcp1b1BLlmXWVGqKUq54%3d;path=/ipa;httponly;secure;
       x-frame-options:
       - DENY
       content-security-policy:
@@ -34,14 +34,14 @@ http_interactions:
       - Accept-Encoding
       content-encoding:
       - gzip
-      transfer-encoding:
-      - chunked
+      content-length:
+      - '20'
       content-type:
       - text/plain; charset=UTF-8
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Tue, 07 Oct 2025 11:25:31 GMT
+  recorded_at: Tue, 07 Oct 2025 13:50:27 GMT
 - request:
     method: post
     uri: https://ipa.demo1.freeipa.org/ipa/session/json
@@ -56,14 +56,14 @@ http_interactions:
       Referer:
       - https://ipa.demo1.freeipa.org/ipa
       Cookie:
-      - ipa_session=MagBearerToken=xAHKB8fUwXbAipjU73ePBQzXoTssFm1EfNaQdUyhdRDTz%2bzx8ep3aHtNr0tRIkK4ADmOewOfCTY5hm0EuxPc5btGsOjeW8B63vUIcErvmDiwoSEiTJbhdZFCy9O34KQe3rkuFiOdhBQljRtZBZAu7aRUeF13%2bxQZVSygsrMfUPaVuTc5moDLLhvlZPRseQEgrVSi2rc9%2fP1BCnc52IGqJrRQ05yX1AxNhEQIuWXOiZc%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=L6lUtmfaoyHPPAgqkgbLlAYMtCZRJYlPZIRpueriPkSO574tkc%2fmx43nJIBgCC6cDPwujPQ0nt8tdYqUKd4HwjZIK5FYc2Xvc5u773%2faHpP705N3IauYjtHTGrR%2beEzwLWQ6%2fDmbKt0MzLqYcvIZVjqCyj7tUGdyov3D693u9FP8xvQY8lpJdG%2fER86CaGawO1wARazdf%2b%2bQDuFaSKJ9L%2brgcp1b1BLlmXWVGqKUq54%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Tue, 07 Oct 2025 11:25:31 GMT
+      - Tue, 07 Oct 2025 13:50:27 GMT
       server:
       - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
       x-frame-options:
@@ -89,13 +89,13 @@ http_interactions:
         "ipantsecurityidentifier": ["S-1-5-21-562557311-290852036-180187086-500"],
         "krblastpwdchange": [{"__datetime__": "20230715081215Z"}], "krblastadminunlock":
         [{"__datetime__": "20230420133811Z"}], "krbextradata": [{"__base64__": "AALfVLJkYWRtaW5AREVNTzEuRlJFRUlQQS5PUkcA"}],
-        "krbloginfailedcount": ["0"], "krblastfailedauth": [{"__datetime__": "20251007111045Z"}],
-        "loginshell": ["/bin/bash"], "uidnumber": ["1142400000"], "nsaccountlock":
-        false, "sn": ["Administrator"], "uid": ["admin"], "krbprincipalname": ["admin@DEMO1.FREEIPA.ORG",
-        "root@DEMO1.FREEIPA.ORG"], "gidnumber": ["1142400000"], "homedirectory": ["/home/admin"],
+        "krbloginfailedcount": ["0"], "krblastfailedauth": [{"__datetime__": "20251007135027Z"}],
+        "uid": ["admin"], "sn": ["Administrator"], "uidnumber": ["1142400000"], "loginshell":
+        ["/bin/bash"], "krbprincipalname": ["admin@DEMO1.FREEIPA.ORG", "root@DEMO1.FREEIPA.ORG"],
+        "nsaccountlock": false, "gidnumber": ["1142400000"], "homedirectory": ["/home/admin"],
         "preserved": false, "memberof_group": ["admins", "trust admins"], "memberof_sudorule":
         ["admin-access"], "dn": "uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"}],
         "count": 1, "truncated": false, "summary": "1 user matched"}, "error": null,
         "id": 0, "principal": "admin@DEMO1.FREEIPA.ORG", "version": "4.11.1"}'
-  recorded_at: Tue, 07 Oct 2025 11:25:31 GMT
+  recorded_at: Tue, 07 Oct 2025 13:50:27 GMT
 recorded_with: VCR 6.3.1

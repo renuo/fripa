@@ -1,0 +1,307 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/login_password
+    body:
+      encoding: US-ASCII
+      string: user=admin&password=<PASSWORD>
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Tue, 07 Oct 2025 13:50:33 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      set-cookie:
+      - ipa_session=MagBearerToken=CNT1EZy91Wmi%2f7YnSii7AJpIRd6ydn6V36gq7t2HgcY4OsOzUO%2bjeEjMad4Wux9TvirV2RLjUWU1Ub1P5upTeqLWZJgtaLmEEjUxEWL12D0eLVcQyCgjIj8t7sV5S6BklwC6ZAwOTIqV9ALlu8VTcBHiXyrnqDG6rc0XgJq0lJEIPxXDaNPLQN4wKXhE8%2bwAfiCvxSpblCy%2bx2geqCVQsfR0vwhOxDO3AVUT%2bioRGIU%3d;path=/ipa;httponly;secure;
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      content-length:
+      - '20'
+      content-type:
+      - text/plain; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 07 Oct 2025 13:50:33 GMT
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"group_find","params":[[],{"version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=CNT1EZy91Wmi%2f7YnSii7AJpIRd6ydn6V36gq7t2HgcY4OsOzUO%2bjeEjMad4Wux9TvirV2RLjUWU1Ub1P5upTeqLWZJgtaLmEEjUxEWL12D0eLVcQyCgjIj8t7sV5S6BklwC6ZAwOTIqV9ALlu8VTcBHiXyrnqDG6rc0XgJq0lJEIPxXDaNPLQN4wKXhE8%2bwAfiCvxSpblCy%2bx2geqCVQsfR0vwhOxDO3AVUT%2bioRGIU%3d;path=/ipa;httponly;secure;
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Tue, 07 Oct 2025 13:50:33 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"result": [{"description": ["Account administrators group"],
+        "gidnumber": ["1142400000"], "cn": ["admins"], "dn": "cn=admins,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Modified description"], "gidnumber": ["1142400002"], "cn":
+        ["editors"], "dn": "cn=editors,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Test Employees"], "gidnumber": ["1142400006"], "cn": ["employees"],
+        "dn": "cn=employees,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"}, {"description":
+        ["\"Forbes, Fuller and King\",-1"], "gidnumber": ["1142401063"], "cn": ["hpc_org_0ada96e13f6c484fa3b4f37019695270"],
+        "dn": "cn=hpc_org_0ada96e13f6c484fa3b4f37019695270,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Clayton-Morgan,-1"], "gidnumber": ["1142401100"], "cn":
+        ["hpc_org_0b5e658068664999ba7f1de44e20766c"], "dn": "cn=hpc_org_0b5e658068664999ba7f1de44e20766c,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Evans-Hill,-1"], "gidnumber": ["1142401074"], "cn": ["hpc_org_1554f6bf2591460f8a315fb72247127a"],
+        "dn": "cn=hpc_org_1554f6bf2591460f8a315fb72247127a,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Washington PLC,-1"], "gidnumber": ["1142401016"], "cn":
+        ["hpc_org_257dc6461ff74b19bef64b42606c3c5a"], "dn": "cn=hpc_org_257dc6461ff74b19bef64b42606c3c5a,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Newman-Scott,-1"], "gidnumber": ["1142401009"], "cn": ["hpc_org_27fe5c7906d0442f95a21ff33f187b33"],
+        "dn": "cn=hpc_org_27fe5c7906d0442f95a21ff33f187b33,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["\"Holmes, Welch and Forbes\",-1"], "gidnumber": ["1142401076"],
+        "cn": ["hpc_org_3cce70ee4de4471ca69a3d40817c8d09"], "dn": "cn=hpc_org_3cce70ee4de4471ca69a3d40817c8d09,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Williams-Martinez,-1"], "gidnumber": ["1142401094"], "cn":
+        ["hpc_org_422709db45ff4f7292cd7ffceb39d657"], "dn": "cn=hpc_org_422709db45ff4f7292cd7ffceb39d657,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Watkins Ltd,-1"], "gidnumber": ["1142401089"], "cn": ["hpc_org_474aee42ff32460dacef4a5a585cbf82"],
+        "dn": "cn=hpc_org_474aee42ff32460dacef4a5a585cbf82,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Davidson Ltd,-1"], "gidnumber": ["1142401072"], "cn": ["hpc_org_515e9e72e7114468b35c0c889aa5a72d"],
+        "dn": "cn=hpc_org_515e9e72e7114468b35c0c889aa5a72d,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Johnson-Johnson,-1"], "gidnumber": ["1142401019"], "cn":
+        ["hpc_org_5254db294beb47f9a1f865e89eabfeb4"], "dn": "cn=hpc_org_5254db294beb47f9a1f865e89eabfeb4,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["\"Hopkins, Wright and Ward\",-1"], "gidnumber": ["1142401036"],
+        "cn": ["hpc_org_5991d0c109df4e8cab4f9dd660295517"], "dn": "cn=hpc_org_5991d0c109df4e8cab4f9dd660295517,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Davidson PLC,-1"], "gidnumber": ["1142401039"], "cn": ["hpc_org_5bcbe69d5baa4012bb24c8c61177d8d7"],
+        "dn": "cn=hpc_org_5bcbe69d5baa4012bb24c8c61177d8d7,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["\"Carr, Diaz and Martin\",-1"], "gidnumber": ["1142401088"],
+        "cn": ["hpc_org_747bc8f1f43444bbbf0a6b962d690478"], "dn": "cn=hpc_org_747bc8f1f43444bbbf0a6b962d690478,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Murphy and Sons,-1"], "gidnumber": ["1142401062"], "cn":
+        ["hpc_org_7e75b31e479c4e5da59e1592f37961dc"], "dn": "cn=hpc_org_7e75b31e479c4e5da59e1592f37961dc,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["\"Martinez, Thompson and Gilbert\",-1"], "gidnumber": ["1142401066"],
+        "cn": ["hpc_org_895e38d197e748459189f19285119edf"], "dn": "cn=hpc_org_895e38d197e748459189f19285119edf,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Lawson and Sons,-1"], "gidnumber": ["1142401010"], "cn":
+        ["hpc_org_b816bf2de74f4a4480264678a881eb16"], "dn": "cn=hpc_org_b816bf2de74f4a4480264678a881eb16,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["\"Perry, Vasquez and Torres\",-1"], "gidnumber": ["1142401014"],
+        "cn": ["hpc_org_c25734b7c31c42e584bf113b50d7f264"], "dn": "cn=hpc_org_c25734b7c31c42e584bf113b50d7f264,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Alexander and Sons,-1"], "gidnumber": ["1142401071"], "cn":
+        ["hpc_org_c90f18c89cc74012aeec5cd95802453b"], "dn": "cn=hpc_org_c90f18c89cc74012aeec5cd95802453b,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Rodriguez-Allen,-1"], "gidnumber": ["1142401053"], "cn":
+        ["hpc_org_f4177c5031bf46cc86b069350b8829cf"], "dn": "cn=hpc_org_f4177c5031bf46cc86b069350b8829cf,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Assimilated incremental process improvement,-1"], "gidnumber":
+        ["1142401075"], "cn": ["hpc_project_001830d30ca946e89fe118b0cd122668"], "dn":
+        "cn=hpc_project_001830d30ca946e89fe118b0cd122668,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Quality-focused logistical time-frame,-1"], "gidnumber":
+        ["1142401085"], "cn": ["hpc_project_00746d6769094ab0b4281cce49ce23bc"], "dn":
+        "cn=hpc_project_00746d6769094ab0b4281cce49ce23bc,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Mandatory regional initiative,-1"], "gidnumber": ["1142401052"],
+        "cn": ["hpc_project_070e39f8bc74405cab28a96936442b97"], "dn": "cn=hpc_project_070e39f8bc74405cab28a96936442b97,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Devolved value-added success,-1"], "gidnumber": ["1142401021"],
+        "cn": ["hpc_project_09ab88e4afda49d099fe71d1db147104"], "dn": "cn=hpc_project_09ab88e4afda49d099fe71d1db147104,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Devolved optimizing instruction set,-1"], "gidnumber": ["1142401027"],
+        "cn": ["hpc_project_0e3a81e483474e5a9d43fc46905b7af3"], "dn": "cn=hpc_project_0e3a81e483474e5a9d43fc46905b7af3,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Compatible asymmetric workforce,-1"], "gidnumber": ["1142401018"],
+        "cn": ["hpc_project_0feede4e2ab14aa187d662da8332cf13"], "dn": "cn=hpc_project_0feede4e2ab14aa187d662da8332cf13,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Extended responsive software,-1"], "gidnumber": ["1142401040"],
+        "cn": ["hpc_project_1185dbe2e73c4634970686598d57823c"], "dn": "cn=hpc_project_1185dbe2e73c4634970686598d57823c,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Universal zero tolerance application,-1"], "gidnumber":
+        ["1142401078"], "cn": ["hpc_project_123fa6cc723340a18284dd6aef7c91b8"], "dn":
+        "cn=hpc_project_123fa6cc723340a18284dd6aef7c91b8,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Proactive holistic database,-1"], "gidnumber": ["1142401064"],
+        "cn": ["hpc_project_16cf06fd8b3f4ee19b0c8fd97f4c5a2c"], "dn": "cn=hpc_project_16cf06fd8b3f4ee19b0c8fd97f4c5a2c,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Triple-buffered global superstructure,-1"], "gidnumber":
+        ["1142401045"], "cn": ["hpc_project_19156ca19d74498bb9e7b46c9dcba3b5"], "dn":
+        "cn=hpc_project_19156ca19d74498bb9e7b46c9dcba3b5,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Monitored 24/7 implementation,-1"], "gidnumber": ["1142401077"],
+        "cn": ["hpc_project_1c0ad7248f0748fab844dfa4d446f291"], "dn": "cn=hpc_project_1c0ad7248f0748fab844dfa4d446f291,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Distributed client-server project,-1"], "gidnumber": ["1142401029"],
+        "cn": ["hpc_project_1e11e158ee984acf81402cc9929ddeac"], "dn": "cn=hpc_project_1e11e158ee984acf81402cc9929ddeac,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Mandatory analyzing software,-1"], "gidnumber": ["1142401082"],
+        "cn": ["hpc_project_20d44e77e6b649b0a25dc415fc24eb8b"], "dn": "cn=hpc_project_20d44e77e6b649b0a25dc415fc24eb8b,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Diverse bifurcated Internet solution,-1"], "gidnumber":
+        ["1142401013"], "cn": ["hpc_project_21cc4a32945b4d45864fb3f05878a91a"], "dn":
+        "cn=hpc_project_21cc4a32945b4d45864fb3f05878a91a,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Team-oriented asymmetric forecast,-1"], "gidnumber": ["1142401079"],
+        "cn": ["hpc_project_22efc935dec641f4ab03dd4c4bc2c6e0"], "dn": "cn=hpc_project_22efc935dec641f4ab03dd4c4bc2c6e0,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Exclusive eco-centric moratorium,-1"], "gidnumber": ["1142401041"],
+        "cn": ["hpc_project_26fc83e64ea0473fb9f57f0ae978b396"], "dn": "cn=hpc_project_26fc83e64ea0473fb9f57f0ae978b396,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Testing project 1,-1"], "gidnumber": ["1142401061"], "cn":
+        ["hpc_project_2a77943f8f694c3b8a7996a3e8fc881d"], "dn": "cn=hpc_project_2a77943f8f694c3b8a7996a3e8fc881d,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Enhanced mobile adapter,-1"], "gidnumber": ["1142401025"],
+        "cn": ["hpc_project_324114dbbf044c44943fe38853752990"], "dn": "cn=hpc_project_324114dbbf044c44943fe38853752990,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Streamlined local conglomeration,-1"], "gidnumber": ["1142401070"],
+        "cn": ["hpc_project_33ec3e04c9ea4fd49f422224146cfe0b"], "dn": "cn=hpc_project_33ec3e04c9ea4fd49f422224146cfe0b,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Synergistic mission-critical algorithm,-1"], "gidnumber":
+        ["1142401092"], "cn": ["hpc_project_394b14b8abcd4d3e8bcd8ccd7c7341a0"], "dn":
+        "cn=hpc_project_394b14b8abcd4d3e8bcd8ccd7c7341a0,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Right-sized fresh-thinking synergy,-1"], "gidnumber": ["1142401095"],
+        "cn": ["hpc_project_413f4c3ae8284a11ae1a77f918ce301f"], "dn": "cn=hpc_project_413f4c3ae8284a11ae1a77f918ce301f,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Re-engineered foreground neural-net,-1"], "gidnumber": ["1142401026"],
+        "cn": ["hpc_project_416de616203547cdb8ff31f10af66d83"], "dn": "cn=hpc_project_416de616203547cdb8ff31f10af66d83,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Polarized asynchronous array,-1"], "gidnumber": ["1142401097"],
+        "cn": ["hpc_project_434239fa3bef4b3b89305d4dc6c3ab79"], "dn": "cn=hpc_project_434239fa3bef4b3b89305d4dc6c3ab79,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Grass-roots 24/7 pricing structure,-1"], "gidnumber": ["1142401073"],
+        "cn": ["hpc_project_46969a40a2c94f9a8ac905a5b5e19ad3"], "dn": "cn=hpc_project_46969a40a2c94f9a8ac905a5b5e19ad3,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Fundamental impactful project,-1"], "gidnumber": ["1142401012"],
+        "cn": ["hpc_project_4dfe3161d2464017adefbb76cba33dfb"], "dn": "cn=hpc_project_4dfe3161d2464017adefbb76cba33dfb,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Configurable human-resource alliance,-1"], "gidnumber":
+        ["1142401059"], "cn": ["hpc_project_50ff2859029d470190ee1c946a18e635"], "dn":
+        "cn=hpc_project_50ff2859029d470190ee1c946a18e635,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Secured executive synergy,-1"], "gidnumber": ["1142401044"],
+        "cn": ["hpc_project_5574032a4aea4890a7f3b1f864359c03"], "dn": "cn=hpc_project_5574032a4aea4890a7f3b1f864359c03,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Programmable zero tolerance challenge,-1"], "gidnumber":
+        ["1142401090"], "cn": ["hpc_project_5ce37a9ce8364dca9934930ac078c495"], "dn":
+        "cn=hpc_project_5ce37a9ce8364dca9934930ac078c495,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["User-centric 24/7 orchestration,-1"], "gidnumber": ["1142401083"],
+        "cn": ["hpc_project_61eac4d790054882bb6a48ea78b4aa26"], "dn": "cn=hpc_project_61eac4d790054882bb6a48ea78b4aa26,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["User-centric maximized framework,-1"], "gidnumber": ["1142401047"],
+        "cn": ["hpc_project_683bbfb45c8c43c3959d743ad4a8193b"], "dn": "cn=hpc_project_683bbfb45c8c43c3959d743ad4a8193b,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Centralized coherent project,-1"], "gidnumber": ["1142401032"],
+        "cn": ["hpc_project_6a11b0eaf04e4c839b769b7748979086"], "dn": "cn=hpc_project_6a11b0eaf04e4c839b769b7748979086,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Expanded incremental groupware,-1"], "gidnumber": ["1142401042"],
+        "cn": ["hpc_project_6fc9646719094b628657aa08ade906ea"], "dn": "cn=hpc_project_6fc9646719094b628657aa08ade906ea,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Synergized static adapter,-1"], "gidnumber": ["1142401017"],
+        "cn": ["hpc_project_70b26b3dd4fd48d9b7edf600e06a063a"], "dn": "cn=hpc_project_70b26b3dd4fd48d9b7edf600e06a063a,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Cross-platform multimedia paradigm,-1"], "gidnumber": ["1142401031"],
+        "cn": ["hpc_project_73110648791d4823918bc6679d9e46b0"], "dn": "cn=hpc_project_73110648791d4823918bc6679d9e46b0,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Down-sized asymmetric solution,-1"], "gidnumber": ["1142401068"],
+        "cn": ["hpc_project_734b29bc7b9d4eb08b85e03b18d13b01"], "dn": "cn=hpc_project_734b29bc7b9d4eb08b85e03b18d13b01,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Assimilated modular toolset,-1"], "gidnumber": ["1142401028"],
+        "cn": ["hpc_project_7473e687c7544560925cb88be9f42a89"], "dn": "cn=hpc_project_7473e687c7544560925cb88be9f42a89,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Function-based static toolset,-1"], "gidnumber": ["1142401084"],
+        "cn": ["hpc_project_777edcfec1214b95beffffb335a2948d"], "dn": "cn=hpc_project_777edcfec1214b95beffffb335a2948d,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Multi-tiered directional moderator,-1"], "gidnumber": ["1142401056"],
+        "cn": ["hpc_project_8598b7d59e454eb6908e12cb9fafca79"], "dn": "cn=hpc_project_8598b7d59e454eb6908e12cb9fafca79,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Multi-tiered bottom-line archive,-1"], "gidnumber": ["1142401058"],
+        "cn": ["hpc_project_86b314666153482bad85572b05157f3a"], "dn": "cn=hpc_project_86b314666153482bad85572b05157f3a,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Integrated foreground Graphic Interface,-1"], "gidnumber":
+        ["1142401081"], "cn": ["hpc_project_86d7d43c6de545aeae374b55ddb6dcbf"], "dn":
+        "cn=hpc_project_86d7d43c6de545aeae374b55ddb6dcbf,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Compatible transitional customer loyalty,-1"], "gidnumber":
+        ["1142401050"], "cn": ["hpc_project_88879e68a4c84f6ea0e05fb9bc59ea8f"], "dn":
+        "cn=hpc_project_88879e68a4c84f6ea0e05fb9bc59ea8f,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Multi-tiered context-sensitive challenge,-1"], "gidnumber":
+        ["1142401091"], "cn": ["hpc_project_89609a46d5ea4ff4b5353475dff10adc"], "dn":
+        "cn=hpc_project_89609a46d5ea4ff4b5353475dff10adc,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Testing project 2,-1"], "gidnumber": ["1142401015"], "cn":
+        ["hpc_project_8d6c164e3155459f985f7e87a1bda813"], "dn": "cn=hpc_project_8d6c164e3155459f985f7e87a1bda813,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Fundamental 6thgeneration migration,-1"], "gidnumber": ["1142401086"],
+        "cn": ["hpc_project_92080643ee28435aa15c349030f65e03"], "dn": "cn=hpc_project_92080643ee28435aa15c349030f65e03,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Intuitive optimizing forecast,-1"], "gidnumber": ["1142401060"],
+        "cn": ["hpc_project_942a1d10fe2041f6917e21df44174c11"], "dn": "cn=hpc_project_942a1d10fe2041f6917e21df44174c11,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Vision-oriented mission-critical interface,-1"], "gidnumber":
+        ["1142401067"], "cn": ["hpc_project_9470894492d8471d9d61fadf3ee9f406"], "dn":
+        "cn=hpc_project_9470894492d8471d9d61fadf3ee9f406,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Universal radical strategy,-1"], "gidnumber": ["1142401049"],
+        "cn": ["hpc_project_9b0dfb9faf634e62803f89210a89a7f3"], "dn": "cn=hpc_project_9b0dfb9faf634e62803f89210a89a7f3,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Cross-platform 24hour strategy,-1"], "gidnumber": ["1142401037"],
+        "cn": ["hpc_project_aaa72fca8c074b30a3fce74bcbda7c95"], "dn": "cn=hpc_project_aaa72fca8c074b30a3fce74bcbda7c95,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Balanced national middleware,-1"], "gidnumber": ["1142401101"],
+        "cn": ["hpc_project_ae79cc320a6747f18d96ba956ae9d039"], "dn": "cn=hpc_project_ae79cc320a6747f18d96ba956ae9d039,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Organic maximized budgetary management,-1"], "gidnumber":
+        ["1142401055"], "cn": ["hpc_project_b508346aaf2a41b494f5e67b0afddcc7"], "dn":
+        "cn=hpc_project_b508346aaf2a41b494f5e67b0afddcc7,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Grass-roots reciprocal encoding,-1"], "gidnumber": ["1142401057"],
+        "cn": ["hpc_project_bdb47a91924f4ec3996ee690d8d72b0d"], "dn": "cn=hpc_project_bdb47a91924f4ec3996ee690d8d72b0d,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Enhanced full-range complexity,-1"], "gidnumber": ["1142401024"],
+        "cn": ["hpc_project_bdd9ca89d68e4c1e87660438109aead7"], "dn": "cn=hpc_project_bdd9ca89d68e4c1e87660438109aead7,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Multi-tiered tertiary customer loyalty,-1"], "gidnumber":
+        ["1142401048"], "cn": ["hpc_project_c02d0b4c4a354232b084a8caf99d2c79"], "dn":
+        "cn=hpc_project_c02d0b4c4a354232b084a8caf99d2c79,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Optional directional projection,-1"], "gidnumber": ["1142401093"],
+        "cn": ["hpc_project_c0f13e98405c4ec1968b52c9d4587223"], "dn": "cn=hpc_project_c0f13e98405c4ec1968b52c9d4587223,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Synchronized systemic secured line,-1"], "gidnumber": ["1142401087"],
+        "cn": ["hpc_project_c1075dff4f6f41d6abe47503d803f351"], "dn": "cn=hpc_project_c1075dff4f6f41d6abe47503d803f351,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Managed intangible approach,-1"], "gidnumber": ["1142401080"],
+        "cn": ["hpc_project_c25dfa1fc7ce48a88578bc70f43b482b"], "dn": "cn=hpc_project_c25dfa1fc7ce48a88578bc70f43b482b,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Managed local software,-1"], "gidnumber": ["1142401011"],
+        "cn": ["hpc_project_c923d931597c42208a9b9b16179ccf66"], "dn": "cn=hpc_project_c923d931597c42208a9b9b16179ccf66,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Cloned human-resource portal,-1"], "gidnumber": ["1142401054"],
+        "cn": ["hpc_project_cbe6accd610949e0a6aad41c3b7111b1"], "dn": "cn=hpc_project_cbe6accd610949e0a6aad41c3b7111b1,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Automated object-oriented circuit,-1"], "gidnumber": ["1142401102"],
+        "cn": ["hpc_project_cdd40050a3c94097a709643561a2bab5"], "dn": "cn=hpc_project_cdd40050a3c94097a709643561a2bab5,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Integrated disintermediate access,-1"], "gidnumber": ["1142401065"],
+        "cn": ["hpc_project_cf46b0653cfc4c62b38e722651faa98c"], "dn": "cn=hpc_project_cf46b0653cfc4c62b38e722651faa98c,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Self-enabling stable data-warehouse,-1"], "gidnumber": ["1142401038"],
+        "cn": ["hpc_project_d1267d00f12946dc948048f4cdd91197"], "dn": "cn=hpc_project_d1267d00f12946dc948048f4cdd91197,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Centralized background monitoring,-1"], "gidnumber": ["1142401030"],
+        "cn": ["hpc_project_d47be132c6924defbf6a5e9c27b0b822"], "dn": "cn=hpc_project_d47be132c6924defbf6a5e9c27b0b822,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Virtual encompassing flexibility,-1"], "gidnumber": ["1142401069"],
+        "cn": ["hpc_project_d96838879d18443fa1f081b18cda9156"], "dn": "cn=hpc_project_d96838879d18443fa1f081b18cda9156,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Profit-focused user-facing parallelism,-1"], "gidnumber":
+        ["1142401022"], "cn": ["hpc_project_dbac61b4591541cb99d9b67e1aff13ed"], "dn":
+        "cn=hpc_project_dbac61b4591541cb99d9b67e1aff13ed,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Organic reciprocal migration,-1"], "gidnumber": ["1142401096"],
+        "cn": ["hpc_project_dc8809fb3c394df7b52478ae472e8769"], "dn": "cn=hpc_project_dc8809fb3c394df7b52478ae472e8769,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Secured empowering core,-1"], "gidnumber": ["1142401023"],
+        "cn": ["hpc_project_dd32513f76d049a2902f84090c917344"], "dn": "cn=hpc_project_dd32513f76d049a2902f84090c917344,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Cloned multi-tasking framework,-1"], "gidnumber": ["1142401043"],
+        "cn": ["hpc_project_dec93932d32148bd8bd9080890f317fa"], "dn": "cn=hpc_project_dec93932d32148bd8bd9080890f317fa,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Assimilated optimal algorithm,-1"], "gidnumber": ["1142401051"],
+        "cn": ["hpc_project_e39493c91731469eb0151711082cb370"], "dn": "cn=hpc_project_e39493c91731469eb0151711082cb370,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Down-sized leadingedge collaboration,-1"], "gidnumber":
+        ["1142401046"], "cn": ["hpc_project_f2174548afd94293bf39efbc8c5a32b2"], "dn":
+        "cn=hpc_project_f2174548afd94293bf39efbc8c5a32b2,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Organized heuristic monitoring,-1"], "gidnumber": ["1142401034"],
+        "cn": ["hpc_project_f2e10bb9d22e47faa92c8cdcf21a30c1"], "dn": "cn=hpc_project_f2e10bb9d22e47faa92c8cdcf21a30c1,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Automated coherent access,-1"], "gidnumber": ["1142401035"],
+        "cn": ["hpc_project_f5b14e76985349d8b5f91325702fde1b"], "dn": "cn=hpc_project_f5b14e76985349d8b5f91325702fde1b,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Vision-oriented zero administration toolset,-1"], "gidnumber":
+        ["1142401099"], "cn": ["hpc_project_f8d6479334274d0b8f992cc7db8a63d4"], "dn":
+        "cn=hpc_project_f8d6479334274d0b8f992cc7db8a63d4,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Fundamental mobile algorithm,-1"], "gidnumber": ["1142401033"],
+        "cn": ["hpc_project_fd194389e584437ead469994b50a43a6"], "dn": "cn=hpc_project_fd194389e584437ead469994b50a43a6,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Versatile optimizing methodology,-1"], "gidnumber": ["1142401098"],
+        "cn": ["hpc_project_fdab0941c8644caea84a8f3306322a87"], "dn": "cn=hpc_project_fdab0941c8644caea84a8f3306322a87,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Progressive dynamic contingency,-1"], "gidnumber": ["1142401020"],
+        "cn": ["hpc_project_ffa5ef66aa35482191880e2136c06f4a"], "dn": "cn=hpc_project_ffa5ef66aa35482191880e2136c06f4a,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"description": ["Default group for all users"], "cn": ["ipausers"], "dn":
+        "cn=ipausers,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"}, {"description":
+        ["Test Managers"], "gidnumber": ["1142400007"], "cn": ["managers"], "dn":
+        "cn=managers,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"}, {"description":
+        ["Trusts administrators group"], "cn": ["trust admins"], "dn": "cn=trust admins,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"}],
+        "count": 100, "truncated": true, "messages": [{"type": "warning", "name":
+        "SearchResultTruncated", "message": "Search result has been truncated: Configured
+        size limit exceeded", "code": 13017, "data": {"reason": "Configured size limit
+        exceeded"}}], "summary": "100 groups matched"}, "error": null, "id": 0, "principal":
+        "admin@DEMO1.FREEIPA.ORG", "version": "4.11.1"}'
+  recorded_at: Tue, 07 Oct 2025 13:50:33 GMT
+recorded_with: VCR 6.3.1

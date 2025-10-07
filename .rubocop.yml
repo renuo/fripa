@@ -9,3 +9,12 @@ Style/StringLiteralsInInterpolation:
 
 Style/Documentation:
   Enabled: false
+
+Naming/MethodParameterName:
+  AllowedNames:
+    - cn
+    - uid
+
+Metrics/ClassLength:
+  Exclude:
+    - 'test/**/*'

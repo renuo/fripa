@@ -1,0 +1,112 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/login_password
+    body:
+      encoding: US-ASCII
+      string: user=admin&password=<PASSWORD>
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Tue, 07 Oct 2025 13:50:28 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      set-cookie:
+      - ipa_session=MagBearerToken=a4IK9Mjpo5TpRyRnaFC9kjkbb%2fXhRwCf1WiYfJbS%2f3D91nflJuRuUgVCkybs7vwok9HpPxk9d5O%2fYfgRkBzLotXfib5URgq5hzGwlTb1ZRUTc79kt8jaNzXR0o4ZFvHI42vh9CcprvsaTz9WCY5STFi10qlat8qRFzwTZu6I51XkOIvKz09BnKMB%2fJ%2bvNFPIj6vVRZzwna1jS4PF%2feGTpnLpuFLJ8DOWIv7OyXEcii0%3d;path=/ipa;httponly;secure;
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      content-length:
+      - '20'
+      content-type:
+      - text/plain; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 07 Oct 2025 13:50:28 GMT
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"user_find","params":[[],{"version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=a4IK9Mjpo5TpRyRnaFC9kjkbb%2fXhRwCf1WiYfJbS%2f3D91nflJuRuUgVCkybs7vwok9HpPxk9d5O%2fYfgRkBzLotXfib5URgq5hzGwlTb1ZRUTc79kt8jaNzXR0o4ZFvHI42vh9CcprvsaTz9WCY5STFi10qlat8qRFzwTZu6I51XkOIvKz09BnKMB%2fJ%2bvNFPIj6vVRZzwna1jS4PF%2feGTpnLpuFLJ8DOWIv7OyXEcii0%3d;path=/ipa;httponly;secure;
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Tue, 07 Oct 2025 13:50:28 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"result": [{"uid": ["admin"], "sn": ["Administrator"],
+        "uidnumber": ["1142400000"], "loginshell": ["/bin/bash"], "krbprincipalname":
+        ["admin@DEMO1.FREEIPA.ORG", "root@DEMO1.FREEIPA.ORG"], "nsaccountlock": false,
+        "gidnumber": ["1142400000"], "homedirectory": ["/home/admin"], "dn": "uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"krbcanonicalname": ["employee@DEMO1.FREEIPA.ORG"], "mail": ["newemail@example.com"],
+        "uid": ["employee"], "sn": ["Employee"], "uidnumber": ["1142400004"], "givenname":
+        ["Test"], "loginshell": ["/bin/sh"], "krbprincipalname": ["employee@DEMO1.FREEIPA.ORG"],
+        "gidnumber": ["1142400004"], "homedirectory": ["/home/employee"], "nsaccountlock":
+        false, "dn": "uid=employee,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"krbcanonicalname": ["helpdesk@DEMO1.FREEIPA.ORG"], "mail": ["helpdesk@demo1.freeipa.org"],
+        "uid": ["helpdesk"], "sn": ["Helpdesk"], "uidnumber": ["1142400005"], "givenname":
+        ["Test"], "loginshell": ["/bin/sh"], "krbprincipalname": ["helpdesk@DEMO1.FREEIPA.ORG"],
+        "gidnumber": ["1142400005"], "homedirectory": ["/home/helpdesk"], "nsaccountlock":
+        false, "dn": "uid=helpdesk,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"krbcanonicalname": ["manager@DEMO1.FREEIPA.ORG"], "mail": ["manager@demo1.freeipa.org"],
+        "uid": ["manager"], "sn": ["Manager"], "uidnumber": ["1142400003"], "givenname":
+        ["Test"], "loginshell": ["/bin/sh"], "krbprincipalname": ["manager@DEMO1.FREEIPA.ORG"],
+        "gidnumber": ["1142400003"], "homedirectory": ["/home/manager"], "nsaccountlock":
+        false, "dn": "uid=manager,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+        {"krbcanonicalname": ["testuser@DEMO1.FREEIPA.ORG"], "mail": ["testuser@demo1.freeipa.org"],
+        "uid": ["testuser"], "sn": ["User"], "uidnumber": ["1142401980"], "givenname":
+        ["Test"], "loginshell": ["/bin/sh"], "krbprincipalname": ["testuser@DEMO1.FREEIPA.ORG"],
+        "gidnumber": ["1142401980"], "homedirectory": ["/home/testuser"], "nsaccountlock":
+        false, "dn": "uid=testuser,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"}],
+        "count": 5, "truncated": false, "summary": "5 users matched"}, "error": null,
+        "id": 0, "principal": "admin@DEMO1.FREEIPA.ORG", "version": "4.11.1"}'
+  recorded_at: Tue, 07 Oct 2025 13:50:28 GMT
+recorded_with: VCR 6.3.1
