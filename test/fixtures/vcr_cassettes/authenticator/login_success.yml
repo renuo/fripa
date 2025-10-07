@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/login_password
+    body:
+      encoding: US-ASCII
+      string: user=admin&password=<PASSWORD>
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Tue, 07 Oct 2025 11:10:45 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      set-cookie:
+      - ipa_session=MagBearerToken=tb4GbU5Eay86njYGjZpCNOiSt06cYybY6M%2fLHCU6JrkSiVwy5G4QMAQuv2nyuLKEmwXZDJqopYVlkRg6fok3NIslO9H9ljwPCZRD8OQn%2bhtaqN%2f1enLJZrEa9EUNWOm099xfxhFpTmqhcd%2bAtsMViICA5FNXDXdZzc67LW9P8nb2bbiUZxn7rEH1steq0P%2fGFXjFex%2ftXheoGzYPiXta9fmWJKV8tFw0yizf3GC37lE%3d;path=/ipa;httponly;secure;
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - text/plain; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 07 Oct 2025 11:10:45 GMT
+recorded_with: VCR 6.3.1
