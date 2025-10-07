@@ -5,7 +5,9 @@ require "test_helper"
 class TestAuthenticator < Minitest::Test
   def setup
     Fripa.config = Fripa::Configuration.new(host: "ipa.demo1.freeipa.org")
-    @client = Fripa::Client.new(username: "admin", password: "Secret123")
+    VCR.use_cassette("authenticator/login_success") do
+      @client = Fripa::Client.new(username: "admin", password: "Secret123")
+    end
   end
 
   def test_authenticator_returns_client
@@ -13,19 +15,15 @@ class TestAuthenticator < Minitest::Test
   end
 
   def test_login_raises_on_blank_username
-    client = Fripa::Client.new(username: "", password: "Secret123")
-
     error = assert_raises(ArgumentError) do
-      client.authenticator.login!
+      Fripa::Client.new(username: "", password: "Secret123")
     end
     assert_equal "Username cannot be blank", error.message
   end
 
   def test_login_raises_on_blank_password
-    client = Fripa::Client.new(username: "admin", password: nil)
-
     error = assert_raises(ArgumentError) do
-      client.authenticator.login!
+      Fripa::Client.new(username: "admin", password: nil)
     end
     assert_equal "Password cannot be blank", error.message
   end
@@ -40,11 +38,9 @@ class TestAuthenticator < Minitest::Test
   end
 
   def test_login_with_invalid_credentials
-    client = Fripa::Client.new(username: "admin", password: "WrongPassword")
-
     VCR.use_cassette("authenticator/login_invalid_credentials") do
       error = assert_raises(Fripa::AuthenticationError) do
-        client.authenticator.login!
+        Fripa::Client.new(username: "admin", password: "WrongPassword")
       end
       assert_match(/Login failed/, error.message)
     end

@@ -5,7 +5,9 @@ require "test_helper"
 class TestUserResource < Minitest::Test
   def setup
     Fripa.config = Fripa::Configuration.new(host: "ipa.demo1.freeipa.org")
-    @client = Fripa::Client.new(username: "admin", password: "Secret123")
+    VCR.use_cassette("authenticator/login_success") do
+      @client = Fripa::Client.new(username: "admin", password: "Secret123")
+    end
   end
 
   def test_find_all_users

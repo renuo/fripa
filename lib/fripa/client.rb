@@ -15,7 +15,7 @@ module Fripa
       @config = config || Fripa.config
       @username = username
       @password = password
-      @session_cookie = nil
+      @session_cookie = authenticator.login!
     end
 
     def users
@@ -31,8 +31,6 @@ module Fripa
     end
 
     def call(method, args = [], options = {})
-      validate_session!
-
       response = perform_request(method, args, options)
 
       raise ConnectionError, "API call failed: #{response.status}" unless response.success?
@@ -41,12 +39,6 @@ module Fripa
     end
 
     private
-
-    def validate_session!
-      return if session_cookie
-
-      self.session_cookie = authenticator.login!
-    end
 
     def perform_request(method, args, options)
       connection.post(API_PATH) do |request|
