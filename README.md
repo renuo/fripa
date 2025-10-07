@@ -65,32 +65,21 @@ Fripa.config.verify_ssl = false
 
 ### Creating a Client
 
-Create a client instance with user credentials. Each client maintains its own session:
+Create a client instance with user credentials. The client authenticates immediately upon creation:
 
 ```ruby
 client = Fripa::Client.new(
   username: 'your-username',
   password: 'your-password'
 )
+# Client is now authenticated and ready to use
 ```
 
-The client will automatically authenticate when making API calls.
-
-### Manual Authentication (Optional)
-
-If you need to authenticate manually:
-
-```ruby
-client.authenticator.login!
-# The session cookie is now stored in the client
-puts client.session_cookie
-```
-
-If authentication fails, a `Fripa::AuthenticationError` will be raised:
+If authentication fails, a `Fripa::AuthenticationError` will be raised immediately:
 
 ```ruby
 begin
-  client.authenticator.login!
+  client = Fripa::Client.new(username: 'admin', password: 'wrong-password')
 rescue Fripa::AuthenticationError => e
   puts "Authentication failed: #{e.message}"
 end
