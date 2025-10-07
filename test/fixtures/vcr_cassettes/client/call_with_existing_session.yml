@@ -1,0 +1,223 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/login_password
+    body:
+      encoding: US-ASCII
+      string: user=admin&password=<PASSWORD>
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Tue, 07 Oct 2025 11:25:31 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      set-cookie:
+      - ipa_session=MagBearerToken=VA%2bViYwznU7XoQ%2fRjVuOUJwiUNcTmFcTOpfXf%2f7oW0QvMlIWukeKrD09ScB7%2fbUP6tqa9bUozpioGzTRDPhjl%2bqEhPn8uETTRCi08rdBb2W0OAGLroUCNTGC4KM1EvBgXApCAR2AHBVdnTYvQaLM%2buZ0ljqUt7AK%2bzvTutmXVwH%2fPs01Sgmh1H1fSxTl6eehTjyCPJHtklaQFdSgz6gW87oraMgbW1dm07x3Rav5lDM%3d;path=/ipa;httponly;secure;
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      content-length:
+      - '20'
+      content-type:
+      - text/plain; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 07 Oct 2025 11:25:31 GMT
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/login_password
+    body:
+      encoding: US-ASCII
+      string: user=admin&password=<PASSWORD>
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Tue, 07 Oct 2025 11:25:31 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      set-cookie:
+      - ipa_session=MagBearerToken=FppqPaANJWz%2fTYOaaoCi%2fQuvH9cxlOfoSNOqVOE68Xnm6pEKWSr8Ulo0zmWJJhtAU4S4dgU5BMmcp%2biwnzwBRNEWZs3fOM92M1ZPmXbo%2fniRwL6SL8UQiqGxbNYYW0n0pl9pZnsJZCtg%2bv39kZBI0OX2Exmua8kv7TgoG2vWfSS2Vw2RKz1H33MOxu%2btxhl3hh%2bBC4TwAf8E7kP0f43gfJFgLQ4cNb3GPDjIG%2bJtYF4%3d;path=/ipa;httponly;secure;
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      content-length:
+      - '20'
+      content-type:
+      - text/plain; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 07 Oct 2025 11:25:31 GMT
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"user_find","params":[["admin"],{"version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+      Cookie: []
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      date:
+      - Tue, 07 Oct 2025 11:25:31 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      www-authenticate:
+      - Negotiate
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      last-modified:
+      - Wed, 10 Jan 2024 09:47:22 GMT
+      accept-ranges:
+      - bytes
+      content-length:
+      - '2719'
+      content-type:
+      - text/html; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: |
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <title>Identity Management</title>
+            <script type="text/javascript" src="../ui/js/libs/loader.js"></script>
+            <script type="text/javascript">
+                var dojoConfig = {
+                    baseUrl: "../ui/js",
+                    has: {
+                        'dojo-firebug': false,
+                        'dojo-debug-messages': true
+                    },
+                    parseOnLoad: false,
+                    async: true,
+                    packages: [
+                        {
+                            name:'dojo',
+                            location:'dojo'
+                        },
+                        {
+                            name: 'freeipa',
+                            location: 'freeipa'
+                        }
+                    ]
+                };
+                (function() {
+                    var icons = [
+                        '../ui/favicon.ico'
+                    ];
+                    var styles = [
+                        '../ui/css/patternfly.css',
+                        '../ui/css/ipa.css'
+                    ];
+                    var scripts = [
+                        '../ui/js/libs/jquery.js',
+                        '../ui/js/libs/jquery.ordered-map.js',
+                        '../ui/js/dojo/dojo.js'
+                    ];
+
+                    ipa_loader.scripts(scripts, function() {
+                        require([
+                            'dojo/dom',
+                            'freeipa/core',
+                            'dojo/domReady!'
+                            ],
+                            function(dom) {
+                                var text = require('freeipa/text');
+                                var msg = text.get('@i18n:unauthorized-page');
+                                if (msg) {
+                                    dom.byId('unauthorized-msg').innerHTML=msg;
+                                }
+                            });
+                    });
+                    ipa_loader.styles(styles);
+                    ipa_loader.icons(icons);
+                })();
+            </script>
+        </head>
+
+        <body class="info-page">
+
+            <nav class="navbar navbar-default navbar-pf" role="navigation">
+            <div class="navbar-header">
+                <a class="brand" href="../ui/index.html"><img src="../ui/images/header-logo.png" alt="Identity Management"></a>
+            </div>
+            </nav>
+
+            <div class="container-fluid">
+            <div class="row">
+            <div class="col-sm-12">
+            <div id="unauthorized-msg">
+            <noscript>
+
+                <h1>Unable to verify your Kerberos credentials</h1>
+                <p>
+                    Please make sure that you have valid Kerberos tickets (obtainable via <strong>kinit</strong>), and that you have configured your browser correctly.
+                </p>
+
+                <h2>Browser configuration</h2>
+
+                <div id="first-time">
+                    <p>
+                        If this is your first time, please <a href="ssbrowser.html">configure your browser</a>.
+                    </p>
+                </div>
+            </noscript>
+            </div>
+            </div>
+            </div>
+            </div>
+
+        </body>
+
+        </html>
+  recorded_at: Tue, 07 Oct 2025 11:25:31 GMT
+recorded_with: VCR 6.3.1

@@ -1,0 +1,101 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/login_password
+    body:
+      encoding: US-ASCII
+      string: user=admin&password=<PASSWORD>
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Tue, 07 Oct 2025 11:25:31 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      set-cookie:
+      - ipa_session=MagBearerToken=xAHKB8fUwXbAipjU73ePBQzXoTssFm1EfNaQdUyhdRDTz%2bzx8ep3aHtNr0tRIkK4ADmOewOfCTY5hm0EuxPc5btGsOjeW8B63vUIcErvmDiwoSEiTJbhdZFCy9O34KQe3rkuFiOdhBQljRtZBZAu7aRUeF13%2bxQZVSygsrMfUPaVuTc5moDLLhvlZPRseQEgrVSi2rc9%2fP1BCnc52IGqJrRQ05yX1AxNhEQIuWXOiZc%3d;path=/ipa;httponly;secure;
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - text/plain; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 07 Oct 2025 11:25:31 GMT
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"user_find","params":[["admin"],{"all":true,"version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=xAHKB8fUwXbAipjU73ePBQzXoTssFm1EfNaQdUyhdRDTz%2bzx8ep3aHtNr0tRIkK4ADmOewOfCTY5hm0EuxPc5btGsOjeW8B63vUIcErvmDiwoSEiTJbhdZFCy9O34KQe3rkuFiOdhBQljRtZBZAu7aRUeF13%2bxQZVSygsrMfUPaVuTc5moDLLhvlZPRseQEgrVSi2rc9%2fP1BCnc52IGqJrRQ05yX1AxNhEQIuWXOiZc%3d;path=/ipa;httponly;secure;
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Tue, 07 Oct 2025 11:25:31 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"result": [{"objectclass": ["top", "person", "posixaccount",
+        "krbprincipalaux", "krbticketpolicyaux", "inetuser", "ipaobject", "ipasshuser",
+        "ipaSshGroupOfPubKeys", "ipaNTUserAttrs"], "cn": ["Administrator"], "gecos":
+        ["Administrator"], "ipauniqueid": ["d6c72e6c-df7f-11ed-bc0d-0674ebdae396"],
+        "ipantsecurityidentifier": ["S-1-5-21-562557311-290852036-180187086-500"],
+        "krblastpwdchange": [{"__datetime__": "20230715081215Z"}], "krblastadminunlock":
+        [{"__datetime__": "20230420133811Z"}], "krbextradata": [{"__base64__": "AALfVLJkYWRtaW5AREVNTzEuRlJFRUlQQS5PUkcA"}],
+        "krbloginfailedcount": ["0"], "krblastfailedauth": [{"__datetime__": "20251007111045Z"}],
+        "loginshell": ["/bin/bash"], "uidnumber": ["1142400000"], "nsaccountlock":
+        false, "sn": ["Administrator"], "uid": ["admin"], "krbprincipalname": ["admin@DEMO1.FREEIPA.ORG",
+        "root@DEMO1.FREEIPA.ORG"], "gidnumber": ["1142400000"], "homedirectory": ["/home/admin"],
+        "preserved": false, "memberof_group": ["admins", "trust admins"], "memberof_sudorule":
+        ["admin-access"], "dn": "uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"}],
+        "count": 1, "truncated": false, "summary": "1 user matched"}, "error": null,
+        "id": 0, "principal": "admin@DEMO1.FREEIPA.ORG", "version": "4.11.1"}'
+  recorded_at: Tue, 07 Oct 2025 11:25:31 GMT
+recorded_with: VCR 6.3.1

@@ -53,4 +53,10 @@ module Fripa
       end
     end
   end
+
+  class << self
+    def authenticator
+      @authenticator ||= Authenticator.new
+    end
+  end
 end

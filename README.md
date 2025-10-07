@@ -90,9 +90,34 @@ rescue Fripa::AuthenticationError => e
 end
 ```
 
-### API Calls
+### Making API Calls
 
-Coming soon...
+Use the `Client` class to interact with the FreeIPA API:
+
+```ruby
+client = Fripa::Client.new
+
+# Find a user (automatically authenticates if needed)
+result = client.call("user_find", ["admin"])
+puts result.dig("result", "count")  # Number of users found
+
+# Add a user with options
+client.call("user_add", ["newuser"], {
+  givenname: "New",
+  sn: "User",
+  userpassword: "TempPassword123"
+})
+
+# Modify a user
+client.call("user_mod", ["newuser"], {
+  mail: "newuser@example.com"
+})
+
+# Delete a user
+client.call("user_del", ["newuser"])
+```
+
+The client will automatically authenticate using the configured credentials if no session exists.
 
 ## Development
 
