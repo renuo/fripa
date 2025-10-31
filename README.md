@@ -4,6 +4,9 @@ A Ruby client for the FreeIPA JSON-RPC API.
 
 Docs: [FreeIPA JSON-RPC API](https://freeipa.readthedocs.io/en/latest/api/json-rpc.html)
 
+## What is FreeIPA
+FreeIPA (Free Identity, Policy, Audit) is an open-source identity management system for Linux/Unix environments. It provides centralized authentication, authorization, and account information by integrating LDAP, Kerberos, DNS, and certificate management. Essentially, it helps organizations manage users, groups, and access policies in a secure and unified way.
+
 ## Installation
 
 Add this line to your application's Gemfile:
