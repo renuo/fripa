@@ -33,7 +33,9 @@ Configure your FreeIPA server settings globally. These settings are shared acros
 ```ruby
 Fripa.configure do |config|
   config.host = 'ipa.example.com'
-  config.verify_ssl = true  # default: true
+  config.port = 8443         # optional, default: 443 (standard HTTPS port)
+  config.scheme = 'https'    # optional, default: 'https' (use 'http' for local development)
+  config.verify_ssl = true   # default: true
 end
 ```
 
@@ -42,6 +44,8 @@ end
 ```ruby
 Fripa.config = {
   host: 'ipa.example.com',
+  port: 8443,        # optional
+  scheme: 'https',   # optional
   verify_ssl: true
 }
 ```
@@ -51,6 +55,8 @@ Fripa.config = {
 ```ruby
 config = Fripa::Configuration.new(
   host: 'ipa.example.com',
+  port: 8443,        # optional
+  scheme: 'https',   # optional
   verify_ssl: true
 )
 Fripa.config = config
@@ -60,7 +66,22 @@ Fripa.config = config
 
 ```ruby
 Fripa.config.host = 'ipa.example.com'
+Fripa.config.port = 8443      # optional
+Fripa.config.scheme = 'https' # optional
 Fripa.config.verify_ssl = false
+```
+
+### Local development example
+
+For local FreeIPA instances running on HTTP:
+
+```ruby
+Fripa.configure do |config|
+  config.host = 'localhost'
+  config.port = 8080
+  config.scheme = 'http'
+  config.verify_ssl = false
+end
 ```
 
 ## Usage
