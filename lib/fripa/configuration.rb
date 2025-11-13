@@ -6,23 +6,32 @@ require "uri"
 module Fripa
   # Configuration for Fripa
   class Configuration
-    attr_accessor :host, :verify_ssl
+    attr_accessor :host, :port, :scheme, :verify_ssl
 
-    def initialize(host: nil, verify_ssl: true)
+    def initialize(host:, port: nil, scheme: "https", verify_ssl: true)
       @host = host
+      @port = port
+      @scheme = scheme
       @verify_ssl = verify_ssl
     end
 
     def base_url
-      URI::HTTPS.build(host: host)
+      build_uri
     end
 
     def login_url
-      URI::HTTPS.build(host: host, path: "/ipa/session/login_password")
+      build_uri(path: "/ipa/session/login_password")
     end
 
     def api_url
-      URI::HTTPS.build(host: host, path: "/ipa/session/json")
+      build_uri(path: "/ipa/session/json")
+    end
+
+    private
+
+    def build_uri(path: nil)
+      uri_class = scheme == "https" ? URI::HTTPS : URI::HTTP
+      uri_class.build(host: host, port: port, path: path)
     end
   end
 
