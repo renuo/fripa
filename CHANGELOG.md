@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [0.1.2] - 2025-11-14
+
+### Fixed
+- Fixed `Fripa.configure` block syntax not working due to missing required `host` parameter in Configuration initializer
+- Configuration validation now happens at usage time instead of initialization time
+
 ## [0.1.0] - 2025-10-07
 
 Initial release of Fripa - A Ruby client for the FreeIPA JSON-RPC API.

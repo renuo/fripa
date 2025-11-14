@@ -79,9 +79,11 @@ class TestConfiguration < Minitest::Test
     assert_equal "config must be a Hash or Configuration instance", error.message
   end
 
-  def test_initialize_raises_without_host
-    assert_raises(ArgumentError) do
-      Fripa::Configuration.new
+  def test_build_uri_raises_without_host
+    config = Fripa::Configuration.new
+    error = assert_raises(ArgumentError) do
+      config.base_url
     end
+    assert_equal "host is required", error.message
   end
 end

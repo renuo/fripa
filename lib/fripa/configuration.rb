@@ -8,7 +8,7 @@ module Fripa
   class Configuration
     attr_accessor :host, :port, :scheme, :verify_ssl
 
-    def initialize(host:, port: nil, scheme: "https", verify_ssl: true)
+    def initialize(host: nil, port: nil, scheme: "https", verify_ssl: true)
       @host = host
       @port = port
       @scheme = scheme
@@ -30,6 +30,8 @@ module Fripa
     private
 
     def build_uri(path: nil)
+      raise ArgumentError, "host is required" if host.nil? || host.empty?
+
       uri_class = scheme == "https" ? URI::HTTPS : URI::HTTP
       uri_class.build(host: host, port: port, path: path)
     end
