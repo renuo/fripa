@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ipa.demo1.freeipa.org/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"user_show","params":[["nonexistent_user_xyz123"],{"version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.demo1.freeipa.org/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=onb%2fbcHj%2bW2XnDRg4Asv3%2frIOPXYFQ8raWadOSAUJhc3i8GSC%2fSWnjz0xYaqMaXDV0AuDUuj8lbqg%2bmWNpg3gJMAjNiJJMvS6%2fvxAbnF%2fLt%2fOZjPoOYqehOrGLgA%2f2eCeHfg%2fctgBChIvRSxsq4fpXlFa0hCVFyqwHM6tTYPjG8zNxl3VPjI%2f1Wqzt922QR9KtlBE9VBF6xyx%2f80VhkpH2pHOEOEBbKzKR0X9MruHIE%3d;path=/ipa;httponly;secure;
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Wed, 26 Nov 2025 12:39:25 GMT
+      server:
+      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": null, "error": {"code": 4001, "message": "nonexistent_user_xyz123:
+        user not found", "data": {"reason": "nonexistent_user_xyz123: user not found"},
+        "name": "NotFound"}, "id": 0, "principal": "admin@DEMO1.FREEIPA.ORG", "version":
+        "4.11.1"}'
+  recorded_at: Wed, 26 Nov 2025 12:39:25 GMT
+recorded_with: VCR 6.3.1

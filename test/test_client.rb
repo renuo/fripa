@@ -47,4 +47,26 @@ class TestClient < Minitest::Test
       assert result.dig("result", "result").is_a?(Array)
     end
   end
+
+  def test_call_raises_connection_error_on_http_failure
+    stubs = Faraday::Adapter::Test::Stubs.new do |stub|
+      stub.post("/ipa/session/json") { [500, {}, "Internal Server Error"] }
+    end
+
+    test_connection = Faraday.new do |f|
+      f.adapter :test, stubs
+    end
+
+    VCR.turned_off do
+      @client.stub(:connection, test_connection) do
+        error = assert_raises(Fripa::ConnectionError) do
+          @client.call("user_find", ["admin"])
+        end
+
+        assert_equal "API call failed: 500", error.message
+      end
+    end
+
+    stubs.verify_stubbed_calls
+  end
 end
