@@ -58,7 +58,20 @@ module Fripa
     end
 
     def parse_response(response)
-      JSON.parse(response.body)
+      parsed = JSON.parse(response.body)
+      raise_if_error(parsed)
+      parsed
+    end
+
+    def raise_if_error(parsed)
+      return unless parsed["error"]
+
+      error = parsed["error"]
+      raise ResponseError.new(
+        code: error["code"],
+        message: error["message"] || error["name"],
+        data: error["data"]
+      )
     end
 
     def connection

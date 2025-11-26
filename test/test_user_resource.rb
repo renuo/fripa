@@ -44,6 +44,17 @@ class TestUserResource < Minitest::Test
     assert_equal "uid is required", error.message
   end
 
+  def test_show_nonexistent_user_raises_response_error
+    VCR.use_cassette("user/show_not_found") do
+      error = assert_raises(Fripa::ResponseError) do
+        @client.users.show("nonexistent_user_xyz123")
+      end
+
+      assert_equal 4001, error.code
+      assert_match(/not found/, error.message)
+    end
+  end
+
   def test_add_user
     VCR.use_cassette("user/add") do
       result = @client.users.add("fripauser001", givenname: "Fripa", sn: "User", cn: "Fripa User")
