@@ -48,7 +48,7 @@ class TestClient < Minitest::Test
     end
   end
 
-  def test_call_raises_connection_error_on_http_failure
+  def test_call_raises_connection_error_on_http_failure # rubocop:disable Metrics/MethodLength
     stubs = Faraday::Adapter::Test::Stubs.new do |stub|
       stub.post("/ipa/session/json") { [500, {}, "Internal Server Error"] }
     end
