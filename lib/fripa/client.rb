@@ -58,7 +58,7 @@ module Fripa
     end
 
     def parse_response(response)
-      parsed = JSON.parse(response.body)
+      parsed = JSON.parse(response.body.force_encoding(Encoding::UTF_8))
       raise_if_error(parsed)
       parsed
     end

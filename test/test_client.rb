@@ -69,4 +69,26 @@ class TestClient < Minitest::Test
 
     stubs.verify_stubbed_calls
   end
+
+  def test_parse_response_forces_utf8_encoding # rubocop:disable Metrics/MethodLength
+    binary_body = '{"result":{"result":[{"uid":"admin"}]}}'.dup.force_encoding(Encoding::ASCII_8BIT)
+
+    stubs = Faraday::Adapter::Test::Stubs.new do |stub|
+      stub.post("/ipa/session/json") { [200, { "Content-Type" => "application/json" }, binary_body] }
+    end
+
+    test_connection = Faraday.new do |f|
+      f.adapter :test, stubs
+    end
+
+    VCR.turned_off do
+      @client.stub(:connection, test_connection) do
+        result = @client.call("user_find", ["admin"])
+
+        assert_equal Encoding::UTF_8, result.dig("result", "result", 0, "uid").encoding
+      end
+    end
+
+    stubs.verify_stubbed_calls
+  end
 end
