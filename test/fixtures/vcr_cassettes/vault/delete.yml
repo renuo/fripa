@@ -5,8 +5,7 @@ http_interactions:
     uri: https://ipa.example.com/ipa/session/json
     body:
       encoding: UTF-8
-      string: '{"method":"group_add","params":[["temp_delete_group"],{"description":"Temp
-        group","version":"2.251"}],"id":0}'
+      string: '{"method":"vault_add_internal","params":[["fripa-test-delete"],{"ipavaulttype":"standard","version":"2.251"}],"id":0}'
     headers:
       User-Agent:
       - Faraday v2.14.1
@@ -15,14 +14,14 @@ http_interactions:
       Referer:
       - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=2OJsWZD86WAawaMA0%2fLjeDnYag249SisppHdRi%2fapQRRFgSi0kUfmSkTiL30mcOAdGO2e4xy342fRAUip34prSZao1AfBTBSfUeZDDM33aGp8sNF7c4BhXqQp5lzT%2f6jYMxseNRCjzuFiWKpMRFreNoHbQV5NYserJcH7KNpL4bdAEb53c78Rz8xdFdLgthqk531bNHo9qAGhkf%2f1ResYBRoOAI%2beEoCckg9wCj2vEk%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=f7dGkPYZiGlbA7qDV5zkgCy3hm6Lr7%2bNkPdEbUkrqvvnhhSK54uvn46avI03niCtONc9YtEoGD6V7UQW5%2b%2fTzHFv2xmXyWJBPMsQjZ0RdJNCdk8fdG9B157UC32qa2r%2b0i%2fhXIdjAwfgdmOI5tQ8G%2fSWdV80xTSU4fvy6lNnEDgSSsF3kytGi9n7opUBFeOOavMjdvMb7k3Fv9mG1Aj3rjll6Tr44mMsZ7FIVa9wdkQ%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Thu, 16 Apr 2026 11:04:42 GMT
+      - Thu, 16 Apr 2026 11:04:11 GMT
       server:
       - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
         Python/3.13
@@ -42,20 +41,19 @@ http_interactions:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"result": {"result": {"objectclass": ["top", "groupofnames", "nestedgroup",
-        "ipausergroup", "ipaobject", "posixgroup", "ipantgroupattrs"], "cn": ["temp_delete_group"],
-        "gidnumber": ["379000042"], "description": ["Temp group"], "ipauniqueid":
-        ["12272af0-3984-11f1-9b62-0242ac170002"], "dn": "cn=temp_delete_group,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
-        "value": "temp_delete_group", "summary": "Added group \"temp_delete_group\""},
+      string: '{"result": {"result": {"objectclass": ["ipaVault", "top"], "cn": ["fripa-test-delete"],
+        "ipavaulttype": ["standard"], "username": "admin", "owner_user": ["admin"],
+        "dn": "cn=fripa-test-delete,cn=admin,cn=users,cn=vaults,cn=kra,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        "value": "fripa-test-delete", "summary": "Added vault \"fripa-test-delete\""},
         "error": null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version":
         "4.12.5"}'
-  recorded_at: Thu, 16 Apr 2026 11:04:42 GMT
+  recorded_at: Thu, 16 Apr 2026 11:04:11 GMT
 - request:
     method: post
     uri: https://ipa.example.com/ipa/session/json
     body:
       encoding: UTF-8
-      string: '{"method":"group_del","params":[["temp_delete_group"],{"version":"2.251"}],"id":0}'
+      string: '{"method":"vault_del","params":[["fripa-test-delete"],{"version":"2.251"}],"id":0}'
     headers:
       User-Agent:
       - Faraday v2.14.1
@@ -64,14 +62,14 @@ http_interactions:
       Referer:
       - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=2OJsWZD86WAawaMA0%2fLjeDnYag249SisppHdRi%2fapQRRFgSi0kUfmSkTiL30mcOAdGO2e4xy342fRAUip34prSZao1AfBTBSfUeZDDM33aGp8sNF7c4BhXqQp5lzT%2f6jYMxseNRCjzuFiWKpMRFreNoHbQV5NYserJcH7KNpL4bdAEb53c78Rz8xdFdLgthqk531bNHo9qAGhkf%2f1ResYBRoOAI%2beEoCckg9wCj2vEk%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=f7dGkPYZiGlbA7qDV5zkgCy3hm6Lr7%2bNkPdEbUkrqvvnhhSK54uvn46avI03niCtONc9YtEoGD6V7UQW5%2b%2fTzHFv2xmXyWJBPMsQjZ0RdJNCdk8fdG9B157UC32qa2r%2b0i%2fhXIdjAwfgdmOI5tQ8G%2fSWdV80xTSU4fvy6lNnEDgSSsF3kytGi9n7opUBFeOOavMjdvMb7k3Fv9mG1Aj3rjll6Tr44mMsZ7FIVa9wdkQ%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Thu, 16 Apr 2026 11:04:43 GMT
+      - Thu, 16 Apr 2026 11:04:12 GMT
       server:
       - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
         Python/3.13
@@ -91,8 +89,8 @@ http_interactions:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"result": {"result": {"failed": []}, "value": ["temp_delete_group"],
-        "summary": "Deleted group \"temp_delete_group\""}, "error": null, "id": 0,
+      string: '{"result": {"result": {"failed": []}, "value": ["fripa-test-delete"],
+        "summary": "Deleted vault \"fripa-test-delete\""}, "error": null, "id": 0,
         "principal": "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
-  recorded_at: Thu, 16 Apr 2026 11:04:43 GMT
+  recorded_at: Thu, 16 Apr 2026 11:04:12 GMT
 recorded_with: VCR 6.4.0

@@ -5,7 +5,7 @@ http_interactions:
     uri: https://ipa.example.com/ipa/session/login_password
     body:
       encoding: US-ASCII
-      string: user=admin&password=WrongPassword
+      string: user=admin&password=<PASSWORD>
     headers:
       User-Agent:
       - Faraday v2.14.1
@@ -15,40 +15,32 @@ http_interactions:
       - https://ipa.example.com/ipa
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: Success
     headers:
       date:
-      - Thu, 16 Apr 2026 11:04:27 GMT
+      - Thu, 16 Apr 2026 11:29:38 GMT
       server:
       - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
         Python/3.13
+      set-cookie:
+      - ipa_session=MagBearerToken=2G9gIfTi7MD8SmFetQ5yjBAhE0zJ%2bQG6TjqSkzsqTQf7%2fT7ukrJaQki%2fCCO265STzLvt6swxARYd9Io88tM1aRmoKbv%2bvmXfZOS2ztkkoC3NkGCx85tPHzwX8ESqfm4cVL4uoPaDQ0bHErJGkTcKQA84YppfpNI25NrgiA3v%2fKVKR45UEjkBk%2bF20XgUmEfsALbbsE3YMT%2bdhIp2zulJbBPalNUh399f%2b9YonIaP4p4%3d;path=/ipa;httponly;secure;
       x-frame-options:
       - DENY
       content-security-policy:
       - frame-ancestors 'none'
       cache-control:
       - no-cache, private
-      x-ipa-rejection-reason:
-      - invalid-password
-      transfer-encoding:
-      - chunked
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      content-length:
+      - '20'
       content-type:
-      - text/html; charset=utf-8
+      - text/plain; charset=UTF-8
     body:
       encoding: UTF-8
-      string: |-
-        <html>
-        <head>
-        <title>401 Unauthorized</title>
-        </head>
-        <body>
-        <h1>Invalid Authentication</h1>
-        <p>
-        <strong>kinit: Password incorrect while getting initial credentials
-        </strong>
-        </p>
-        </body>
-        </html>
-  recorded_at: Thu, 16 Apr 2026 11:04:27 GMT
+      string: ''
+  recorded_at: Thu, 16 Apr 2026 11:29:38 GMT
 recorded_with: VCR 6.4.0

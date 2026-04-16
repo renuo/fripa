@@ -2,71 +2,30 @@
 http_interactions:
 - request:
     method: post
-    uri: https://ipa.demo1.freeipa.org/ipa/session/login_password
-    body:
-      encoding: US-ASCII
-      string: user=admin&password=<PASSWORD>
-    headers:
-      User-Agent:
-      - Faraday v2.14.0
-      Content-Type:
-      - application/x-www-form-urlencoded
-      Referer:
-      - https://ipa.demo1.freeipa.org/ipa
-  response:
-    status:
-      code: 200
-      message: Success
-    headers:
-      date:
-      - Tue, 07 Oct 2025 13:53:03 GMT
-      server:
-      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
-      set-cookie:
-      - ipa_session=MagBearerToken=E4BSLLjvaTKOW1awnseJoU0rqXeIgLyHwltd21aDNQH7ET%2boI0Hv9K%2fIZnKdy22w9WHtNvsQJCbfUlF5eff75AQ2OKtPDmAGmngEdLdRPB23Y2zUfH5r%2fzc4tQhbPJxdH9aDYnVBt02%2btkWsDScwKAcGgbx8GuKO3QDFD8lEQk9suPDOqRdFE9vbIFp1GfSKRnJ6yqj0hOYpG13tZk03ofO%2f59CsrLz5rETiQWudLgs%3d;path=/ipa;httponly;secure;
-      x-frame-options:
-      - DENY
-      content-security-policy:
-      - frame-ancestors 'none'
-      cache-control:
-      - no-cache, private
-      vary:
-      - Accept-Encoding
-      content-encoding:
-      - gzip
-      transfer-encoding:
-      - chunked
-      content-type:
-      - text/plain; charset=UTF-8
-    body:
-      encoding: UTF-8
-      string: ''
-  recorded_at: Tue, 07 Oct 2025 13:53:03 GMT
-- request:
-    method: post
-    uri: https://ipa.demo1.freeipa.org/ipa/session/json
+    uri: https://ipa.example.com/ipa/session/json
     body:
       encoding: UTF-8
       string: '{"method":"group_add","params":[["fripagem001"],{"description":"Fripa
         Gem Group","version":"2.251"}],"id":0}'
     headers:
       User-Agent:
-      - Faraday v2.14.0
+      - Faraday v2.14.1
       Content-Type:
       - application/json
       Referer:
-      - https://ipa.demo1.freeipa.org/ipa
+      - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=E4BSLLjvaTKOW1awnseJoU0rqXeIgLyHwltd21aDNQH7ET%2boI0Hv9K%2fIZnKdy22w9WHtNvsQJCbfUlF5eff75AQ2OKtPDmAGmngEdLdRPB23Y2zUfH5r%2fzc4tQhbPJxdH9aDYnVBt02%2btkWsDScwKAcGgbx8GuKO3QDFD8lEQk9suPDOqRdFE9vbIFp1GfSKRnJ6yqj0hOYpG13tZk03ofO%2f59CsrLz5rETiQWudLgs%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=2OJsWZD86WAawaMA0%2fLjeDnYag249SisppHdRi%2fapQRRFgSi0kUfmSkTiL30mcOAdGO2e4xy342fRAUip34prSZao1AfBTBSfUeZDDM33aGp8sNF7c4BhXqQp5lzT%2f6jYMxseNRCjzuFiWKpMRFreNoHbQV5NYserJcH7KNpL4bdAEb53c78Rz8xdFdLgthqk531bNHo9qAGhkf%2f1ResYBRoOAI%2beEoCckg9wCj2vEk%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Tue, 07 Oct 2025 13:53:03 GMT
+      - Thu, 16 Apr 2026 11:04:44 GMT
       server:
-      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
       x-frame-options:
       - DENY
       content-security-policy:
@@ -83,11 +42,11 @@ http_interactions:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"result": {"result": {"cn": ["fripagem001"], "description": ["Fripa
-        Gem Group"], "gidnumber": ["1142401989"], "ipauniqueid": ["f1eaa86a-a384-11f0-8dea-06c75374d591"],
-        "objectclass": ["top", "groupofnames", "nestedgroup", "ipausergroup", "ipaobject",
-        "posixgroup"], "dn": "cn=fripagem001,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
+      string: '{"result": {"result": {"objectclass": ["top", "groupofnames", "nestedgroup",
+        "ipausergroup", "ipaobject", "posixgroup", "ipantgroupattrs"], "ipauniqueid":
+        ["1352973e-3984-11f1-9b62-0242ac170002"], "gidnumber": ["379000043"], "cn":
+        ["fripagem001"], "description": ["Fripa Gem Group"], "dn": "cn=fripagem001,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
         "value": "fripagem001", "summary": "Added group \"fripagem001\""}, "error":
-        null, "id": 0, "principal": "admin@DEMO1.FREEIPA.ORG", "version": "4.11.1"}'
-  recorded_at: Tue, 07 Oct 2025 13:53:03 GMT
-recorded_with: VCR 6.3.1
+        null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
+  recorded_at: Thu, 16 Apr 2026 11:04:45 GMT
+recorded_with: VCR 6.4.0

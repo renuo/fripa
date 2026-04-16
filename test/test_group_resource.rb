@@ -4,10 +4,7 @@ require "test_helper"
 
 class TestGroupResource < Minitest::Test
   def setup
-    Fripa.config = Fripa::Configuration.new(host: "ipa.demo1.freeipa.org")
-    VCR.use_cassette("authenticator/login_success") do
-      @client = Fripa::Client.new(username: "admin", password: "Secret123")
-    end
+    @client = fripa_client(cassette: "authenticator/login_success")
   end
 
   def test_find_all_groups

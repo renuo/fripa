@@ -1,0 +1,95 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ipa.example.com/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"vault_add_internal","params":[["fripa-test-add"],{"ipavaulttype":"standard","version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.1
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.example.com/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=f7dGkPYZiGlbA7qDV5zkgCy3hm6Lr7%2bNkPdEbUkrqvvnhhSK54uvn46avI03niCtONc9YtEoGD6V7UQW5%2b%2fTzHFv2xmXyWJBPMsQjZ0RdJNCdk8fdG9B157UC32qa2r%2b0i%2fhXIdjAwfgdmOI5tQ8G%2fSWdV80xTSU4fvy6lNnEDgSSsF3kytGi9n7opUBFeOOavMjdvMb7k3Fv9mG1Aj3rjll6Tr44mMsZ7FIVa9wdkQ%3d;path=/ipa;httponly;secure;
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Thu, 16 Apr 2026 11:04:24 GMT
+      server:
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"result": {"objectclass": ["ipaVault", "top"], "cn": ["fripa-test-add"],
+        "ipavaulttype": ["standard"], "username": "admin", "owner_user": ["admin"],
+        "dn": "cn=fripa-test-add,cn=admin,cn=users,cn=vaults,cn=kra,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        "value": "fripa-test-add", "summary": "Added vault \"fripa-test-add\""}, "error":
+        null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
+  recorded_at: Thu, 16 Apr 2026 11:04:24 GMT
+- request:
+    method: post
+    uri: https://ipa.example.com/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"vault_del","params":[["fripa-test-add"],{"version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.1
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.example.com/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=f7dGkPYZiGlbA7qDV5zkgCy3hm6Lr7%2bNkPdEbUkrqvvnhhSK54uvn46avI03niCtONc9YtEoGD6V7UQW5%2b%2fTzHFv2xmXyWJBPMsQjZ0RdJNCdk8fdG9B157UC32qa2r%2b0i%2fhXIdjAwfgdmOI5tQ8G%2fSWdV80xTSU4fvy6lNnEDgSSsF3kytGi9n7opUBFeOOavMjdvMb7k3Fv9mG1Aj3rjll6Tr44mMsZ7FIVa9wdkQ%3d;path=/ipa;httponly;secure;
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Thu, 16 Apr 2026 11:04:25 GMT
+      server:
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"result": {"failed": []}, "value": ["fripa-test-add"],
+        "summary": "Deleted vault \"fripa-test-add\""}, "error": null, "id": 0, "principal":
+        "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
+  recorded_at: Thu, 16 Apr 2026 11:04:25 GMT
+recorded_with: VCR 6.4.0

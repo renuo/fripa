@@ -26,6 +26,10 @@ module Fripa
       @groups ||= Resources::Group.new(self)
     end
 
+    def vault
+      @vault ||= Resources::Vault.new(self)
+    end
+
     def authenticator
       @authenticator ||= Authenticator.new(self)
     end

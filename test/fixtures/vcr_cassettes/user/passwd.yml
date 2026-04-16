@@ -2,71 +2,30 @@
 http_interactions:
 - request:
     method: post
-    uri: https://ipa.demo1.freeipa.org/ipa/session/login_password
-    body:
-      encoding: US-ASCII
-      string: user=admin&password=<PASSWORD>
-    headers:
-      User-Agent:
-      - Faraday v2.14.0
-      Content-Type:
-      - application/x-www-form-urlencoded
-      Referer:
-      - https://ipa.demo1.freeipa.org/ipa
-  response:
-    status:
-      code: 200
-      message: Success
-    headers:
-      date:
-      - Tue, 07 Oct 2025 13:53:04 GMT
-      server:
-      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
-      set-cookie:
-      - ipa_session=MagBearerToken=JRfAnYaz01kORsOundIE07Ze8yGMuop2DNQ6V0Qc182tMfKZ39yU9QgtSGFF%2f6hVE8gn6xo%2blg1t9sUGwbGaVoYRrFqOlOOA3DQJcueSEEktrEFyVV80hhuhvp1xKFUzbHtRs4CscVwZCM78sNv312Bo0WW9lV35NiGvmb7SUUxX27br7Lx%2bLpQieLcG%2fROA%2biDRQKO8ot2IJ4UQrb8jaMCC8UEhAN5Fbg5%2fEvOgCOA%3d;path=/ipa;httponly;secure;
-      x-frame-options:
-      - DENY
-      content-security-policy:
-      - frame-ancestors 'none'
-      cache-control:
-      - no-cache, private
-      vary:
-      - Accept-Encoding
-      content-encoding:
-      - gzip
-      content-length:
-      - '20'
-      content-type:
-      - text/plain; charset=UTF-8
-    body:
-      encoding: UTF-8
-      string: ''
-  recorded_at: Tue, 07 Oct 2025 13:53:04 GMT
-- request:
-    method: post
-    uri: https://ipa.demo1.freeipa.org/ipa/session/json
+    uri: https://ipa.example.com/ipa/session/json
     body:
       encoding: UTF-8
       string: '{"method":"user_add","params":[["passwdtest"],{"givenname":"Password","sn":"Test","cn":"Password
         Test","userpassword":"OldPass123","version":"2.251"}],"id":0}'
     headers:
       User-Agent:
-      - Faraday v2.14.0
+      - Faraday v2.14.1
       Content-Type:
       - application/json
       Referer:
-      - https://ipa.demo1.freeipa.org/ipa
+      - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=JRfAnYaz01kORsOundIE07Ze8yGMuop2DNQ6V0Qc182tMfKZ39yU9QgtSGFF%2f6hVE8gn6xo%2blg1t9sUGwbGaVoYRrFqOlOOA3DQJcueSEEktrEFyVV80hhuhvp1xKFUzbHtRs4CscVwZCM78sNv312Bo0WW9lV35NiGvmb7SUUxX27br7Lx%2bLpQieLcG%2fROA%2biDRQKO8ot2IJ4UQrb8jaMCC8UEhAN5Fbg5%2fEvOgCOA%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=2OJsWZD86WAawaMA0%2fLjeDnYag249SisppHdRi%2fapQRRFgSi0kUfmSkTiL30mcOAdGO2e4xy342fRAUip34prSZao1AfBTBSfUeZDDM33aGp8sNF7c4BhXqQp5lzT%2f6jYMxseNRCjzuFiWKpMRFreNoHbQV5NYserJcH7KNpL4bdAEb53c78Rz8xdFdLgthqk531bNHo9qAGhkf%2f1ResYBRoOAI%2beEoCckg9wCj2vEk%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Tue, 07 Oct 2025 13:53:04 GMT
+      - Thu, 16 Apr 2026 11:06:45 GMT
       server:
-      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
       x-frame-options:
       - DENY
       content-security-policy:
@@ -83,47 +42,48 @@ http_interactions:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"result": {"result": {"givenname": ["Password"], "cn": ["Password
-        Test"], "krbprincipalname": ["passwdtest@DEMO1.FREEIPA.ORG"], "homedirectory":
-        ["/home/passwdtest"], "displayname": ["Password Test"], "sn": ["Test"], "gidnumber":
-        ["1142401990"], "mail": ["passwdtest@demo1.freeipa.org"], "ipauniqueid": ["f28bd2ee-a384-11f0-8dea-06c75374d591"],
-        "gecos": ["Password Test"], "uid": ["passwdtest"], "loginshell": ["/bin/sh"],
-        "uidnumber": ["1142401990"], "initials": ["PT"], "objectclass": ["top", "person",
-        "organizationalperson", "inetorgperson", "inetuser", "posixaccount", "krbprincipalaux",
-        "krbticketpolicyaux", "ipaobject", "ipasshuser", "ipaSshGroupOfPubKeys", "mepOriginEntry",
-        "ipantuserattrs"], "krbcanonicalname": ["passwdtest@DEMO1.FREEIPA.ORG"], "krbpasswordexpiration":
-        [{"__datetime__": "20251007135303Z"}], "krblastpwdchange": [{"__datetime__":
-        "20251007135303Z"}], "krbextradata": [{"__base64__": "AAI/G+Vocm9vdC9hZG1pbkBERU1PMS5GUkVFSVBBLk9SRwA="}],
-        "mepmanagedentry": ["cn=passwdtest,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"],
+      string: '{"result": {"result": {"krbcanonicalname": ["passwdtest@86.119.86.230.NIP.IO"],
+        "uidnumber": ["379000046"], "gidnumber": ["379000046"], "displayname": ["Password
+        Test"], "krbprincipalname": ["passwdtest@86.119.86.230.NIP.IO"], "homedirectory":
+        ["/home/passwdtest"], "sn": ["Test"], "gecos": ["Password Test"], "loginshell":
+        ["/bin/sh"], "givenname": ["Password"], "objectclass": ["top", "person", "organizationalperson",
+        "inetorgperson", "inetuser", "posixaccount", "krbprincipalaux", "krbticketpolicyaux",
+        "ipaobject", "ipasshuser", "ipaSshGroupOfPubKeys", "mepOriginEntry", "ipantuserattrs"],
+        "uid": ["passwdtest"], "ipauniqueid": ["5b2be3da-3984-11f1-b915-0242ac170002"],
+        "initials": ["PT"], "mail": ["passwdtest@86.119.86.230.nip.io"], "cn": ["Password
+        Test"], "krbpasswordexpiration": [{"__datetime__": "20260416110644Z"}], "krblastpwdchange":
+        [{"__datetime__": "20260416110644Z"}], "krbextradata": [{"__base64__": "AALEwuBpcm9vdC9hZG1pbkA4Ni4xMTkuODYuMjMwLk5JUC5JTwA="}],
+        "mepmanagedentry": ["cn=passwdtest,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"],
         "has_password": true, "has_keytab": true, "memberof_group": ["ipausers"],
-        "dn": "uid=passwdtest,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"}, "value":
-        "passwdtest", "summary": "Added user \"passwdtest\""}, "error": null, "id":
-        0, "principal": "admin@DEMO1.FREEIPA.ORG", "version": "4.11.1"}'
-  recorded_at: Tue, 07 Oct 2025 13:53:05 GMT
+        "dn": "uid=passwdtest,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        "value": "passwdtest", "summary": "Added user \"passwdtest\""}, "error": null,
+        "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
+  recorded_at: Thu, 16 Apr 2026 11:06:45 GMT
 - request:
     method: post
-    uri: https://ipa.demo1.freeipa.org/ipa/session/json
+    uri: https://ipa.example.com/ipa/session/json
     body:
       encoding: UTF-8
       string: '{"method":"passwd","params":[["passwdtest","NewPass123","OldPass123"],{"version":"2.251"}],"id":0}'
     headers:
       User-Agent:
-      - Faraday v2.14.0
+      - Faraday v2.14.1
       Content-Type:
       - application/json
       Referer:
-      - https://ipa.demo1.freeipa.org/ipa
+      - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=JRfAnYaz01kORsOundIE07Ze8yGMuop2DNQ6V0Qc182tMfKZ39yU9QgtSGFF%2f6hVE8gn6xo%2blg1t9sUGwbGaVoYRrFqOlOOA3DQJcueSEEktrEFyVV80hhuhvp1xKFUzbHtRs4CscVwZCM78sNv312Bo0WW9lV35NiGvmb7SUUxX27br7Lx%2bLpQieLcG%2fROA%2biDRQKO8ot2IJ4UQrb8jaMCC8UEhAN5Fbg5%2fEvOgCOA%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=2OJsWZD86WAawaMA0%2fLjeDnYag249SisppHdRi%2fapQRRFgSi0kUfmSkTiL30mcOAdGO2e4xy342fRAUip34prSZao1AfBTBSfUeZDDM33aGp8sNF7c4BhXqQp5lzT%2f6jYMxseNRCjzuFiWKpMRFreNoHbQV5NYserJcH7KNpL4bdAEb53c78Rz8xdFdLgthqk531bNHo9qAGhkf%2f1ResYBRoOAI%2beEoCckg9wCj2vEk%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Tue, 07 Oct 2025 13:53:05 GMT
+      - Thu, 16 Apr 2026 11:06:46 GMT
       server:
-      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
       x-frame-options:
       - DENY
       content-security-policy:
@@ -140,8 +100,8 @@ http_interactions:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"result": {"result": true, "value": "passwdtest@DEMO1.FREEIPA.ORG",
-        "summary": "Changed password for \"passwdtest@DEMO1.FREEIPA.ORG\""}, "error":
-        null, "id": 0, "principal": "admin@DEMO1.FREEIPA.ORG", "version": "4.11.1"}'
-  recorded_at: Tue, 07 Oct 2025 13:53:05 GMT
-recorded_with: VCR 6.3.1
+      string: '{"result": {"result": true, "value": "passwdtest@86.119.86.230.NIP.IO",
+        "summary": "Changed password for \"passwdtest@86.119.86.230.NIP.IO\""}, "error":
+        null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
+  recorded_at: Thu, 16 Apr 2026 11:06:46 GMT
+recorded_with: VCR 6.4.0

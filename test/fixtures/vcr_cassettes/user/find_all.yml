@@ -2,70 +2,29 @@
 http_interactions:
 - request:
     method: post
-    uri: https://ipa.demo1.freeipa.org/ipa/session/login_password
-    body:
-      encoding: US-ASCII
-      string: user=admin&password=<PASSWORD>
-    headers:
-      User-Agent:
-      - Faraday v2.14.0
-      Content-Type:
-      - application/x-www-form-urlencoded
-      Referer:
-      - https://ipa.demo1.freeipa.org/ipa
-  response:
-    status:
-      code: 200
-      message: Success
-    headers:
-      date:
-      - Tue, 07 Oct 2025 13:50:28 GMT
-      server:
-      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
-      set-cookie:
-      - ipa_session=MagBearerToken=a4IK9Mjpo5TpRyRnaFC9kjkbb%2fXhRwCf1WiYfJbS%2f3D91nflJuRuUgVCkybs7vwok9HpPxk9d5O%2fYfgRkBzLotXfib5URgq5hzGwlTb1ZRUTc79kt8jaNzXR0o4ZFvHI42vh9CcprvsaTz9WCY5STFi10qlat8qRFzwTZu6I51XkOIvKz09BnKMB%2fJ%2bvNFPIj6vVRZzwna1jS4PF%2feGTpnLpuFLJ8DOWIv7OyXEcii0%3d;path=/ipa;httponly;secure;
-      x-frame-options:
-      - DENY
-      content-security-policy:
-      - frame-ancestors 'none'
-      cache-control:
-      - no-cache, private
-      vary:
-      - Accept-Encoding
-      content-encoding:
-      - gzip
-      content-length:
-      - '20'
-      content-type:
-      - text/plain; charset=UTF-8
-    body:
-      encoding: UTF-8
-      string: ''
-  recorded_at: Tue, 07 Oct 2025 13:50:28 GMT
-- request:
-    method: post
-    uri: https://ipa.demo1.freeipa.org/ipa/session/json
+    uri: https://ipa.example.com/ipa/session/json
     body:
       encoding: UTF-8
       string: '{"method":"user_find","params":[[],{"version":"2.251"}],"id":0}'
     headers:
       User-Agent:
-      - Faraday v2.14.0
+      - Faraday v2.14.1
       Content-Type:
       - application/json
       Referer:
-      - https://ipa.demo1.freeipa.org/ipa
+      - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=a4IK9Mjpo5TpRyRnaFC9kjkbb%2fXhRwCf1WiYfJbS%2f3D91nflJuRuUgVCkybs7vwok9HpPxk9d5O%2fYfgRkBzLotXfib5URgq5hzGwlTb1ZRUTc79kt8jaNzXR0o4ZFvHI42vh9CcprvsaTz9WCY5STFi10qlat8qRFzwTZu6I51XkOIvKz09BnKMB%2fJ%2bvNFPIj6vVRZzwna1jS4PF%2feGTpnLpuFLJ8DOWIv7OyXEcii0%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=2OJsWZD86WAawaMA0%2fLjeDnYag249SisppHdRi%2fapQRRFgSi0kUfmSkTiL30mcOAdGO2e4xy342fRAUip34prSZao1AfBTBSfUeZDDM33aGp8sNF7c4BhXqQp5lzT%2f6jYMxseNRCjzuFiWKpMRFreNoHbQV5NYserJcH7KNpL4bdAEb53c78Rz8xdFdLgthqk531bNHo9qAGhkf%2f1ResYBRoOAI%2beEoCckg9wCj2vEk%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Tue, 07 Oct 2025 13:50:28 GMT
+      - Thu, 16 Apr 2026 11:04:32 GMT
       server:
-      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
       x-frame-options:
       - DENY
       content-security-policy:
@@ -82,31 +41,183 @@ http_interactions:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"result": {"result": [{"uid": ["admin"], "sn": ["Administrator"],
-        "uidnumber": ["1142400000"], "loginshell": ["/bin/bash"], "krbprincipalname":
-        ["admin@DEMO1.FREEIPA.ORG", "root@DEMO1.FREEIPA.ORG"], "nsaccountlock": false,
-        "gidnumber": ["1142400000"], "homedirectory": ["/home/admin"], "dn": "uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
-        {"krbcanonicalname": ["employee@DEMO1.FREEIPA.ORG"], "mail": ["newemail@example.com"],
-        "uid": ["employee"], "sn": ["Employee"], "uidnumber": ["1142400004"], "givenname":
-        ["Test"], "loginshell": ["/bin/sh"], "krbprincipalname": ["employee@DEMO1.FREEIPA.ORG"],
-        "gidnumber": ["1142400004"], "homedirectory": ["/home/employee"], "nsaccountlock":
-        false, "dn": "uid=employee,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
-        {"krbcanonicalname": ["helpdesk@DEMO1.FREEIPA.ORG"], "mail": ["helpdesk@demo1.freeipa.org"],
-        "uid": ["helpdesk"], "sn": ["Helpdesk"], "uidnumber": ["1142400005"], "givenname":
-        ["Test"], "loginshell": ["/bin/sh"], "krbprincipalname": ["helpdesk@DEMO1.FREEIPA.ORG"],
-        "gidnumber": ["1142400005"], "homedirectory": ["/home/helpdesk"], "nsaccountlock":
-        false, "dn": "uid=helpdesk,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
-        {"krbcanonicalname": ["manager@DEMO1.FREEIPA.ORG"], "mail": ["manager@demo1.freeipa.org"],
-        "uid": ["manager"], "sn": ["Manager"], "uidnumber": ["1142400003"], "givenname":
-        ["Test"], "loginshell": ["/bin/sh"], "krbprincipalname": ["manager@DEMO1.FREEIPA.ORG"],
-        "gidnumber": ["1142400003"], "homedirectory": ["/home/manager"], "nsaccountlock":
-        false, "dn": "uid=manager,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"},
-        {"krbcanonicalname": ["testuser@DEMO1.FREEIPA.ORG"], "mail": ["testuser@demo1.freeipa.org"],
-        "uid": ["testuser"], "sn": ["User"], "uidnumber": ["1142401980"], "givenname":
-        ["Test"], "loginshell": ["/bin/sh"], "krbprincipalname": ["testuser@DEMO1.FREEIPA.ORG"],
-        "gidnumber": ["1142401980"], "homedirectory": ["/home/testuser"], "nsaccountlock":
-        false, "dn": "uid=testuser,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"}],
-        "count": 5, "truncated": false, "summary": "5 users matched"}, "error": null,
-        "id": 0, "principal": "admin@DEMO1.FREEIPA.ORG", "version": "4.11.1"}'
-  recorded_at: Tue, 07 Oct 2025 13:50:28 GMT
-recorded_with: VCR 6.3.1
+      string: '{"result": {"result": [{"loginshell": ["/bin/bash"], "homedirectory":
+        ["/home/admin"], "uid": ["admin"], "sn": ["Administrator"], "nsaccountlock":
+        false, "krbcanonicalname": ["admin@86.119.86.230.NIP.IO"], "uidnumber": ["379000000"],
+        "gidnumber": ["379000000"], "krbprincipalname": ["admin@86.119.86.230.NIP.IO",
+        "root@86.119.86.230.NIP.IO"], "dn": "uid=admin,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["FPBE"], "homedirectory": ["/home/fpbe-portal-api-user"],
+        "uid": ["fpbe-portal-api-user"], "sn": ["Portal"], "krbcanonicalname": ["fpbe-portal-api-user@86.119.86.230.NIP.IO"],
+        "uidnumber": ["379000004"], "gidnumber": ["379000004"], "mail": ["fpbe-portal-api-user@86.119.86.230.nip.io"],
+        "krbprincipalname": ["fpbe-portal-api-user@86.119.86.230.NIP.IO"], "nsaccountlock":
+        false, "dn": "uid=fpbe-portal-api-user,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Fripa"], "homedirectory": ["/home/fripauser001"],
+        "uid": ["fripauser001"], "sn": ["User"], "krbcanonicalname": ["fripauser001@86.119.86.230.NIP.IO"],
+        "uidnumber": ["379000039"], "gidnumber": ["379000039"], "mail": ["fripauser001@86.119.86.230.nip.io"],
+        "krbprincipalname": ["fripauser001@86.119.86.230.NIP.IO"], "nsaccountlock":
+        false, "dn": "uid=fripauser001,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser"],
+        "uid": ["gateway_testuser"], "sn": ["Gateway"], "krbcanonicalname": ["gateway_testuser@86.119.86.230.NIP.IO"],
+        "uidnumber": ["379000010"], "gidnumber": ["379000010"], "mail": ["gateway_testuser@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser@86.119.86.230.NIP.IO"], "nsaccountlock":
+        false, "dn": "uid=gateway_testuser,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser_1770606572"],
+        "uid": ["gateway_testuser_1770606572"], "sn": ["Gateway"], "krbcanonicalname":
+        ["gateway_testuser_1770606572@86.119.86.230.NIP.IO"], "uidnumber": ["379000011"],
+        "gidnumber": ["379000011"], "mail": ["gateway_testuser_1770606572@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser_1770606572@86.119.86.230.NIP.IO"],
+        "nsaccountlock": false, "dn": "uid=gateway_testuser_1770606572,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser_1770606749"],
+        "uid": ["gateway_testuser_1770606749"], "sn": ["Gateway"], "krbcanonicalname":
+        ["gateway_testuser_1770606749@86.119.86.230.NIP.IO"], "uidnumber": ["379000012"],
+        "gidnumber": ["379000012"], "mail": ["gateway_testuser_1770606749@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser_1770606749@86.119.86.230.NIP.IO"],
+        "nsaccountlock": false, "dn": "uid=gateway_testuser_1770606749,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser_1770635773"],
+        "uid": ["gateway_testuser_1770635773"], "sn": ["Gateway"], "krbcanonicalname":
+        ["gateway_testuser_1770635773@86.119.86.230.NIP.IO"], "uidnumber": ["379000013"],
+        "gidnumber": ["379000013"], "mail": ["gateway_testuser_1770635773@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser_1770635773@86.119.86.230.NIP.IO"],
+        "nsaccountlock": false, "dn": "uid=gateway_testuser_1770635773,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser_1771236787"],
+        "uid": ["gateway_testuser_1771236787"], "sn": ["Gateway"], "krbcanonicalname":
+        ["gateway_testuser_1771236787@86.119.86.230.NIP.IO"], "uidnumber": ["379000016"],
+        "gidnumber": ["379000016"], "mail": ["gateway_testuser_1771236787@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser_1771236787@86.119.86.230.NIP.IO"],
+        "nsaccountlock": false, "dn": "uid=gateway_testuser_1771236787,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser_1771236847"],
+        "uid": ["gateway_testuser_1771236847"], "sn": ["Gateway"], "krbcanonicalname":
+        ["gateway_testuser_1771236847@86.119.86.230.NIP.IO"], "uidnumber": ["379000017"],
+        "gidnumber": ["379000017"], "mail": ["gateway_testuser_1771236847@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser_1771236847@86.119.86.230.NIP.IO"],
+        "nsaccountlock": false, "dn": "uid=gateway_testuser_1771236847,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser_1771238030"],
+        "uid": ["gateway_testuser_1771238030"], "sn": ["Gateway"], "krbcanonicalname":
+        ["gateway_testuser_1771238030@86.119.86.230.NIP.IO"], "uidnumber": ["379000018"],
+        "gidnumber": ["379000018"], "mail": ["gateway_testuser_1771238030@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser_1771238030@86.119.86.230.NIP.IO"],
+        "nsaccountlock": false, "dn": "uid=gateway_testuser_1771238030,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser_1771238055"],
+        "uid": ["gateway_testuser_1771238055"], "sn": ["Gateway"], "krbcanonicalname":
+        ["gateway_testuser_1771238055@86.119.86.230.NIP.IO"], "uidnumber": ["379000019"],
+        "gidnumber": ["379000019"], "mail": ["gateway_testuser_1771238055@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser_1771238055@86.119.86.230.NIP.IO"],
+        "nsaccountlock": false, "dn": "uid=gateway_testuser_1771238055,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser_1771238090"],
+        "uid": ["gateway_testuser_1771238090"], "sn": ["Gateway"], "krbcanonicalname":
+        ["gateway_testuser_1771238090@86.119.86.230.NIP.IO"], "uidnumber": ["379000020"],
+        "gidnumber": ["379000020"], "mail": ["gateway_testuser_1771238090@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser_1771238090@86.119.86.230.NIP.IO"],
+        "nsaccountlock": false, "dn": "uid=gateway_testuser_1771238090,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser_1771526606"],
+        "uid": ["gateway_testuser_1771526606"], "sn": ["Gateway"], "krbcanonicalname":
+        ["gateway_testuser_1771526606@86.119.86.230.NIP.IO"], "uidnumber": ["379000022"],
+        "gidnumber": ["379000022"], "mail": ["gateway_testuser_1771526606@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser_1771526606@86.119.86.230.NIP.IO"],
+        "nsaccountlock": false, "dn": "uid=gateway_testuser_1771526606,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser_1771526926"],
+        "uid": ["gateway_testuser_1771526926"], "sn": ["Gateway"], "krbcanonicalname":
+        ["gateway_testuser_1771526926@86.119.86.230.NIP.IO"], "uidnumber": ["379000023"],
+        "gidnumber": ["379000023"], "mail": ["gateway_testuser_1771526926@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser_1771526926@86.119.86.230.NIP.IO"],
+        "nsaccountlock": false, "dn": "uid=gateway_testuser_1771526926,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser_1773059149"],
+        "uid": ["gateway_testuser_1773059149"], "sn": ["Gateway"], "krbcanonicalname":
+        ["gateway_testuser_1773059149@86.119.86.230.NIP.IO"], "uidnumber": ["379000026"],
+        "gidnumber": ["379000026"], "mail": ["gateway_testuser_1773059149@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser_1773059149@86.119.86.230.NIP.IO"],
+        "nsaccountlock": false, "dn": "uid=gateway_testuser_1773059149,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser_1774533017"],
+        "uid": ["gateway_testuser_1774533017"], "sn": ["Gateway"], "krbcanonicalname":
+        ["gateway_testuser_1774533017@86.119.86.230.NIP.IO"], "uidnumber": ["379000031"],
+        "gidnumber": ["379000031"], "mail": ["gateway_testuser_1774533017@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser_1774533017@86.119.86.230.NIP.IO"],
+        "nsaccountlock": false, "dn": "uid=gateway_testuser_1774533017,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser_1774533670"],
+        "uid": ["gateway_testuser_1774533670"], "sn": ["Gateway"], "krbcanonicalname":
+        ["gateway_testuser_1774533670@86.119.86.230.NIP.IO"], "uidnumber": ["379000032"],
+        "gidnumber": ["379000032"], "mail": ["gateway_testuser_1774533670@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser_1774533670@86.119.86.230.NIP.IO"],
+        "nsaccountlock": false, "dn": "uid=gateway_testuser_1774533670,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser_1774548919"],
+        "uid": ["gateway_testuser_1774548919"], "sn": ["Gateway"], "krbcanonicalname":
+        ["gateway_testuser_1774548919@86.119.86.230.NIP.IO"], "uidnumber": ["379000033"],
+        "gidnumber": ["379000033"], "mail": ["gateway_testuser_1774548919@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser_1774548919@86.119.86.230.NIP.IO"],
+        "nsaccountlock": false, "dn": "uid=gateway_testuser_1774548919,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser_1774549365"],
+        "uid": ["gateway_testuser_1774549365"], "sn": ["Gateway"], "krbcanonicalname":
+        ["gateway_testuser_1774549365@86.119.86.230.NIP.IO"], "uidnumber": ["379000034"],
+        "gidnumber": ["379000034"], "mail": ["gateway_testuser_1774549365@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser_1774549365@86.119.86.230.NIP.IO"],
+        "nsaccountlock": false, "dn": "uid=gateway_testuser_1774549365,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Portal"], "homedirectory": ["/home/gateway_testuser_1774551613"],
+        "uid": ["gateway_testuser_1774551613"], "sn": ["Gateway"], "krbcanonicalname":
+        ["gateway_testuser_1774551613@86.119.86.230.NIP.IO"], "uidnumber": ["379000035"],
+        "gidnumber": ["379000035"], "mail": ["gateway_testuser_1774551613@86.119.86.230.nip.io"],
+        "krbprincipalname": ["gateway_testuser_1774551613@86.119.86.230.NIP.IO"],
+        "nsaccountlock": false, "dn": "uid=gateway_testuser_1774551613,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Bruce"], "homedirectory": ["/home/mock-bruce"],
+        "uid": ["mock-bruce"], "sn": ["Wayne"], "krbcanonicalname": ["mock-bruce@86.119.86.230.NIP.IO"],
+        "uidnumber": ["379000036"], "gidnumber": ["379000036"], "mail": ["mock-bruce@86.119.86.230.nip.io"],
+        "krbprincipalname": ["mock-bruce@86.119.86.230.NIP.IO"], "nsaccountlock":
+        false, "dn": "uid=mock-bruce,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["John"], "homedirectory": ["/home/mock-dev.bcostanzo"],
+        "uid": ["mock-dev.bcostanzo"], "sn": ["Doe"], "krbcanonicalname": ["mock-dev.bcostanzo@86.119.86.230.NIP.IO"],
+        "uidnumber": ["379000038"], "gidnumber": ["379000038"], "mail": ["mock-dev.bcostanzo@86.119.86.230.nip.io"],
+        "krbprincipalname": ["mock-dev.bcostanzo@86.119.86.230.NIP.IO"], "nsaccountlock":
+        false, "dn": "uid=mock-dev.bcostanzo,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Norma"], "homedirectory": ["/home/mock-norma"],
+        "uid": ["mock-norma"], "sn": ["Lit\u00e4t"], "krbcanonicalname": ["mock-norma@86.119.86.230.NIP.IO"],
+        "uidnumber": ["379000029"], "gidnumber": ["379000029"], "mail": ["mock-norma@86.119.86.230.nip.io"],
+        "krbprincipalname": ["mock-norma@86.119.86.230.NIP.IO"], "nsaccountlock":
+        false, "dn": "uid=mock-norma,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Peter"], "homedirectory": ["/home/mock-peter"],
+        "uid": ["mock-peter"], "sn": ["Silie"], "krbcanonicalname": ["mock-peter@86.119.86.230.NIP.IO"],
+        "uidnumber": ["379000030"], "gidnumber": ["379000030"], "mail": ["mock-peter@86.119.86.230.nip.io"],
+        "krbprincipalname": ["mock-peter@86.119.86.230.NIP.IO"], "nsaccountlock":
+        false, "dn": "uid=mock-peter,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["John"], "homedirectory": ["/home/mock-supertest"],
+        "uid": ["mock-supertest"], "sn": ["Doe"], "krbcanonicalname": ["mock-supertest@86.119.86.230.NIP.IO"],
+        "uidnumber": ["379000028"], "gidnumber": ["379000028"], "mail": ["mock-supertest@86.119.86.230.nip.io"],
+        "krbprincipalname": ["mock-supertest@86.119.86.230.NIP.IO"], "nsaccountlock":
+        false, "dn": "uid=mock-supertest,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["John"], "homedirectory": ["/home/mock-test"],
+        "uid": ["mock-test"], "sn": ["Doe"], "krbcanonicalname": ["mock-test@86.119.86.230.NIP.IO"],
+        "uidnumber": ["379000027"], "gidnumber": ["379000027"], "mail": ["mock-test@86.119.86.230.nip.io"],
+        "krbprincipalname": ["mock-test@86.119.86.230.NIP.IO"], "nsaccountlock": false,
+        "dn": "uid=mock-test,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Room"], "homedirectory": ["/home/roomuser"],
+        "uid": ["roomuser"], "sn": ["User"], "krbcanonicalname": ["roomuser@86.119.86.230.NIP.IO"],
+        "uidnumber": ["379000037"], "gidnumber": ["379000037"], "mail": ["roomuser@86.119.86.230.nip.io"],
+        "krbprincipalname": ["roomuser@86.119.86.230.NIP.IO"], "nsaccountlock": false,
+        "dn": "uid=roomuser,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Test"], "homedirectory": ["/home/vcrtest001"],
+        "uid": ["vcrtest001"], "sn": ["User"], "krbcanonicalname": ["vcrtest001@86.119.86.230.NIP.IO"],
+        "uidnumber": ["379000024"], "gidnumber": ["379000024"], "mail": ["vcrtest001@86.119.86.230.nip.io"],
+        "krbprincipalname": ["vcrtest001@86.119.86.230.NIP.IO"], "nsaccountlock":
+        false, "dn": "uid=vcrtest001,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["FreeIPA"], "homedirectory": ["/home/x272eea23"],
+        "uid": ["x272eea23"], "sn": ["Test"], "krbcanonicalname": ["x272eea23@86.119.86.230.NIP.IO"],
+        "uidnumber": ["379000014"], "gidnumber": ["379000014"], "mail": ["x272eea23@86.119.86.230.nip.io"],
+        "krbprincipalname": ["x272eea23@86.119.86.230.NIP.IO"], "nsaccountlock": false,
+        "dn": "uid=x272eea23,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Bruce"], "homedirectory": ["/home/x380106e7"],
+        "uid": ["x380106e7"], "sn": ["Wayne"], "krbcanonicalname": ["x380106e7@86.119.86.230.NIP.IO"],
+        "uidnumber": ["379000015"], "gidnumber": ["379000015"], "mail": ["x380106e7@86.119.86.230.nip.io"],
+        "krbprincipalname": ["x380106e7@86.119.86.230.NIP.IO"], "nsaccountlock": false,
+        "dn": "uid=x380106e7,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Peter"], "homedirectory": ["/home/x5dabb0be"],
+        "uid": ["x5dabb0be"], "sn": ["Silie"], "krbcanonicalname": ["x5dabb0be@86.119.86.230.NIP.IO"],
+        "uidnumber": ["379000005"], "gidnumber": ["379000005"], "mail": ["x5dabb0be@86.119.86.230.nip.io"],
+        "krbprincipalname": ["x5dabb0be@86.119.86.230.NIP.IO"], "nsaccountlock": false,
+        "dn": "uid=x5dabb0be,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"loginshell": ["/bin/sh"], "givenname": ["Norma"], "homedirectory": ["/home/xe7036ba9"],
+        "uid": ["xe7036ba9"], "sn": ["Lit\u00e4t"], "krbcanonicalname": ["xe7036ba9@86.119.86.230.NIP.IO"],
+        "uidnumber": ["379000003"], "gidnumber": ["379000003"], "mail": ["xe7036ba9@86.119.86.230.nip.io"],
+        "krbprincipalname": ["xe7036ba9@86.119.86.230.NIP.IO"], "nsaccountlock": false,
+        "dn": "uid=xe7036ba9,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"}],
+        "count": 32, "truncated": false, "summary": "32 users matched"}, "error":
+        null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
+  recorded_at: Thu, 16 Apr 2026 11:04:32 GMT
+recorded_with: VCR 6.4.0

@@ -14,4 +14,5 @@ gem "rubocop", "~> 1.21"
 
 gem "simplecov"
 
+gem "dotenv"
 gem "vcr", "~> 6.0"

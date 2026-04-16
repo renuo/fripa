@@ -2,28 +2,29 @@
 http_interactions:
 - request:
     method: post
-    uri: https://ipa.demo1.freeipa.org/ipa/session/login_password
+    uri: https://ipa.example.com/ipa/session/login_password
     body:
       encoding: US-ASCII
       string: user=admin&password=<PASSWORD>
     headers:
       User-Agent:
-      - Faraday v2.14.0
+      - Faraday v2.14.1
       Content-Type:
       - application/x-www-form-urlencoded
       Referer:
-      - https://ipa.demo1.freeipa.org/ipa
+      - https://ipa.example.com/ipa
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Wed, 26 Nov 2025 12:39:25 GMT
+      - Thu, 16 Apr 2026 11:29:39 GMT
       server:
-      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
       set-cookie:
-      - ipa_session=MagBearerToken=onb%2fbcHj%2bW2XnDRg4Asv3%2frIOPXYFQ8raWadOSAUJhc3i8GSC%2fSWnjz0xYaqMaXDV0AuDUuj8lbqg%2bmWNpg3gJMAjNiJJMvS6%2fvxAbnF%2fLt%2fOZjPoOYqehOrGLgA%2f2eCeHfg%2fctgBChIvRSxsq4fpXlFa0hCVFyqwHM6tTYPjG8zNxl3VPjI%2f1Wqzt922QR9KtlBE9VBF6xyx%2f80VhkpH2pHOEOEBbKzKR0X9MruHIE%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=9GlTsNa0%2b0FL%2fLDHonYEMIwN%2fTDL8MPxpIxaLHhZSBT8eWZKYhYtj%2fwVbb3A1CryNkcOBWn8r30HKOm4fT0TpnOYuOGxCSXFlAVT%2fRjGRRr%2fImZtP4PvutE47hR4irmC7WHIoUjIKQssIEIjhqqXxK89O27FjJMq8W8RuViRz1W6acW1oyq19hJK%2f%2fKXW2lRNH3d3grOYaLOHPmbYXm%2bhkrsj6rMamz33vSO3NqY1EE%3d;path=/ipa;httponly;secure;
       x-frame-options:
       - DENY
       content-security-policy:
@@ -34,12 +35,12 @@ http_interactions:
       - Accept-Encoding
       content-encoding:
       - gzip
-      transfer-encoding:
-      - chunked
+      content-length:
+      - '20'
       content-type:
       - text/plain; charset=UTF-8
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Wed, 26 Nov 2025 12:39:25 GMT
-recorded_with: VCR 6.3.1
+  recorded_at: Thu, 16 Apr 2026 11:29:39 GMT
+recorded_with: VCR 6.4.0

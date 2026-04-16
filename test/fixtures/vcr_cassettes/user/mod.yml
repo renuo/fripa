@@ -2,70 +2,29 @@
 http_interactions:
 - request:
     method: post
-    uri: https://ipa.demo1.freeipa.org/ipa/session/login_password
-    body:
-      encoding: US-ASCII
-      string: user=admin&password=<PASSWORD>
-    headers:
-      User-Agent:
-      - Faraday v2.14.0
-      Content-Type:
-      - application/x-www-form-urlencoded
-      Referer:
-      - https://ipa.demo1.freeipa.org/ipa
-  response:
-    status:
-      code: 200
-      message: Success
-    headers:
-      date:
-      - Tue, 07 Oct 2025 13:53:03 GMT
-      server:
-      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
-      set-cookie:
-      - ipa_session=MagBearerToken=b86Z3TIdqBribjoxnYX8QuLeXSJvqu61%2bwAKsbVIjUrxzbQ3U0Ukgk3QgikSB4boqmsFs8GabltjQ9v38893yM3jbu1bgu%2b8ZYauiW%2bUTirQlPbvUWqVn52iIjy2hAA8QYIFO5ynEDFwrtnw2kKKoRwFaGLimmAXidV%2fMGscIvmKkdXzU7lR89vNYP9SUMFEmELNOYthsws2GraFXJrKsqbSfh1tC7LSMPjbVsTcAxY%3d;path=/ipa;httponly;secure;
-      x-frame-options:
-      - DENY
-      content-security-policy:
-      - frame-ancestors 'none'
-      cache-control:
-      - no-cache, private
-      vary:
-      - Accept-Encoding
-      content-encoding:
-      - gzip
-      transfer-encoding:
-      - chunked
-      content-type:
-      - text/plain; charset=UTF-8
+    uri: https://ipa.example.com/ipa/session/json
     body:
       encoding: UTF-8
-      string: ''
-  recorded_at: Tue, 07 Oct 2025 13:53:04 GMT
-- request:
-    method: post
-    uri: https://ipa.demo1.freeipa.org/ipa/session/json
-    body:
-      encoding: UTF-8
-      string: '{"method":"user_mod","params":[["employee"],{"mail":"employee-1759845183@demo1.freeipa.org","version":"2.251"}],"id":0}'
+      string: '{"method":"user_mod","params":[["employee"],{"mail":"employee-1776337585@demo1.freeipa.org","version":"2.251"}],"id":0}'
     headers:
       User-Agent:
-      - Faraday v2.14.0
+      - Faraday v2.14.1
       Content-Type:
       - application/json
       Referer:
-      - https://ipa.demo1.freeipa.org/ipa
+      - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=b86Z3TIdqBribjoxnYX8QuLeXSJvqu61%2bwAKsbVIjUrxzbQ3U0Ukgk3QgikSB4boqmsFs8GabltjQ9v38893yM3jbu1bgu%2b8ZYauiW%2bUTirQlPbvUWqVn52iIjy2hAA8QYIFO5ynEDFwrtnw2kKKoRwFaGLimmAXidV%2fMGscIvmKkdXzU7lR89vNYP9SUMFEmELNOYthsws2GraFXJrKsqbSfh1tC7LSMPjbVsTcAxY%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=2OJsWZD86WAawaMA0%2fLjeDnYag249SisppHdRi%2fapQRRFgSi0kUfmSkTiL30mcOAdGO2e4xy342fRAUip34prSZao1AfBTBSfUeZDDM33aGp8sNF7c4BhXqQp5lzT%2f6jYMxseNRCjzuFiWKpMRFreNoHbQV5NYserJcH7KNpL4bdAEb53c78Rz8xdFdLgthqk531bNHo9qAGhkf%2f1ResYBRoOAI%2beEoCckg9wCj2vEk%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Tue, 07 Oct 2025 13:53:04 GMT
+      - Thu, 16 Apr 2026 11:06:26 GMT
       server:
-      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
       x-frame-options:
       - DENY
       content-security-policy:
@@ -82,13 +41,13 @@ http_interactions:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"result": {"result": {"krbcanonicalname": ["employee@DEMO1.FREEIPA.ORG"],
-        "mail": ["employee-1759845183@demo1.freeipa.org"], "uid": ["employee"], "sn":
-        ["Employee"], "givenname": ["Test"], "loginshell": ["/bin/sh"], "homedirectory":
-        ["/home/employee"], "gidnumber": ["1142400004"], "uidnumber": ["1142400004"],
-        "krbprincipalname": ["employee@DEMO1.FREEIPA.ORG"], "nsaccountlock": false,
-        "has_password": true, "has_keytab": true, "memberof_group": ["ipausers", "employees"]},
+      string: '{"result": {"result": {"uid": ["employee"], "loginshell": ["/bin/sh"],
+        "homedirectory": ["/home/employee"], "sn": ["Employee"], "krbprincipalname":
+        ["employee@86.119.86.230.NIP.IO"], "gidnumber": ["379000044"], "uidnumber":
+        ["379000044"], "mail": ["employee-1776337585@demo1.freeipa.org"], "krbcanonicalname":
+        ["employee@86.119.86.230.NIP.IO"], "givenname": ["Test"], "nsaccountlock":
+        false, "has_password": false, "has_keytab": false, "memberof_group": ["ipausers"]},
         "value": "employee", "summary": "Modified user \"employee\""}, "error": null,
-        "id": 0, "principal": "admin@DEMO1.FREEIPA.ORG", "version": "4.11.1"}'
-  recorded_at: Tue, 07 Oct 2025 13:53:04 GMT
-recorded_with: VCR 6.3.1
+        "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
+  recorded_at: Thu, 16 Apr 2026 11:06:26 GMT
+recorded_with: VCR 6.4.0

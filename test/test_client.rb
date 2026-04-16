@@ -4,10 +4,7 @@ require "test_helper"
 
 class TestClient < Minitest::Test
   def setup
-    Fripa.config = Fripa::Configuration.new(host: "ipa.demo1.freeipa.org")
-    VCR.use_cassette("authenticator/login_success") do
-      @client = Fripa::Client.new(username: "admin", password: "Secret123")
-    end
+    @client = fripa_client(cassette: "authenticator/login_success")
   end
 
   def test_initialize_with_credentials
@@ -20,11 +17,12 @@ class TestClient < Minitest::Test
   end
 
   def test_initialize_with_custom_config
-    custom_config = Fripa::Configuration.new(host: "ipa.demo1.freeipa.org", verify_ssl: false)
+    custom_config = Fripa::Configuration.new(host: ENV.fetch("FREEIPA_HOST", "ipa.example.com"), verify_ssl: false)
     VCR.use_cassette("authenticator/login_success") do
-      client = Fripa::Client.new(username: "admin", password: "secret", config: custom_config)
+      client = Fripa::Client.new(username: ENV.fetch("FREEIPA_USER", "admin"), password: "secret",
+                                 config: custom_config)
       assert_equal custom_config, client.config
-      assert_equal "admin", client.username
+      assert_equal ENV.fetch("FREEIPA_USER", "admin"), client.username
       assert_equal "secret", client.password
     end
   end
