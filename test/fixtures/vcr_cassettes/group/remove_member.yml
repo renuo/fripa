@@ -2,70 +2,29 @@
 http_interactions:
 - request:
     method: post
-    uri: https://ipa.demo1.freeipa.org/ipa/session/login_password
-    body:
-      encoding: US-ASCII
-      string: user=admin&password=<PASSWORD>
-    headers:
-      User-Agent:
-      - Faraday v2.14.0
-      Content-Type:
-      - application/x-www-form-urlencoded
-      Referer:
-      - https://ipa.demo1.freeipa.org/ipa
-  response:
-    status:
-      code: 200
-      message: Success
-    headers:
-      date:
-      - Tue, 07 Oct 2025 13:50:34 GMT
-      server:
-      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
-      set-cookie:
-      - ipa_session=MagBearerToken=LIjOEi2sBGGn6jd%2flMOCh5ObMJzOR9WROR5wVN9W1UzJZ%2b82BHMi2IDxH7Abv6D9f7VK6OwtpKflLYt8sv5VIhNk9exFwO7tiQZIZcyCnzle3VTIP%2bWafJnV5%2btyypg9FCYisGDFmA6x%2fdyhzIeesnL5ZOoQmRBzhdi88vHnBpmIqP88XRDncl0tmcx2gx6XQysHWnjUBA7DdHKD2eUSMTimJj8DnrO4fC5W3hD9NNI%3d;path=/ipa;httponly;secure;
-      x-frame-options:
-      - DENY
-      content-security-policy:
-      - frame-ancestors 'none'
-      cache-control:
-      - no-cache, private
-      vary:
-      - Accept-Encoding
-      content-encoding:
-      - gzip
-      transfer-encoding:
-      - chunked
-      content-type:
-      - text/plain; charset=UTF-8
-    body:
-      encoding: UTF-8
-      string: ''
-  recorded_at: Tue, 07 Oct 2025 13:50:34 GMT
-- request:
-    method: post
-    uri: https://ipa.demo1.freeipa.org/ipa/session/json
+    uri: https://ipa.example.com/ipa/session/json
     body:
       encoding: UTF-8
       string: '{"method":"group_remove_member","params":[["editors"],{"user":["helpdesk"],"version":"2.251"}],"id":0}'
     headers:
       User-Agent:
-      - Faraday v2.14.0
+      - Faraday v2.14.1
       Content-Type:
       - application/json
       Referer:
-      - https://ipa.demo1.freeipa.org/ipa
+      - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=LIjOEi2sBGGn6jd%2flMOCh5ObMJzOR9WROR5wVN9W1UzJZ%2b82BHMi2IDxH7Abv6D9f7VK6OwtpKflLYt8sv5VIhNk9exFwO7tiQZIZcyCnzle3VTIP%2bWafJnV5%2btyypg9FCYisGDFmA6x%2fdyhzIeesnL5ZOoQmRBzhdi88vHnBpmIqP88XRDncl0tmcx2gx6XQysHWnjUBA7DdHKD2eUSMTimJj8DnrO4fC5W3hD9NNI%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=2OJsWZD86WAawaMA0%2fLjeDnYag249SisppHdRi%2fapQRRFgSi0kUfmSkTiL30mcOAdGO2e4xy342fRAUip34prSZao1AfBTBSfUeZDDM33aGp8sNF7c4BhXqQp5lzT%2f6jYMxseNRCjzuFiWKpMRFreNoHbQV5NYserJcH7KNpL4bdAEb53c78Rz8xdFdLgthqk531bNHo9qAGhkf%2f1ResYBRoOAI%2beEoCckg9wCj2vEk%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Tue, 07 Oct 2025 13:50:34 GMT
+      - Thu, 16 Apr 2026 11:04:45 GMT
       server:
-      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
       x-frame-options:
       - DENY
       content-security-policy:
@@ -82,10 +41,11 @@ http_interactions:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"result": {"completed": 1, "failed": {"member": {"user": [], "group":
-        [], "service": [], "idoverrideuser": []}}, "result": {"cn": ["editors"], "gidnumber":
-        ["1142400002"], "description": ["Modified description"], "dn": "cn=editors,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"}},
-        "error": null, "id": 0, "principal": "admin@DEMO1.FREEIPA.ORG", "version":
-        "4.11.1"}'
-  recorded_at: Tue, 07 Oct 2025 13:50:35 GMT
-recorded_with: VCR 6.3.1
+      string: '{"result": {"completed": 0, "failed": {"member": {"user": [["helpdesk",
+        "This entry is not a member"]], "group": [], "service": [], "idoverrideuser":
+        []}}, "result": {"cn": ["editors"], "description": ["Updated at 1776337478"],
+        "gidnumber": ["379000002"], "dn": "cn=editors,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"}},
+        "error": null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version":
+        "4.12.5"}'
+  recorded_at: Thu, 16 Apr 2026 11:04:46 GMT
+recorded_with: VCR 6.4.0

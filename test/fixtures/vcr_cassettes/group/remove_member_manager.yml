@@ -2,70 +2,29 @@
 http_interactions:
 - request:
     method: post
-    uri: https://ipa.demo1.freeipa.org/ipa/session/login_password
-    body:
-      encoding: US-ASCII
-      string: user=admin&password=<PASSWORD>
-    headers:
-      User-Agent:
-      - Faraday v2.14.0
-      Content-Type:
-      - application/x-www-form-urlencoded
-      Referer:
-      - https://ipa.demo1.freeipa.org/ipa
-  response:
-    status:
-      code: 200
-      message: Success
-    headers:
-      date:
-      - Tue, 07 Oct 2025 13:50:35 GMT
-      server:
-      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
-      set-cookie:
-      - ipa_session=MagBearerToken=LXCpiq3F%2ficSQTbJxXFlX41GVPPyb4oMIZgbVLurDhrrm78TqNgEeP7JRK8J2X7EwN3LGmL1JOiweVI44sl2X9iGh7gFHfsbbjb8ClO88v%2boj4I3CeNkeoUjfqRn3QdTmQjEdjDNgSVEg2blqGH9dD1w%2bA4Llm73dE8qshhzpiLhSr3kBFpy5tP34tE13ZjxbycauKRYZW34s%2fEL1gBkbCm6EiRz4k83%2b1WwOncfDAc%3d;path=/ipa;httponly;secure;
-      x-frame-options:
-      - DENY
-      content-security-policy:
-      - frame-ancestors 'none'
-      cache-control:
-      - no-cache, private
-      vary:
-      - Accept-Encoding
-      content-encoding:
-      - gzip
-      content-length:
-      - '20'
-      content-type:
-      - text/plain; charset=UTF-8
-    body:
-      encoding: UTF-8
-      string: ''
-  recorded_at: Tue, 07 Oct 2025 13:50:35 GMT
-- request:
-    method: post
-    uri: https://ipa.demo1.freeipa.org/ipa/session/json
+    uri: https://ipa.example.com/ipa/session/json
     body:
       encoding: UTF-8
       string: '{"method":"group_remove_member_manager","params":[["employees"],{"user":["admin"],"version":"2.251"}],"id":0}'
     headers:
       User-Agent:
-      - Faraday v2.14.0
+      - Faraday v2.14.1
       Content-Type:
       - application/json
       Referer:
-      - https://ipa.demo1.freeipa.org/ipa
+      - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=LXCpiq3F%2ficSQTbJxXFlX41GVPPyb4oMIZgbVLurDhrrm78TqNgEeP7JRK8J2X7EwN3LGmL1JOiweVI44sl2X9iGh7gFHfsbbjb8ClO88v%2boj4I3CeNkeoUjfqRn3QdTmQjEdjDNgSVEg2blqGH9dD1w%2bA4Llm73dE8qshhzpiLhSr3kBFpy5tP34tE13ZjxbycauKRYZW34s%2fEL1gBkbCm6EiRz4k83%2b1WwOncfDAc%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=2OJsWZD86WAawaMA0%2fLjeDnYag249SisppHdRi%2fapQRRFgSi0kUfmSkTiL30mcOAdGO2e4xy342fRAUip34prSZao1AfBTBSfUeZDDM33aGp8sNF7c4BhXqQp5lzT%2f6jYMxseNRCjzuFiWKpMRFreNoHbQV5NYserJcH7KNpL4bdAEb53c78Rz8xdFdLgthqk531bNHo9qAGhkf%2f1ResYBRoOAI%2beEoCckg9wCj2vEk%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Tue, 07 Oct 2025 13:50:35 GMT
+      - Thu, 16 Apr 2026 11:06:28 GMT
       server:
-      - Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1 mod_wsgi/4.9.4 Python/3.12 mod_auth_gssapi/1.6.5
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
       x-frame-options:
       - DENY
       content-security-policy:
@@ -83,9 +42,9 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"result": {"completed": 1, "failed": {"membermanager": {"user": [],
-        "group": []}}, "result": {"description": ["Test Employees"], "gidnumber":
-        ["1142400006"], "cn": ["employees"], "member_user": ["employee", "manager"],
-        "dn": "cn=employees,cn=groups,cn=accounts,dc=demo1,dc=freeipa,dc=org"}}, "error":
-        null, "id": 0, "principal": "admin@DEMO1.FREEIPA.ORG", "version": "4.11.1"}'
-  recorded_at: Tue, 07 Oct 2025 13:50:35 GMT
-recorded_with: VCR 6.3.1
+        "group": []}}, "result": {"cn": ["employees"], "gidnumber": ["379000045"],
+        "description": ["Employees group"], "dn": "cn=employees,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"}},
+        "error": null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version":
+        "4.12.5"}'
+  recorded_at: Thu, 16 Apr 2026 11:06:28 GMT
+recorded_with: VCR 6.4.0

@@ -7,6 +7,8 @@ require_relative "fripa/authenticator"
 require_relative "fripa/resources/base"
 require_relative "fripa/resources/user"
 require_relative "fripa/resources/group"
+require_relative "fripa/vault_transport"
+require_relative "fripa/resources/vault"
 require_relative "fripa/client"
 
 module Fripa
