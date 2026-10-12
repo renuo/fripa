@@ -1,5 +1,15 @@
+plugins:
+  - rubocop-minitest
+  - rubocop-rake
+
 AllCops:
   TargetRubyVersion: 3.2
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - "bin/**/*"
+    - "vendor/**/*"
+    - "coverage/**/*"
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
@@ -17,4 +27,16 @@ Naming/MethodParameterName:
 
 Metrics/ClassLength:
   Exclude:
-    - 'test/**/*'
+    - "test/**/*"
+
+Metrics/MethodLength:
+  Exclude:
+    - "test/**/*"
+
+Metrics/AbcSize:
+  Exclude:
+    - "test/**/*"
+
+# Keyword arguments are self-documenting (see Configuration#initialize).
+Metrics/ParameterLists:
+  CountKeywordArgs: false

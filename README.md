@@ -1,5 +1,11 @@
 # Fripa
 
+[![Gem Version](https://badge.fury.io/rb/fripa.svg)](https://rubygems.org/gems/fripa)
+[![CI](https://github.com/renuo/fripa/actions/workflows/main.yml/badge.svg)](https://github.com/renuo/fripa/actions/workflows/main.yml)
+[![Ruby](https://img.shields.io/badge/ruby-%3E%3D%203.2-CC342D?logo=ruby&logoColor=white)](https://www.ruby-lang.org)
+[![Docs](https://img.shields.io/badge/docs-rubydoc.info-blue)](https://rubydoc.info/gems/fripa)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.txt)
+
 A Ruby client for the FreeIPA JSON-RPC API.
 
 Docs: [FreeIPA JSON-RPC API](https://freeipa.readthedocs.io/en/latest/api/json-rpc.html)
@@ -74,6 +80,23 @@ Fripa.config.scheme = 'https' # optional
 Fripa.config.verify_ssl = false
 ```
 
+### Advanced options
+
+```ruby
+Fripa.configure do |config|
+  config.timeout = 30                    # read timeout in seconds (default: Faraday default)
+  config.open_timeout = 5                # connect timeout in seconds (default: Faraday default)
+  config.api_version = "2.251"           # FreeIPA API version sent with each call
+  config.adapter = :net_http_persistent  # any Faraday adapter (default: Faraday.default_adapter)
+  config.raise_on_partial_failure = true # raise Fripa::PartialFailureError (default: false)
+end
+```
+
+The default adapter opens a new TCP/TLS connection for every request. If you
+make many calls with one client, a keep-alive adapter is much faster. Add
+`gem "faraday-net_http_persistent"` to your Gemfile and set
+`config.adapter = :net_http_persistent`.
+
 ### Local development example
 
 For local FreeIPA instances running on HTTP:
@@ -143,6 +166,9 @@ client.users.mod("newuser", mail: "newuser@example.com")
 # Change user password
 client.users.passwd("newuser", "NewPassword123", "TempPassword123")
 
+# Reset the password of another user (admin), without the current password
+client.users.passwd("newuser", "NewPassword123")
+
 # Delete a user
 client.users.delete("newuser")
 ```
@@ -181,6 +207,43 @@ client.groups.remove_member_manager("developers", user: ["manager"])
 client.groups.delete("developers")
 ```
 
+##### Vaults
+
+```ruby
+client = Fripa::Client.new(username: 'admin', password: 'secret')
+
+client.vault.add("my-vault", shared: true)
+client.vault.archive("my-vault", data: "secret", shared: true)
+client.vault.retrieve("my-vault", shared: true) # => "secret"
+client.vault.add_member("my-vault", user: ["alice"], shared: true)
+client.vault.delete("my-vault", shared: true)
+```
+
+By default, `archive` stores the raw bytes. The `ipa` CLI stores the data in a
+JSON envelope (`{"data": "<base64>"}`). To share a vault with the `ipa` CLI
+(`ipa vault-archive` / `ipa vault-retrieve`), pass `ipa_format: true`:
+
+```ruby
+client.vault.archive("my-vault", data: "secret", ipa_format: true, shared: true)
+client.vault.retrieve("my-vault", ipa_format: true, shared: true) # => "secret"
+```
+
+The client fetches the KRA transport certificate once and keeps it.
+
+#### Batch Calls
+
+Send many commands in one HTTP request:
+
+```ruby
+result = client.batch(
+  ["user_show", ["alice"]],
+  ["group_find", [], { sizelimit: 0 }]
+)
+result.dig("result", "results").each { |r| puts r["error"] || r["result"] }
+```
+
+`batch` does not raise for errors in a single command. Check `error` in each result.
+
 #### Using Raw API Calls
 
 For API methods without a resource wrapper, use the `call` method directly:
@@ -193,7 +256,31 @@ result = client.call("user_find", ["admin"], { all: true })
 puts result.dig("result", "count")
 ```
 
-The client will automatically authenticate if no session exists.
+If the session expires (HTTP 401), the client logs in again and retries the call once.
+
+### Error Handling
+
+All errors inherit from `Fripa::Error`:
+
+| Error | When |
+|---|---|
+| `Fripa::AuthenticationError` | Login fails |
+| `Fripa::ConnectionError` | Network error, timeout, HTTP error status, or a response that is not JSON |
+| `Fripa::ResponseError` | FreeIPA returns an error (`#code`, `#message`, `#data`) |
+| `Fripa::PartialFailureError` | Only with `config.raise_on_partial_failure = true`. A subclass of `ResponseError`. The call succeeds but some entries fail, e.g. `group_add_member` with an unknown user. `#data` has the full `failed` hash |
+
+By default, these per-entry failures do not raise. They stay in the response, in
+`result["result"]["failed"]`. This will change in 1.0.
+
+```ruby
+begin
+  client.groups.add_member("developers", user: ["alice"])
+rescue Fripa::PartialFailureError => e
+  e.data # => {"member" => {"user" => [["alice", "This entry is already a member"]], "group" => []}}
+rescue Fripa::ResponseError => e
+  puts "#{e.code}: #{e.message}"
+end
+```
 
 ## Development
 
