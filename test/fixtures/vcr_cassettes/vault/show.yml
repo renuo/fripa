@@ -14,14 +14,14 @@ http_interactions:
       Referer:
       - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=f7dGkPYZiGlbA7qDV5zkgCy3hm6Lr7%2bNkPdEbUkrqvvnhhSK54uvn46avI03niCtONc9YtEoGD6V7UQW5%2b%2fTzHFv2xmXyWJBPMsQjZ0RdJNCdk8fdG9B157UC32qa2r%2b0i%2fhXIdjAwfgdmOI5tQ8G%2fSWdV80xTSU4fvy6lNnEDgSSsF3kytGi9n7opUBFeOOavMjdvMb7k3Fv9mG1Aj3rjll6Tr44mMsZ7FIVa9wdkQ%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=26MHELa4Vtryeennec%2f2sPWgKVqFargGHoTmiQ8BcqdnYDnBtLdQbMfd9c%2ffFQNwjarXSR7kxzyh7bF8yL7fFzdmXv8bTAdYpYqmJwoZg3EdCS9uzrfMCGBSYi8ENJAcu2Uc71yW0kKPbUl%2bnM9dha%2fWOnFsl%2bSZ%2fOvPF9cD0MCd9Onhe7EH6HEGYEMyZEnIrbGRMmvqRUngdjtAgHnILEpfX4X0%2fQzZWeIxYt3jEqw%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Thu, 16 Apr 2026 11:04:08 GMT
+      - Fri, 24 Apr 2026 11:39:30 GMT
       server:
       - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
         Python/3.13
@@ -47,7 +47,7 @@ http_interactions:
         "value": "fripa-test-show", "summary": "Added vault \"fripa-test-show\""},
         "error": null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version":
         "4.12.5"}'
-  recorded_at: Thu, 16 Apr 2026 11:04:09 GMT
+  recorded_at: Fri, 24 Apr 2026 11:39:30 GMT
 - request:
     method: post
     uri: https://ipa.example.com/ipa/session/json
@@ -62,14 +62,14 @@ http_interactions:
       Referer:
       - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=f7dGkPYZiGlbA7qDV5zkgCy3hm6Lr7%2bNkPdEbUkrqvvnhhSK54uvn46avI03niCtONc9YtEoGD6V7UQW5%2b%2fTzHFv2xmXyWJBPMsQjZ0RdJNCdk8fdG9B157UC32qa2r%2b0i%2fhXIdjAwfgdmOI5tQ8G%2fSWdV80xTSU4fvy6lNnEDgSSsF3kytGi9n7opUBFeOOavMjdvMb7k3Fv9mG1Aj3rjll6Tr44mMsZ7FIVa9wdkQ%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=26MHELa4Vtryeennec%2f2sPWgKVqFargGHoTmiQ8BcqdnYDnBtLdQbMfd9c%2ffFQNwjarXSR7kxzyh7bF8yL7fFzdmXv8bTAdYpYqmJwoZg3EdCS9uzrfMCGBSYi8ENJAcu2Uc71yW0kKPbUl%2bnM9dha%2fWOnFsl%2bSZ%2fOvPF9cD0MCd9Onhe7EH6HEGYEMyZEnIrbGRMmvqRUngdjtAgHnILEpfX4X0%2fQzZWeIxYt3jEqw%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Thu, 16 Apr 2026 11:04:09 GMT
+      - Fri, 24 Apr 2026 11:39:31 GMT
       server:
       - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
         Python/3.13
@@ -89,11 +89,11 @@ http_interactions:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"result": {"result": {"ipavaulttype": ["standard"], "cn": ["fripa-test-show"],
+      string: '{"result": {"result": {"cn": ["fripa-test-show"], "ipavaulttype": ["standard"],
         "username": "admin", "owner_user": ["admin"], "dn": "cn=fripa-test-show,cn=admin,cn=users,cn=vaults,cn=kra,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
         "value": "fripa-test-show", "summary": null}, "error": null, "id": 0, "principal":
         "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
-  recorded_at: Thu, 16 Apr 2026 11:04:09 GMT
+  recorded_at: Fri, 24 Apr 2026 11:39:31 GMT
 - request:
     method: post
     uri: https://ipa.example.com/ipa/session/json
@@ -108,14 +108,14 @@ http_interactions:
       Referer:
       - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=f7dGkPYZiGlbA7qDV5zkgCy3hm6Lr7%2bNkPdEbUkrqvvnhhSK54uvn46avI03niCtONc9YtEoGD6V7UQW5%2b%2fTzHFv2xmXyWJBPMsQjZ0RdJNCdk8fdG9B157UC32qa2r%2b0i%2fhXIdjAwfgdmOI5tQ8G%2fSWdV80xTSU4fvy6lNnEDgSSsF3kytGi9n7opUBFeOOavMjdvMb7k3Fv9mG1Aj3rjll6Tr44mMsZ7FIVa9wdkQ%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=26MHELa4Vtryeennec%2f2sPWgKVqFargGHoTmiQ8BcqdnYDnBtLdQbMfd9c%2ffFQNwjarXSR7kxzyh7bF8yL7fFzdmXv8bTAdYpYqmJwoZg3EdCS9uzrfMCGBSYi8ENJAcu2Uc71yW0kKPbUl%2bnM9dha%2fWOnFsl%2bSZ%2fOvPF9cD0MCd9Onhe7EH6HEGYEMyZEnIrbGRMmvqRUngdjtAgHnILEpfX4X0%2fQzZWeIxYt3jEqw%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Thu, 16 Apr 2026 11:04:10 GMT
+      - Fri, 24 Apr 2026 11:39:31 GMT
       server:
       - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
         Python/3.13
@@ -138,5 +138,5 @@ http_interactions:
       string: '{"result": {"result": {"failed": []}, "value": ["fripa-test-show"],
         "summary": "Deleted vault \"fripa-test-show\""}, "error": null, "id": 0, "principal":
         "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
-  recorded_at: Thu, 16 Apr 2026 11:04:10 GMT
+  recorded_at: Fri, 24 Apr 2026 11:39:31 GMT
 recorded_with: VCR 6.4.0

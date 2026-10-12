@@ -2,6 +2,7 @@
 
 require "openssl"
 require "base64"
+require "json"
 
 module Fripa
   module VaultTransport
@@ -51,12 +52,17 @@ module Fripa
 
     def self.unwrap(vault_data:, session_key:, nonce:, private_key:)
       decrypted_session_key = private_key.private_decrypt(Base64.decode64(session_key), RSA_PADDING)
+      decrypt(vault_data: vault_data, nonce: nonce, session_key: decrypted_session_key)
+    end
 
-      decipher = OpenSSL::Cipher.new(CIPHER)
-      decipher.decrypt
-      decipher.key = decrypted_session_key
-      decipher.iv = Base64.decode64(nonce)
-      decipher.update(Base64.decode64(vault_data)) + decipher.final
+    # The ipa CLI (ipa vault-archive / vault-retrieve) stores {"data": base64(data)},
+    # not the raw bytes. Use these to read or write vaults shared with the CLI.
+    def self.to_ipa_format(data)
+      JSON.generate("data" => Base64.strict_encode64(data))
+    end
+
+    def self.from_ipa_format(json)
+      Base64.strict_decode64(JSON.parse(json).fetch("data"))
     end
 
     def self.generate_transport_key

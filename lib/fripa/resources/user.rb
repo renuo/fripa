@@ -32,11 +32,13 @@ module Fripa
         call("user_del", [uid])
       end
 
-      def passwd(uid, new_password, current_password, **options)
+      # current_password is only needed when users change their own password.
+      # Admins can omit it to reset the password of another user.
+      def passwd(uid, new_password, current_password = nil, **options)
         validate_identifier!(uid, "uid")
         validate_password!(new_password, "new_password")
-        validate_password!(current_password, "current_password")
-        call("passwd", [uid, new_password, current_password], options)
+        validate_password!(current_password, "current_password") unless current_password.nil?
+        call("passwd", [uid, new_password, current_password].compact, options)
       end
 
       private

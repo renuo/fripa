@@ -81,21 +81,11 @@ class TestVaultResource < Minitest::Test
       VCR.use_cassette("vault/retrieve") do
         @client.vault.add(cn)
         @client.vault.archive(cn, data: "my-kek-value")
+
         assert_equal "my-kek-value", @client.vault.retrieve(cn)
         @client.vault.delete(cn)
       end
     end
-  end
-
-  private
-
-  def with_fixed_session_key
-    fixed_key = File.binread(File.expand_path("fixtures/session_key.bin", __dir__))
-    original = Fripa::VaultTransport.method(:generate_session_key)
-    Fripa::VaultTransport.define_singleton_method(:generate_session_key) { fixed_key }
-    yield
-  ensure
-    Fripa::VaultTransport.define_singleton_method(:generate_session_key, &original)
   end
 
   def test_retrieve_raises_on_blank_cn
@@ -118,5 +108,16 @@ class TestVaultResource < Minitest::Test
   def test_add_member_raises_on_blank_cn
     error = assert_raises(ArgumentError) { @client.vault.add_member("") }
     assert_equal "cn is required", error.message
+  end
+
+  private
+
+  def with_fixed_session_key
+    fixed_key = File.binread(File.expand_path("fixtures/session_key.bin", __dir__))
+    original = Fripa::VaultTransport.method(:generate_session_key)
+    Fripa::VaultTransport.define_singleton_method(:generate_session_key) { fixed_key }
+    yield
+  ensure
+    Fripa::VaultTransport.define_singleton_method(:generate_session_key, &original)
   end
 end

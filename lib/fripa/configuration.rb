@@ -6,13 +6,23 @@ require "uri"
 module Fripa
   # Configuration for Fripa
   class Configuration
-    attr_accessor :host, :port, :scheme, :verify_ssl
+    DEFAULT_API_VERSION = "2.251"
+    SCHEMES = %w[http https].freeze
 
-    def initialize(host: nil, port: nil, scheme: "https", verify_ssl: true)
+    attr_accessor :host, :port, :scheme, :verify_ssl, :api_version, :timeout, :open_timeout, :adapter,
+                  :raise_on_partial_failure
+
+    def initialize(host: nil, port: nil, scheme: "https", verify_ssl: true, api_version: DEFAULT_API_VERSION,
+                   timeout: nil, open_timeout: nil, adapter: nil, raise_on_partial_failure: false)
       @host = host
       @port = port
       @scheme = scheme
       @verify_ssl = verify_ssl
+      @api_version = api_version
+      @timeout = timeout
+      @open_timeout = open_timeout
+      @adapter = adapter
+      @raise_on_partial_failure = raise_on_partial_failure
     end
 
     def base_url
@@ -30,9 +40,12 @@ module Fripa
     private
 
     def build_uri(path: nil)
-      raise ArgumentError, "host is required" if host.nil? || host.empty?
+      raise ArgumentError, "host is required" if host.to_s.empty?
 
-      uri_class = scheme == "https" ? URI::HTTPS : URI::HTTP
+      normalized_scheme = scheme.to_s.downcase
+      raise ArgumentError, "scheme must be one of: #{SCHEMES.join(", ")}" unless SCHEMES.include?(normalized_scheme)
+
+      uri_class = normalized_scheme == "https" ? URI::HTTPS : URI::HTTP
       uri_class.build(host: host, port: port, path: path)
     end
   end

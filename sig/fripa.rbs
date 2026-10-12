@@ -1,4 +1,148 @@
 module Fripa
   VERSION: String
-  # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+
+  type json_hash = Hash[String, untyped]
+
+  def self.config: () -> Configuration
+  def self.config=: (Configuration | Hash[Symbol, untyped] value) -> Configuration
+  def self.configure: () { (Configuration) -> void } -> void
+
+  class Configuration
+    DEFAULT_API_VERSION: String
+    SCHEMES: Array[String]
+
+    attr_accessor host: String?
+    attr_accessor port: Integer?
+    attr_accessor scheme: String
+    attr_accessor verify_ssl: bool
+    attr_accessor api_version: String
+    attr_accessor timeout: Numeric?
+    attr_accessor open_timeout: Numeric?
+    attr_accessor adapter: untyped
+    attr_accessor raise_on_partial_failure: bool
+
+    def initialize: (?host: String?, ?port: Integer?, ?scheme: String, ?verify_ssl: bool, ?api_version: String,
+                     ?timeout: Numeric?, ?open_timeout: Numeric?, ?adapter: untyped,
+                     ?raise_on_partial_failure: bool) -> void
+    def base_url: () -> URI::Generic
+    def login_url: () -> URI::Generic
+    def api_url: () -> URI::Generic
+
+    private
+
+    def build_uri: (?path: String?) -> URI::Generic
+  end
+
+  class Error < StandardError
+  end
+
+  class AuthenticationError < Error
+  end
+
+  class ConnectionError < Error
+  end
+
+  class ResponseError < Error
+    attr_reader code: Integer?
+    attr_reader data: untyped
+
+    def initialize: (code: Integer?, message: String?, ?data: untyped) -> void
+  end
+
+  class PartialFailureError < ResponseError
+    def initialize: (json_hash failed) -> void
+    def self.failures: (untyped failed) -> Array[untyped]
+    def self.first_reason: (untyped failed) -> String
+  end
+
+  class Client
+    API_PATH: String
+    API_VERSION: String
+    UNAUTHORIZED: Integer
+
+    attr_reader config: Configuration
+    attr_reader username: String
+    attr_reader password: String
+    attr_accessor session_cookie: String?
+
+    def initialize: (username: String, password: String, ?config: Configuration?) -> void
+    def users: () -> Resources::User
+    def groups: () -> Resources::Group
+    def vault: () -> Resources::Vault
+    def authenticator: () -> Authenticator
+    def call: (String method, ?Array[untyped] args, ?Hash[Symbol, untyped] options) -> json_hash
+    def batch: (*Array[untyped] commands) -> json_hash
+    def connection: () -> untyped
+    def referer: () -> String
+  end
+
+  class Authenticator
+    LOGIN_PATH: String
+    CONTENT_TYPE: String
+    COOKIE_SEPARATOR: Regexp
+
+    attr_reader client: Client
+
+    def initialize: (Client client) -> void
+    def login!: () -> String?
+  end
+
+  module VaultTransport
+    CIPHER: String
+    WRAPPING_ALGO: String
+    KEY_SIZE: Integer
+    IV_SIZE: Integer
+    RSA_KEY_SIZE: Integer
+    RSA_PADDING: Integer
+
+    def self.generate_session_key: () -> String
+    def self.decrypt: (vault_data: String, nonce: String, session_key: String) -> String
+    def self.wrap: (String data, String transport_cert_der) -> { vault_data: String, session_key: String, nonce: String }
+    def self.encrypt_data: (String data, String key, String nonce) -> String
+    def self.encrypt_session_key: (String session_key, String cert_der) -> String
+    def self.unwrap: (vault_data: String, session_key: String, nonce: String, private_key: OpenSSL::PKey::RSA) -> String
+    def self.to_ipa_format: (String data) -> String
+    def self.from_ipa_format: (String json) -> String
+    def self.generate_transport_key: () -> OpenSSL::PKey::RSA
+  end
+
+  module Resources
+    class Base
+      attr_reader client: Client
+
+      def initialize: (Client client) -> void
+    end
+
+    class User < Base
+      REQUIRED_ADD_FIELDS: Array[Symbol]
+
+      def find: (?String? uid, **untyped options) -> json_hash
+      def show: (String uid) -> json_hash
+      def add: (String uid, **untyped attributes) -> json_hash
+      def mod: (String uid, **untyped attributes) -> json_hash
+      def delete: (String uid) -> json_hash
+      def passwd: (String uid, String new_password, ?String? current_password, **untyped options) -> json_hash
+    end
+
+    class Group < Base
+      def find: (?String? cn, **untyped options) -> json_hash
+      def show: (String cn) -> json_hash
+      def add: (String cn, **untyped attributes) -> json_hash
+      def mod: (String cn, **untyped attributes) -> json_hash
+      def delete: (String cn) -> json_hash
+      def add_member: (String cn, **untyped members) -> json_hash
+      def remove_member: (String cn, **untyped members) -> json_hash
+      def add_member_manager: (String cn, **untyped managers) -> json_hash
+      def remove_member_manager: (String cn, **untyped managers) -> json_hash
+    end
+
+    class Vault < Base
+      def show: (String cn, **untyped scope) -> json_hash
+      def add: (String cn, **untyped scope) -> json_hash
+      def archive: (String cn, data: String, ?ipa_format: bool, **untyped scope) -> json_hash
+      def retrieve: (String cn, ?ipa_format: bool, **untyped scope) -> String?
+      def add_member: (String cn, **untyped scope) -> json_hash
+      def delete: (String cn, **untyped scope) -> json_hash
+    end
+  end
 end

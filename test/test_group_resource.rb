@@ -12,7 +12,7 @@ class TestGroupResource < Minitest::Test
       result = @client.groups.find
 
       assert_nil result["error"]
-      assert result.dig("result", "result").is_a?(Array)
+      assert_kind_of Array, result.dig("result", "result")
     end
   end
 
@@ -21,7 +21,7 @@ class TestGroupResource < Minitest::Test
       result = @client.groups.find("admins")
 
       assert_nil result["error"]
-      assert result.dig("result", "result").is_a?(Array)
+      assert_kind_of Array, result.dig("result", "result")
     end
   end
 
@@ -47,6 +47,8 @@ class TestGroupResource < Minitest::Test
 
       assert_nil result["error"]
       assert_equal "fripagem001", result.dig("result", "result", "cn", 0)
+
+      @client.groups.delete("fripagem001")
     end
   end
 
@@ -79,11 +81,15 @@ class TestGroupResource < Minitest::Test
     assert_equal "attributes cannot be empty", error.message
   end
 
-  def test_add_member
-    VCR.use_cassette("group/add_member") do
-      result = @client.groups.add_member("editors", user: ["helpdesk"])
+  def test_add_and_remove_member
+    VCR.use_cassette("group/add_and_remove_member") do
+      add_result = @client.groups.add_member("editors", user: ["employee"])
 
-      assert_nil result["error"]
+      assert_nil add_result["error"]
+
+      remove_result = @client.groups.remove_member("editors", user: ["employee"])
+
+      assert_nil remove_result["error"]
     end
   end
 
@@ -101,14 +107,6 @@ class TestGroupResource < Minitest::Test
     assert_equal "attributes cannot be empty", error.message
   end
 
-  def test_remove_member
-    VCR.use_cassette("group/remove_member") do
-      result = @client.groups.remove_member("editors", user: ["helpdesk"])
-
-      assert_nil result["error"]
-    end
-  end
-
   def test_remove_member_raises_on_blank_cn
     error = assert_raises(ArgumentError) do
       @client.groups.remove_member("", user: ["employee"])
@@ -123,11 +121,15 @@ class TestGroupResource < Minitest::Test
     assert_equal "attributes cannot be empty", error.message
   end
 
-  def test_add_member_manager
-    VCR.use_cassette("group/add_member_manager") do
-      result = @client.groups.add_member_manager("employees", user: ["admin"])
+  def test_add_and_remove_member_manager
+    VCR.use_cassette("group/add_and_remove_member_manager") do
+      add_result = @client.groups.add_member_manager("employees", user: ["admin"])
 
-      assert_nil result["error"]
+      assert_nil add_result["error"]
+
+      remove_result = @client.groups.remove_member_manager("employees", user: ["admin"])
+
+      assert_nil remove_result["error"]
     end
   end
 
@@ -143,14 +145,6 @@ class TestGroupResource < Minitest::Test
       @client.groups.add_member_manager("employees")
     end
     assert_equal "attributes cannot be empty", error.message
-  end
-
-  def test_remove_member_manager
-    VCR.use_cassette("group/remove_member_manager") do
-      result = @client.groups.remove_member_manager("employees", user: ["admin"])
-
-      assert_nil result["error"]
-    end
   end
 
   def test_remove_member_manager_raises_on_blank_cn

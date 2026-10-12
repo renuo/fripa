@@ -1,0 +1,98 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ipa.example.com/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"group_add_member","params":[["editors"],{"user":["employee"],"version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.1
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.example.com/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=L4wFs%2bvqbo7vc2ceA1kt7Fi5HYBtgpIeGDLcApPG%2bNY2l5Ai5N2y24gX2NQrvvunzJiKqHZT1DQ%2fR6FgiQjWlPonNdLRoyfV5XGjo6Fu28x6cUQdS%2bnSJ4Cktqqm7u3zt2BEmI6GAY%2fBCCTg%2fpEo9I9UAcvlftVEFnUqCc2xNWBal%2feg%2bOb93ItZ46w7Tj%2f%2feyDxxmR3eCTJgrywU48DB4H%2b5yaDJ0EsS0dKM%2b4qqm4%3d;path=/ipa;httponly;secure;
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Fri, 24 Apr 2026 11:39:41 GMT
+      server:
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"completed": 1, "failed": {"member": {"user": [], "group":
+        [], "service": [], "idoverrideuser": []}}, "result": {"cn": ["editors"], "description":
+        ["Updated at 1777030779"], "gidnumber": ["379000002"], "member_user": ["employee"],
+        "dn": "cn=editors,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"}},
+        "error": null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version":
+        "4.12.5"}'
+  recorded_at: Fri, 24 Apr 2026 11:39:41 GMT
+- request:
+    method: post
+    uri: https://ipa.example.com/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"group_remove_member","params":[["editors"],{"user":["employee"],"version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.1
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.example.com/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=L4wFs%2bvqbo7vc2ceA1kt7Fi5HYBtgpIeGDLcApPG%2bNY2l5Ai5N2y24gX2NQrvvunzJiKqHZT1DQ%2fR6FgiQjWlPonNdLRoyfV5XGjo6Fu28x6cUQdS%2bnSJ4Cktqqm7u3zt2BEmI6GAY%2fBCCTg%2fpEo9I9UAcvlftVEFnUqCc2xNWBal%2feg%2bOb93ItZ46w7Tj%2f%2feyDxxmR3eCTJgrywU48DB4H%2b5yaDJ0EsS0dKM%2b4qqm4%3d;path=/ipa;httponly;secure;
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Fri, 24 Apr 2026 11:39:41 GMT
+      server:
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"completed": 1, "failed": {"member": {"user": [], "group":
+        [], "service": [], "idoverrideuser": []}}, "result": {"description": ["Updated
+        at 1777030779"], "cn": ["editors"], "gidnumber": ["379000002"], "dn": "cn=editors,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"}},
+        "error": null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version":
+        "4.12.5"}'
+  recorded_at: Fri, 24 Apr 2026 11:39:42 GMT
+recorded_with: VCR 6.4.0

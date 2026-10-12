@@ -15,24 +15,30 @@ module Fripa
         call("vault_add_internal", [cn], { ipavaulttype: "standard" }.merge(scope))
       end
 
-      def archive(cn, data:, **scope)
+      # ipa_format: true stores the data like `ipa vault-archive`, so the ipa CLI can read it.
+      # The default (false) stores the raw bytes, as in previous versions.
+      def archive(cn, data:, ipa_format: false, **scope)
         validate_identifier!(cn, "cn")
-        transport_cert_der = fetch_transport_cert
+        data = VaultTransport.to_ipa_format(data) if ipa_format
         payload = VaultTransport.wrap(data, transport_cert_der)
-        call("vault_archive_internal", [cn], binary_encode(payload).merge(wrapping_algo: VaultTransport::WRAPPING_ALGO).merge(scope))
+        call("vault_archive_internal", [cn],
+             binary_encode(payload).merge(wrapping_algo: VaultTransport::WRAPPING_ALGO).merge(scope))
       end
 
-      def retrieve(cn, **scope)
+      # ipa_format: true reads data stored by `ipa vault-archive` (or archive with ipa_format: true).
+      # Returns nil if the vault has no data.
+      def retrieve(cn, ipa_format: false, **scope)
         validate_identifier!(cn, "cn")
         session_key = VaultTransport.generate_session_key
-        response = call_retrieve(cn, session_key, **scope)
-        result = response.dig("result", "result")
+        result = call_retrieve(cn, session_key, **scope).dig("result", "result")
+        return nil unless result&.key?("vault_data")
 
-        VaultTransport.decrypt(
+        data = VaultTransport.decrypt(
           vault_data: extract_value(result["vault_data"]),
           nonce: extract_value(result["nonce"]),
           session_key: session_key
         )
+        ipa_format ? VaultTransport.from_ipa_format(data) : data
       end
 
       def add_member(cn, **scope)
@@ -47,15 +53,19 @@ module Fripa
 
       private
 
+      # The KRA transport certificate does not change between calls, so we
+      # fetch it once per client (the ipa CLI caches it too).
+      def transport_cert_der
+        @transport_cert_der ||= fetch_transport_cert
+      end
+
       def fetch_transport_cert
         response = call("vaultconfig_show", [], { all: true })
-        cert = response["result"]["result"]["transport_cert"]
-        Base64.decode64(cert.is_a?(Hash) ? cert["__base64__"] : cert)
+        Base64.decode64(extract_value(response.dig("result", "result", "transport_cert")))
       end
 
       def call_retrieve(cn, session_key, **scope)
-        cert = OpenSSL::X509::Certificate.new(fetch_transport_cert)
-        encrypted_key = cert.public_key.public_encrypt(session_key, VaultTransport::RSA_PADDING)
+        encrypted_key = VaultTransport.encrypt_session_key(session_key, transport_cert_der)
 
         call("vault_retrieve_internal", [cn], {
           session_key: { "__base64__" => Base64.strict_encode64(encrypted_key) },

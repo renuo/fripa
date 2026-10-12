@@ -14,14 +14,14 @@ http_interactions:
       Referer:
       - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=f7dGkPYZiGlbA7qDV5zkgCy3hm6Lr7%2bNkPdEbUkrqvvnhhSK54uvn46avI03niCtONc9YtEoGD6V7UQW5%2b%2fTzHFv2xmXyWJBPMsQjZ0RdJNCdk8fdG9B157UC32qa2r%2b0i%2fhXIdjAwfgdmOI5tQ8G%2fSWdV80xTSU4fvy6lNnEDgSSsF3kytGi9n7opUBFeOOavMjdvMb7k3Fv9mG1Aj3rjll6Tr44mMsZ7FIVa9wdkQ%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=26MHELa4Vtryeennec%2f2sPWgKVqFargGHoTmiQ8BcqdnYDnBtLdQbMfd9c%2ffFQNwjarXSR7kxzyh7bF8yL7fFzdmXv8bTAdYpYqmJwoZg3EdCS9uzrfMCGBSYi8ENJAcu2Uc71yW0kKPbUl%2bnM9dha%2fWOnFsl%2bSZ%2fOvPF9cD0MCd9Onhe7EH6HEGYEMyZEnIrbGRMmvqRUngdjtAgHnILEpfX4X0%2fQzZWeIxYt3jEqw%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Thu, 16 Apr 2026 11:04:13 GMT
+      - Fri, 24 Apr 2026 11:39:34 GMT
       server:
       - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
         Python/3.13
@@ -47,7 +47,7 @@ http_interactions:
         "value": "fripa-test-retrieve", "summary": "Added vault \"fripa-test-retrieve\""},
         "error": null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version":
         "4.12.5"}'
-  recorded_at: Thu, 16 Apr 2026 11:04:13 GMT
+  recorded_at: Fri, 24 Apr 2026 11:39:35 GMT
 - request:
     method: post
     uri: https://ipa.example.com/ipa/session/json
@@ -62,14 +62,14 @@ http_interactions:
       Referer:
       - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=f7dGkPYZiGlbA7qDV5zkgCy3hm6Lr7%2bNkPdEbUkrqvvnhhSK54uvn46avI03niCtONc9YtEoGD6V7UQW5%2b%2fTzHFv2xmXyWJBPMsQjZ0RdJNCdk8fdG9B157UC32qa2r%2b0i%2fhXIdjAwfgdmOI5tQ8G%2fSWdV80xTSU4fvy6lNnEDgSSsF3kytGi9n7opUBFeOOavMjdvMb7k3Fv9mG1Aj3rjll6Tr44mMsZ7FIVa9wdkQ%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=26MHELa4Vtryeennec%2f2sPWgKVqFargGHoTmiQ8BcqdnYDnBtLdQbMfd9c%2ffFQNwjarXSR7kxzyh7bF8yL7fFzdmXv8bTAdYpYqmJwoZg3EdCS9uzrfMCGBSYi8ENJAcu2Uc71yW0kKPbUl%2bnM9dha%2fWOnFsl%2bSZ%2fOvPF9cD0MCd9Onhe7EH6HEGYEMyZEnIrbGRMmvqRUngdjtAgHnILEpfX4X0%2fQzZWeIxYt3jEqw%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Thu, 16 Apr 2026 11:04:14 GMT
+      - Fri, 24 Apr 2026 11:39:35 GMT
       server:
       - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
         Python/3.13
@@ -92,16 +92,16 @@ http_interactions:
       string: '{"result": {"result": {"wrapping_supported_algorithms": ["aes-128-cbc",
         "des-ede3-cbc"], "wrapping_default_algorithm": "aes-128-cbc", "transport_cert":
         {"__base64__": "MIIEDzCCAnegAwIBAgIBCzANBgkqhkiG9w0BAQsFADA/MR0wGwYDVQQKDBQ4Ni4xMTkuODYuMjMwLk5JUC5JTzEeMBwGA1UEAwwVQ2VydGlmaWNhdGUgQXV0aG9yaXR5MB4XDTI2MDQxNDEyMzQwOFoXDTI4MDQwMzEyMzQwOFowQzEdMBsGA1UECgwUODYuMTE5Ljg2LjIzMC5OSVAuSU8xIjAgBgNVBAMMGUtSQSBUcmFuc3BvcnQgQ2VydGlmaWNhdGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDahYJRzO8uGbWNYxqWey201e0MSItBmtKojnkqoG5EXp/+ysOhVaPrbc4VF9mOiLqPQmvJLLR17BVzW1IxixR5ISsKff0c4mgbGGfyQtQMslB+s4Q2K3jk0YdNjhkIuRB4Uuxj0wdVAclvgjrf7xWKONtHmEqk+rkLn2DY0kw9yeVJcp5TQiCt+PukZQNnnRWLaPrNEuK0XfxVQIM6FES5RZ6jKV6c6BZ4bRQAfEVmbneVdldiA6oF7RMMEAh8urXvXyF6bCaqnIhRBLh8H9U1psl0VljAVBm4bOBj9i5Cs3XeWaNfh4eYuLNLgPn2a7rX75KOtO6dwkz34cGPAK0tAgMBAAGjgZEwgY4wHwYDVR0jBBgwFoAUojZp4kYG/O/fwZp/lpIrbJQV4AcwRgYIKwYBBQUHAQEEOjA4MDYGCCsGAQUFBzABhipodHRwOi8vaXBhLWNhLjg2LjExOS44Ni4yMzAubmlwLmlvL2NhL29jc3AwDgYDVR0PAQH/BAQDAgTwMBMGA1UdJQQMMAoGCCsGAQUFBwMCMA0GCSqGSIb3DQEBCwUAA4IBgQBddZWLk+EYeBgXQEut7dSfC8BpeMIW1usV1TrzcTm1QvB2qi3NFQ+F4FQreApnEtwCt//LMLxYY17xwXsMvnipRrO+L3ukgwK3Vixi687GRffXHbT7bGBxxb3nexBPRNApbyBIdO4iTP7tgNozzwrq3Ts3/AOiIl9k3lQ5SP8dB1ZgJb5UJC2xVCN+qeNrfgOoXZsMzenFbS5U/vobVWU79D9EEM6ZJJrou7g0mis/L8Mc9QBO1SzPPCpJ0c0R6+PdmavjMHkrSm26n+EYJCpLP+OHnfwWvauTFarrRsnSRwaXWmH4QPnTRv1odbSQrw9e2zJhfnv3+6AVXTv9dHS0mvgVqp0P7qGXAnSaLLP0qUR7x9++3GCTUVHUOiYwPOn60iZytMce6vbysR56eORr4BFKJgK+aEzAqdKwHNXjW5725TVBppt5+IXJ4BKOA4wDiSnL1FA98BCNXM9y7U9Fgu3Qbwr9TjFd03qzvtEocbFhmYwNkeYOnRK7E5iDj3c="},
-        "kra_server_server": ["ipa.example.com"]}, "value": null, "summary":
-        null}, "error": null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO",
-        "version": "4.12.5"}'
-  recorded_at: Thu, 16 Apr 2026 11:04:14 GMT
+        "kra_server_server": ["ipa.example.com"]}, "value": null, "summary": null},
+        "error": null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version":
+        "4.12.5"}'
+  recorded_at: Fri, 24 Apr 2026 11:39:35 GMT
 - request:
     method: post
     uri: https://ipa.example.com/ipa/session/json
     body:
       encoding: UTF-8
-      string: '{"method":"vault_archive_internal","params":[["fripa-test-retrieve"],{"vault_data":{"__base64__":"NLFdnkJ1wx0TzL7XMLzJzw=="},"session_key":{"__base64__":"TScozIB3MhhQmWWCRyF1VvsXsW1NfDvQu1k6bzQtJvdxA1vOXPa5DhuUuHimXVO3M2RgqTFIMJ1ly71CicdUwka7WMltNs8lBsw0Ds8+63q6H/3cR3tPnMSuFTcEDojpQKbbko+TmXb6usvfLIzQdshcWJkziZk7Tm/wcxuP5a4ncuG0n/zH5O2rwszdV46AY398lhVJhXO4cqqEB8E4MzFLUkINiTHMqMRn47P7jUnyod4NZK0+vkX/hXOIqMmKJ0A1bEactDvNrjNtg5fu3UCT3IaB2/SH5eUKPMQFp3nk1gWhZt6drPk9/vxvharA4aw1R2NTjt0QkV01jRTiJQ=="},"nonce":{"__base64__":"WYr67JRzOuL1ksoV4PHBDQ=="},"wrapping_algo":"aes-128-cbc","version":"2.251"}],"id":0}'
+      string: '{"method":"vault_archive_internal","params":[["fripa-test-retrieve"],{"vault_data":{"__base64__":"sZazoaR5irPO7qGHcYrTnA=="},"session_key":{"__base64__":"1V6+X32okmYz6/EsfzzTjDAhXzpbwghQlDb4klFvneQ+Yi7rk0Oswecv2ZU5IxVFvs53vM/2kwIJQbZXL5VP8hfpNZw/YWxvyFPZ4Kj9BBQsg18KfX9VwFXj/2IYT6V2tnFcAS/gk9hWbcW8WP2PKDSzdbdQnnZ4Azu8DW3cFrYaVn47zweBfCIfxLAL2kcYYmAuNmJD6ahdABsBe73fBhLzzqoFzcyY7uqWPx46lQcWrza78AmN0eX6pd+o0dx70q6ZGDRjps1ykahFbHie19dutfHJxHN2PQh1DFjEgS1HXvoynN7go/2/ArtPyM3j0p2+W7Wjg9Wu+0spVKb7Dw=="},"nonce":{"__base64__":"KtK1iHvoBxqwk9yBfleMMQ=="},"wrapping_algo":"aes-128-cbc","version":"2.251"}],"id":0}'
     headers:
       User-Agent:
       - Faraday v2.14.1
@@ -110,14 +110,14 @@ http_interactions:
       Referer:
       - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=f7dGkPYZiGlbA7qDV5zkgCy3hm6Lr7%2bNkPdEbUkrqvvnhhSK54uvn46avI03niCtONc9YtEoGD6V7UQW5%2b%2fTzHFv2xmXyWJBPMsQjZ0RdJNCdk8fdG9B157UC32qa2r%2b0i%2fhXIdjAwfgdmOI5tQ8G%2fSWdV80xTSU4fvy6lNnEDgSSsF3kytGi9n7opUBFeOOavMjdvMb7k3Fv9mG1Aj3rjll6Tr44mMsZ7FIVa9wdkQ%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=26MHELa4Vtryeennec%2f2sPWgKVqFargGHoTmiQ8BcqdnYDnBtLdQbMfd9c%2ffFQNwjarXSR7kxzyh7bF8yL7fFzdmXv8bTAdYpYqmJwoZg3EdCS9uzrfMCGBSYi8ENJAcu2Uc71yW0kKPbUl%2bnM9dha%2fWOnFsl%2bSZ%2fOvPF9cD0MCd9Onhe7EH6HEGYEMyZEnIrbGRMmvqRUngdjtAgHnILEpfX4X0%2fQzZWeIxYt3jEqw%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Thu, 16 Apr 2026 11:04:15 GMT
+      - Fri, 24 Apr 2026 11:39:35 GMT
       server:
       - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
         Python/3.13
@@ -140,7 +140,7 @@ http_interactions:
       string: '{"result": {"value": "fripa-test-retrieve", "result": {}, "summary":
         "Archived data into vault \"fripa-test-retrieve\""}, "error": null, "id":
         0, "principal": "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
-  recorded_at: Thu, 16 Apr 2026 11:04:15 GMT
+  recorded_at: Fri, 24 Apr 2026 11:39:36 GMT
 - request:
     method: post
     uri: https://ipa.example.com/ipa/session/json
@@ -155,14 +155,14 @@ http_interactions:
       Referer:
       - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=f7dGkPYZiGlbA7qDV5zkgCy3hm6Lr7%2bNkPdEbUkrqvvnhhSK54uvn46avI03niCtONc9YtEoGD6V7UQW5%2b%2fTzHFv2xmXyWJBPMsQjZ0RdJNCdk8fdG9B157UC32qa2r%2b0i%2fhXIdjAwfgdmOI5tQ8G%2fSWdV80xTSU4fvy6lNnEDgSSsF3kytGi9n7opUBFeOOavMjdvMb7k3Fv9mG1Aj3rjll6Tr44mMsZ7FIVa9wdkQ%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=26MHELa4Vtryeennec%2f2sPWgKVqFargGHoTmiQ8BcqdnYDnBtLdQbMfd9c%2ffFQNwjarXSR7kxzyh7bF8yL7fFzdmXv8bTAdYpYqmJwoZg3EdCS9uzrfMCGBSYi8ENJAcu2Uc71yW0kKPbUl%2bnM9dha%2fWOnFsl%2bSZ%2fOvPF9cD0MCd9Onhe7EH6HEGYEMyZEnIrbGRMmvqRUngdjtAgHnILEpfX4X0%2fQzZWeIxYt3jEqw%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Thu, 16 Apr 2026 11:04:16 GMT
+      - Fri, 24 Apr 2026 11:39:36 GMT
       server:
       - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
         Python/3.13
@@ -185,16 +185,16 @@ http_interactions:
       string: '{"result": {"result": {"wrapping_supported_algorithms": ["aes-128-cbc",
         "des-ede3-cbc"], "wrapping_default_algorithm": "aes-128-cbc", "transport_cert":
         {"__base64__": "MIIEDzCCAnegAwIBAgIBCzANBgkqhkiG9w0BAQsFADA/MR0wGwYDVQQKDBQ4Ni4xMTkuODYuMjMwLk5JUC5JTzEeMBwGA1UEAwwVQ2VydGlmaWNhdGUgQXV0aG9yaXR5MB4XDTI2MDQxNDEyMzQwOFoXDTI4MDQwMzEyMzQwOFowQzEdMBsGA1UECgwUODYuMTE5Ljg2LjIzMC5OSVAuSU8xIjAgBgNVBAMMGUtSQSBUcmFuc3BvcnQgQ2VydGlmaWNhdGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDahYJRzO8uGbWNYxqWey201e0MSItBmtKojnkqoG5EXp/+ysOhVaPrbc4VF9mOiLqPQmvJLLR17BVzW1IxixR5ISsKff0c4mgbGGfyQtQMslB+s4Q2K3jk0YdNjhkIuRB4Uuxj0wdVAclvgjrf7xWKONtHmEqk+rkLn2DY0kw9yeVJcp5TQiCt+PukZQNnnRWLaPrNEuK0XfxVQIM6FES5RZ6jKV6c6BZ4bRQAfEVmbneVdldiA6oF7RMMEAh8urXvXyF6bCaqnIhRBLh8H9U1psl0VljAVBm4bOBj9i5Cs3XeWaNfh4eYuLNLgPn2a7rX75KOtO6dwkz34cGPAK0tAgMBAAGjgZEwgY4wHwYDVR0jBBgwFoAUojZp4kYG/O/fwZp/lpIrbJQV4AcwRgYIKwYBBQUHAQEEOjA4MDYGCCsGAQUFBzABhipodHRwOi8vaXBhLWNhLjg2LjExOS44Ni4yMzAubmlwLmlvL2NhL29jc3AwDgYDVR0PAQH/BAQDAgTwMBMGA1UdJQQMMAoGCCsGAQUFBwMCMA0GCSqGSIb3DQEBCwUAA4IBgQBddZWLk+EYeBgXQEut7dSfC8BpeMIW1usV1TrzcTm1QvB2qi3NFQ+F4FQreApnEtwCt//LMLxYY17xwXsMvnipRrO+L3ukgwK3Vixi687GRffXHbT7bGBxxb3nexBPRNApbyBIdO4iTP7tgNozzwrq3Ts3/AOiIl9k3lQ5SP8dB1ZgJb5UJC2xVCN+qeNrfgOoXZsMzenFbS5U/vobVWU79D9EEM6ZJJrou7g0mis/L8Mc9QBO1SzPPCpJ0c0R6+PdmavjMHkrSm26n+EYJCpLP+OHnfwWvauTFarrRsnSRwaXWmH4QPnTRv1odbSQrw9e2zJhfnv3+6AVXTv9dHS0mvgVqp0P7qGXAnSaLLP0qUR7x9++3GCTUVHUOiYwPOn60iZytMce6vbysR56eORr4BFKJgK+aEzAqdKwHNXjW5725TVBppt5+IXJ4BKOA4wDiSnL1FA98BCNXM9y7U9Fgu3Qbwr9TjFd03qzvtEocbFhmYwNkeYOnRK7E5iDj3c="},
-        "kra_server_server": ["ipa.example.com"]}, "value": null, "summary":
-        null}, "error": null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO",
-        "version": "4.12.5"}'
-  recorded_at: Thu, 16 Apr 2026 11:04:16 GMT
+        "kra_server_server": ["ipa.example.com"]}, "value": null, "summary": null},
+        "error": null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version":
+        "4.12.5"}'
+  recorded_at: Fri, 24 Apr 2026 11:39:36 GMT
 - request:
     method: post
     uri: https://ipa.example.com/ipa/session/json
     body:
       encoding: UTF-8
-      string: '{"method":"vault_retrieve_internal","params":[["fripa-test-retrieve"],{"session_key":{"__base64__":"B9aNHuftfEUz0eskINjW1Qqt2sZqVRvuTX40gZjp89nfCzNcY82F6yNhcrmCkHsGceIyqTY5+pRO79pmM2yAmXpTnhIf/gZiw/Sh4r8859Pfm58OeSPch07frnx2lXH8PzRy7+5BkJTlFbKngyE5N9qHsRjrZUls56M5x36XDiim1MkRzTnQqD08jCcDkf6y1XCUKSAR2Hbq2D1l2AN5ctpBgEtRRKiO9IxT7pps0jLYV4iAhDrVJEFUXHLNvr16hDsBfe0VIHnyA4jh1s9P8YbNpWlilMs5psYz2mgL/NpIRSt4VWkmWluCpeua2vzJ+P9fsJcoeFBaHnWv3NYclg=="},"wrapping_algo":"aes-128-cbc","version":"2.251"}],"id":0}'
+      string: '{"method":"vault_retrieve_internal","params":[["fripa-test-retrieve"],{"session_key":{"__base64__":"sqIjUfciZOcS4rjqgkbjLi4Nl27sXY8csJmkRrUn8NH0jFe1NEp6RpFT0vqlrqbSniB7XAFbdo7LxBXDKPJ8cZ+KgU2KVZqZaf7uCZQBbrqzj829ZxcEjVd6joD6fP3EF7lSCS/z8kKfMxau0/q1zMxBmGvovSANmEZGt7laBZAZXWPFJvNq+P54IduDzrFRXe34LT5nfmevlwrVMMjhMQl39zBWUK9X47uVv0s6OqG29KKINp/xoFkskXmYwvOZs2280HGbi8iZ/i3FS+OJ71FhBWysKl9ERWNczKqV6hcsZq/YvHzHWKwKMKQBVsWBPQKZhtlUW1tu0Ly4eHi87A=="},"wrapping_algo":"aes-128-cbc","version":"2.251"}],"id":0}'
     headers:
       User-Agent:
       - Faraday v2.14.1
@@ -203,14 +203,14 @@ http_interactions:
       Referer:
       - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=f7dGkPYZiGlbA7qDV5zkgCy3hm6Lr7%2bNkPdEbUkrqvvnhhSK54uvn46avI03niCtONc9YtEoGD6V7UQW5%2b%2fTzHFv2xmXyWJBPMsQjZ0RdJNCdk8fdG9B157UC32qa2r%2b0i%2fhXIdjAwfgdmOI5tQ8G%2fSWdV80xTSU4fvy6lNnEDgSSsF3kytGi9n7opUBFeOOavMjdvMb7k3Fv9mG1Aj3rjll6Tr44mMsZ7FIVa9wdkQ%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=26MHELa4Vtryeennec%2f2sPWgKVqFargGHoTmiQ8BcqdnYDnBtLdQbMfd9c%2ffFQNwjarXSR7kxzyh7bF8yL7fFzdmXv8bTAdYpYqmJwoZg3EdCS9uzrfMCGBSYi8ENJAcu2Uc71yW0kKPbUl%2bnM9dha%2fWOnFsl%2bSZ%2fOvPF9cD0MCd9Onhe7EH6HEGYEMyZEnIrbGRMmvqRUngdjtAgHnILEpfX4X0%2fQzZWeIxYt3jEqw%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Thu, 16 Apr 2026 11:04:17 GMT
+      - Fri, 24 Apr 2026 11:39:36 GMT
       server:
       - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
         Python/3.13
@@ -231,10 +231,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"result": {"value": "fripa-test-retrieve", "result": {"vault_data":
-        {"__base64__": "rZ65W4KJrVkKy2IVcjSZ6A=="}, "nonce": {"__base64__": "JrAGJ6mcgY+LzOpKoIW/3g=="}},
+        {"__base64__": "73zCS5TPjHDsmzusDkV+4g=="}, "nonce": {"__base64__": "jVzKGr//wFA8KNonJ5RHvw=="}},
         "summary": "Retrieved data from vault \"fripa-test-retrieve\""}, "error":
         null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
-  recorded_at: Thu, 16 Apr 2026 11:04:17 GMT
+  recorded_at: Fri, 24 Apr 2026 11:39:37 GMT
 - request:
     method: post
     uri: https://ipa.example.com/ipa/session/json
@@ -249,14 +249,14 @@ http_interactions:
       Referer:
       - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=f7dGkPYZiGlbA7qDV5zkgCy3hm6Lr7%2bNkPdEbUkrqvvnhhSK54uvn46avI03niCtONc9YtEoGD6V7UQW5%2b%2fTzHFv2xmXyWJBPMsQjZ0RdJNCdk8fdG9B157UC32qa2r%2b0i%2fhXIdjAwfgdmOI5tQ8G%2fSWdV80xTSU4fvy6lNnEDgSSsF3kytGi9n7opUBFeOOavMjdvMb7k3Fv9mG1Aj3rjll6Tr44mMsZ7FIVa9wdkQ%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=26MHELa4Vtryeennec%2f2sPWgKVqFargGHoTmiQ8BcqdnYDnBtLdQbMfd9c%2ffFQNwjarXSR7kxzyh7bF8yL7fFzdmXv8bTAdYpYqmJwoZg3EdCS9uzrfMCGBSYi8ENJAcu2Uc71yW0kKPbUl%2bnM9dha%2fWOnFsl%2bSZ%2fOvPF9cD0MCd9Onhe7EH6HEGYEMyZEnIrbGRMmvqRUngdjtAgHnILEpfX4X0%2fQzZWeIxYt3jEqw%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Thu, 16 Apr 2026 11:04:18 GMT
+      - Fri, 24 Apr 2026 11:39:37 GMT
       server:
       - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
         Python/3.13
@@ -279,5 +279,5 @@ http_interactions:
       string: '{"result": {"result": {"failed": []}, "value": ["fripa-test-retrieve"],
         "summary": "Deleted vault \"fripa-test-retrieve\""}, "error": null, "id":
         0, "principal": "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
-  recorded_at: Thu, 16 Apr 2026 11:04:18 GMT
+  recorded_at: Fri, 24 Apr 2026 11:39:37 GMT
 recorded_with: VCR 6.4.0

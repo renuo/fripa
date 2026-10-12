@@ -19,12 +19,12 @@ http_interactions:
       message: Success
     headers:
       date:
-      - Thu, 16 Apr 2026 11:29:38 GMT
+      - Fri, 24 Apr 2026 11:39:30 GMT
       server:
       - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
         Python/3.13
       set-cookie:
-      - ipa_session=MagBearerToken=2G9gIfTi7MD8SmFetQ5yjBAhE0zJ%2bQG6TjqSkzsqTQf7%2fT7ukrJaQki%2fCCO265STzLvt6swxARYd9Io88tM1aRmoKbv%2bvmXfZOS2ztkkoC3NkGCx85tPHzwX8ESqfm4cVL4uoPaDQ0bHErJGkTcKQA84YppfpNI25NrgiA3v%2fKVKR45UEjkBk%2bF20XgUmEfsALbbsE3YMT%2bdhIp2zulJbBPalNUh399f%2b9YonIaP4p4%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=26MHELa4Vtryeennec%2f2sPWgKVqFargGHoTmiQ8BcqdnYDnBtLdQbMfd9c%2ffFQNwjarXSR7kxzyh7bF8yL7fFzdmXv8bTAdYpYqmJwoZg3EdCS9uzrfMCGBSYi8ENJAcu2Uc71yW0kKPbUl%2bnM9dha%2fWOnFsl%2bSZ%2fOvPF9cD0MCd9Onhe7EH6HEGYEMyZEnIrbGRMmvqRUngdjtAgHnILEpfX4X0%2fQzZWeIxYt3jEqw%3d;path=/ipa;httponly;secure;
       x-frame-options:
       - DENY
       content-security-policy:
@@ -35,12 +35,12 @@ http_interactions:
       - Accept-Encoding
       content-encoding:
       - gzip
-      content-length:
-      - '20'
+      transfer-encoding:
+      - chunked
       content-type:
       - text/plain; charset=UTF-8
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Thu, 16 Apr 2026 11:29:38 GMT
+  recorded_at: Fri, 24 Apr 2026 11:39:30 GMT
 recorded_with: VCR 6.4.0

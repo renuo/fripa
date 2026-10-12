@@ -7,6 +7,9 @@ module Fripa
   class Authenticator
     LOGIN_PATH = "/ipa/session/login_password"
     CONTENT_TYPE = "application/x-www-form-urlencoded"
+    # Splits a joined Set-Cookie header ("a=1; path=/, b=2") between cookies,
+    # but not inside attributes such as "Expires=Wed, 21 Oct 2026".
+    COOKIE_SEPARATOR = /,\s*(?=[^\s;,=]+=)/
 
     attr_reader :client
 
@@ -20,7 +23,11 @@ module Fripa
 
       raise AuthenticationError, "Login failed: #{response.status}" unless response.success?
 
-      response.headers["set-cookie"]
+      session_cookie(response.headers["set-cookie"])
+    end
+
+    def inspect
+      "#<#{self.class.name} username=#{client.username.inspect}>"
     end
 
     private
@@ -31,19 +38,26 @@ module Fripa
     end
 
     def perform_login
-      connection.post(LOGIN_PATH) do |request|
+      client.connection.post(LOGIN_PATH) do |request|
         request.headers["Content-Type"] = CONTENT_TYPE
-        request.headers["Referer"] = "#{client.config.base_url}/ipa"
-        request.body = URI.encode_www_form(user: client.username, password: client.password)
+        request.headers["Referer"] = client.referer
+        request.body = login_body
       end
+    rescue Faraday::Error => e
+      raise ConnectionError, "Login failed: #{e.message}"
     end
 
-    def connection
-      @connection ||= Faraday.new(url: client.config.base_url.to_s) do |f|
-        f.request :url_encoded
-        f.adapter Faraday.default_adapter
-        f.ssl.verify = client.config.verify_ssl
-      end
+    def login_body
+      URI.encode_www_form(user: client.username, password: client.password)
+    end
+
+    # Keeps only "name=value" pairs: attributes like path, httponly or secure
+    # must not be sent back in the Cookie header. Returns nil without a
+    # Set-Cookie header, as before (recorded test cassettes often drop it).
+    def session_cookie(header)
+      return nil if header.nil?
+
+      header.split(COOKIE_SEPARATOR).map { |cookie| cookie.split(";").first.to_s.strip }.reject(&:empty?).join("; ")
     end
   end
 end

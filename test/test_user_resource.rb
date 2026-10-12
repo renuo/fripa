@@ -12,7 +12,7 @@ class TestUserResource < Minitest::Test
       result = @client.users.find
 
       assert_nil result["error"]
-      assert result.dig("result", "result").is_a?(Array)
+      assert_kind_of Array, result.dig("result", "result")
     end
   end
 
@@ -21,7 +21,7 @@ class TestUserResource < Minitest::Test
       result = @client.users.find("admin")
 
       assert_nil result["error"]
-      assert result.dig("result", "result").is_a?(Array)
+      assert_kind_of Array, result.dig("result", "result")
     end
   end
 
@@ -58,6 +58,8 @@ class TestUserResource < Minitest::Test
 
       assert_nil result["error"]
       assert_equal "fripauser001", result.dig("result", "result", "uid", 0)
+
+      @client.users.delete("fripauser001")
     end
   end
 
@@ -115,12 +117,13 @@ class TestUserResource < Minitest::Test
 
   def test_passwd
     VCR.use_cassette("user/passwd") do
-      # Create user first, then change password
       @client.users.add("passwdtest", givenname: "Password", sn: "Test", cn: "Password Test",
                                       userpassword: "OldPass123")
       result = @client.users.passwd("passwdtest", "NewPass123", "OldPass123")
 
       assert_nil result["error"]
+
+      @client.users.delete("passwdtest")
     end
   end
 
@@ -143,5 +146,14 @@ class TestUserResource < Minitest::Test
       @client.users.passwd("employee", "NewSecret123", "")
     end
     assert_equal "current_password cannot be blank", error.message
+  end
+
+  def test_passwd_without_current_password_for_admin_reset
+    sent = nil
+    @client.stub(:call, ->(*args) { sent = args }) do
+      @client.users.passwd("employee", "NewPass123")
+    end
+
+    assert_equal ["passwd", %w[employee NewPass123], {}], sent
   end
 end

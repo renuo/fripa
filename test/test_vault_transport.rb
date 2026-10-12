@@ -44,7 +44,7 @@ class TestVaultTransport < Minitest::Test
     key = Fripa::VaultTransport.generate_transport_key
 
     assert_instance_of OpenSSL::PKey::RSA, key
-    assert key.private?
+    assert_predicate key, :private?
   end
 
   private

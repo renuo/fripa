@@ -14,14 +14,14 @@ http_interactions:
       Referer:
       - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=2OJsWZD86WAawaMA0%2fLjeDnYag249SisppHdRi%2fapQRRFgSi0kUfmSkTiL30mcOAdGO2e4xy342fRAUip34prSZao1AfBTBSfUeZDDM33aGp8sNF7c4BhXqQp5lzT%2f6jYMxseNRCjzuFiWKpMRFreNoHbQV5NYserJcH7KNpL4bdAEb53c78Rz8xdFdLgthqk531bNHo9qAGhkf%2f1ResYBRoOAI%2beEoCckg9wCj2vEk%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=L4wFs%2bvqbo7vc2ceA1kt7Fi5HYBtgpIeGDLcApPG%2bNY2l5Ai5N2y24gX2NQrvvunzJiKqHZT1DQ%2fR6FgiQjWlPonNdLRoyfV5XGjo6Fu28x6cUQdS%2bnSJ4Cktqqm7u3zt2BEmI6GAY%2fBCCTg%2fpEo9I9UAcvlftVEFnUqCc2xNWBal%2feg%2bOb93ItZ46w7Tj%2f%2feyDxxmR3eCTJgrywU48DB4H%2b5yaDJ0EsS0dKM%2b4qqm4%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Thu, 16 Apr 2026 11:04:49 GMT
+      - Fri, 24 Apr 2026 11:39:42 GMT
       server:
       - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
         Python/3.13
@@ -41,18 +41,20 @@ http_interactions:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"result": {"result": [{"description": ["Account administrators group"],
-        "gidnumber": ["379000000"], "cn": ["admins"], "dn": "cn=admins,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
-        {"description": ["Updated at 1776337478"], "gidnumber": ["379000002"], "cn":
-        ["editors"], "dn": "cn=editors,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
-        {"description": ["Fripa Gem Group"], "gidnumber": ["379000043"], "cn": ["fripagem001"],
-        "dn": "cn=fripagem001,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
-        {"description": ["Default group for all users"], "cn": ["ipausers"], "dn":
+      string: '{"result": {"result": [{"cn": ["admins"], "gidnumber": ["379000000"],
+        "description": ["Account administrators group"], "dn": "cn=admins,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"cn": ["editors"], "gidnumber": ["379000002"], "description": ["Updated at
+        1777030779"], "dn": "cn=editors,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"cn": ["employees"], "gidnumber": ["379000045"], "description": ["Employees
+        group"], "dn": "cn=employees,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"cn": ["ipausers"], "description": ["Default group for all users"], "dn":
         "cn=ipausers,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
-        {"gidnumber": ["379000025"], "cn": ["test_group"], "dn": "cn=test_group,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
-        {"description": ["Trusts administrators group"], "cn": ["trust admins"], "dn":
+        {"cn": ["r0001_members"], "gidnumber": ["379000048"], "description": ["Portal
+        test group"], "dn": "cn=r0001_members,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"cn": ["test_group"], "gidnumber": ["379000025"], "dn": "cn=test_group,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        {"cn": ["trust admins"], "description": ["Trusts administrators group"], "dn":
         "cn=trust admins,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"}],
-        "count": 6, "truncated": false, "summary": "6 groups matched"}, "error": null,
+        "count": 7, "truncated": false, "summary": "7 groups matched"}, "error": null,
         "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
-  recorded_at: Thu, 16 Apr 2026 11:04:49 GMT
+  recorded_at: Fri, 24 Apr 2026 11:39:42 GMT
 recorded_with: VCR 6.4.0

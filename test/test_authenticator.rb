@@ -42,4 +42,46 @@ class TestAuthenticator < Minitest::Test
       assert_match(/Login failed/, error.message)
     end
   end
+
+  def test_login_keeps_only_cookie_name_and_value
+    header = "ipa_session=MagBearerToken=abc%3d;path=/ipa;httponly;secure;"
+    stubs = Faraday::Adapter::Test::Stubs.new do |stub|
+      stub.post("/ipa/session/login_password") { [200, { "Set-Cookie" => header }, ""] }
+    end
+
+    with_stubbed_connection(@client, stubs) do
+      assert_equal "ipa_session=MagBearerToken=abc%3d", @client.authenticator.login!
+    end
+  end
+
+  def test_login_keeps_every_cookie_when_header_is_joined
+    header = "ipa_session=abc; Expires=Wed, 21 Oct 2026 07:28:00 GMT; path=/ipa, other=1; secure"
+    stubs = Faraday::Adapter::Test::Stubs.new do |stub|
+      stub.post("/ipa/session/login_password") { [200, { "Set-Cookie" => header }, ""] }
+    end
+
+    with_stubbed_connection(@client, stubs) do
+      assert_equal "ipa_session=abc; other=1", @client.authenticator.login!
+    end
+  end
+
+  def test_login_returns_nil_without_session_cookie
+    stubs = Faraday::Adapter::Test::Stubs.new { |stub| stub.post("/ipa/session/login_password") { [200, {}, ""] } }
+
+    with_stubbed_connection(@client, stubs) do
+      assert_nil @client.authenticator.login!
+    end
+  end
+
+  def test_login_wraps_network_errors
+    stubs = Faraday::Adapter::Test::Stubs.new do |stub|
+      stub.post("/ipa/session/login_password") { raise Faraday::TimeoutError, "execution expired" }
+    end
+
+    with_stubbed_connection(@client, stubs) do
+      error = assert_raises(Fripa::ConnectionError) { @client.authenticator.login! }
+
+      assert_equal "Login failed: execution expired", error.message
+    end
+  end
 end

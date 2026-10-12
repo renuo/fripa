@@ -15,14 +15,14 @@ http_interactions:
       Referer:
       - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=2OJsWZD86WAawaMA0%2fLjeDnYag249SisppHdRi%2fapQRRFgSi0kUfmSkTiL30mcOAdGO2e4xy342fRAUip34prSZao1AfBTBSfUeZDDM33aGp8sNF7c4BhXqQp5lzT%2f6jYMxseNRCjzuFiWKpMRFreNoHbQV5NYserJcH7KNpL4bdAEb53c78Rz8xdFdLgthqk531bNHo9qAGhkf%2f1ResYBRoOAI%2beEoCckg9wCj2vEk%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=L4wFs%2bvqbo7vc2ceA1kt7Fi5HYBtgpIeGDLcApPG%2bNY2l5Ai5N2y24gX2NQrvvunzJiKqHZT1DQ%2fR6FgiQjWlPonNdLRoyfV5XGjo6Fu28x6cUQdS%2bnSJ4Cktqqm7u3zt2BEmI6GAY%2fBCCTg%2fpEo9I9UAcvlftVEFnUqCc2xNWBal%2feg%2bOb93ItZ46w7Tj%2f%2feyDxxmR3eCTJgrywU48DB4H%2b5yaDJ0EsS0dKM%2b4qqm4%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Thu, 16 Apr 2026 11:06:45 GMT
+      - Fri, 24 Apr 2026 11:39:28 GMT
       server:
       - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
         Python/3.13
@@ -42,23 +42,24 @@ http_interactions:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"result": {"result": {"krbcanonicalname": ["passwdtest@86.119.86.230.NIP.IO"],
-        "uidnumber": ["379000046"], "gidnumber": ["379000046"], "displayname": ["Password
-        Test"], "krbprincipalname": ["passwdtest@86.119.86.230.NIP.IO"], "homedirectory":
-        ["/home/passwdtest"], "sn": ["Test"], "gecos": ["Password Test"], "loginshell":
-        ["/bin/sh"], "givenname": ["Password"], "objectclass": ["top", "person", "organizationalperson",
-        "inetorgperson", "inetuser", "posixaccount", "krbprincipalaux", "krbticketpolicyaux",
-        "ipaobject", "ipasshuser", "ipaSshGroupOfPubKeys", "mepOriginEntry", "ipantuserattrs"],
-        "uid": ["passwdtest"], "ipauniqueid": ["5b2be3da-3984-11f1-b915-0242ac170002"],
-        "initials": ["PT"], "mail": ["passwdtest@86.119.86.230.nip.io"], "cn": ["Password
-        Test"], "krbpasswordexpiration": [{"__datetime__": "20260416110644Z"}], "krblastpwdchange":
-        [{"__datetime__": "20260416110644Z"}], "krbextradata": [{"__base64__": "AALEwuBpcm9vdC9hZG1pbkA4Ni4xMTkuODYuMjMwLk5JUC5JTwA="}],
+      string: '{"result": {"result": {"krbprincipalname": ["passwdtest@86.119.86.230.NIP.IO"],
+        "objectclass": ["top", "person", "organizationalperson", "inetorgperson",
+        "inetuser", "posixaccount", "krbprincipalaux", "krbticketpolicyaux", "ipaobject",
+        "ipasshuser", "ipaSshGroupOfPubKeys", "mepOriginEntry", "ipantuserattrs"],
+        "gidnumber": ["379000063"], "ipauniqueid": ["411d4106-3fd2-11f1-a33d-0242ac170002"],
+        "uid": ["passwdtest"], "cn": ["Password Test"], "uidnumber": ["379000063"],
+        "gecos": ["Password Test"], "mail": ["passwdtest@86.119.86.230.nip.io"], "krbcanonicalname":
+        ["passwdtest@86.119.86.230.NIP.IO"], "givenname": ["Password"], "loginshell":
+        ["/bin/sh"], "displayname": ["Password Test"], "homedirectory": ["/home/passwdtest"],
+        "initials": ["PT"], "sn": ["Test"], "krbpasswordexpiration": [{"__datetime__":
+        "20260424113928Z"}], "krblastpwdchange": [{"__datetime__": "20260424113928Z"}],
+        "krbextradata": [{"__base64__": "AAJwVutpcm9vdC9hZG1pbkA4Ni4xMTkuODYuMjMwLk5JUC5JTwA="}],
         "mepmanagedentry": ["cn=passwdtest,cn=groups,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"],
         "has_password": true, "has_keytab": true, "memberof_group": ["ipausers"],
         "dn": "uid=passwdtest,cn=users,cn=accounts,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
         "value": "passwdtest", "summary": "Added user \"passwdtest\""}, "error": null,
         "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
-  recorded_at: Thu, 16 Apr 2026 11:06:45 GMT
+  recorded_at: Fri, 24 Apr 2026 11:39:29 GMT
 - request:
     method: post
     uri: https://ipa.example.com/ipa/session/json
@@ -73,14 +74,14 @@ http_interactions:
       Referer:
       - https://ipa.example.com/ipa
       Cookie:
-      - ipa_session=MagBearerToken=2OJsWZD86WAawaMA0%2fLjeDnYag249SisppHdRi%2fapQRRFgSi0kUfmSkTiL30mcOAdGO2e4xy342fRAUip34prSZao1AfBTBSfUeZDDM33aGp8sNF7c4BhXqQp5lzT%2f6jYMxseNRCjzuFiWKpMRFreNoHbQV5NYserJcH7KNpL4bdAEb53c78Rz8xdFdLgthqk531bNHo9qAGhkf%2f1ResYBRoOAI%2beEoCckg9wCj2vEk%3d;path=/ipa;httponly;secure;
+      - ipa_session=MagBearerToken=L4wFs%2bvqbo7vc2ceA1kt7Fi5HYBtgpIeGDLcApPG%2bNY2l5Ai5N2y24gX2NQrvvunzJiKqHZT1DQ%2fR6FgiQjWlPonNdLRoyfV5XGjo6Fu28x6cUQdS%2bnSJ4Cktqqm7u3zt2BEmI6GAY%2fBCCTg%2fpEo9I9UAcvlftVEFnUqCc2xNWBal%2feg%2bOb93ItZ46w7Tj%2f%2feyDxxmR3eCTJgrywU48DB4H%2b5yaDJ0EsS0dKM%2b4qqm4%3d;path=/ipa;httponly;secure;
   response:
     status:
       code: 200
       message: Success
     headers:
       date:
-      - Thu, 16 Apr 2026 11:06:46 GMT
+      - Fri, 24 Apr 2026 11:39:29 GMT
       server:
       - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
         Python/3.13
@@ -103,5 +104,50 @@ http_interactions:
       string: '{"result": {"result": true, "value": "passwdtest@86.119.86.230.NIP.IO",
         "summary": "Changed password for \"passwdtest@86.119.86.230.NIP.IO\""}, "error":
         null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
-  recorded_at: Thu, 16 Apr 2026 11:06:46 GMT
+  recorded_at: Fri, 24 Apr 2026 11:39:30 GMT
+- request:
+    method: post
+    uri: https://ipa.example.com/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"user_del","params":[["passwdtest"],{"version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.1
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.example.com/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=L4wFs%2bvqbo7vc2ceA1kt7Fi5HYBtgpIeGDLcApPG%2bNY2l5Ai5N2y24gX2NQrvvunzJiKqHZT1DQ%2fR6FgiQjWlPonNdLRoyfV5XGjo6Fu28x6cUQdS%2bnSJ4Cktqqm7u3zt2BEmI6GAY%2fBCCTg%2fpEo9I9UAcvlftVEFnUqCc2xNWBal%2feg%2bOb93ItZ46w7Tj%2f%2feyDxxmR3eCTJgrywU48DB4H%2b5yaDJ0EsS0dKM%2b4qqm4%3d;path=/ipa;httponly;secure;
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Fri, 24 Apr 2026 11:39:30 GMT
+      server:
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"result": {"failed": []}, "value": ["passwdtest"], "summary":
+        "Deleted user \"passwdtest\""}, "error": null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO",
+        "version": "4.12.5"}'
+  recorded_at: Fri, 24 Apr 2026 11:39:30 GMT
 recorded_with: VCR 6.4.0
