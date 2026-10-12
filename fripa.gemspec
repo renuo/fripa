@@ -23,6 +23,6 @@ Gem::Specification.new do |spec|
   spec.files = Dir["lib/**/*.rb", "sig/**/*.rbs", "README.md", "CHANGELOG.md", "LICENSE.txt"]
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "base64"
+  spec.add_dependency "base64", "~> 0.1"
   spec.add_dependency "faraday", "~> 2.0"
 end
