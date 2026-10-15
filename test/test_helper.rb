@@ -27,6 +27,13 @@ VCR.configure do |config|
 end
 
 module FripaTestHelper
+  # The vault transport certificate is cached per process; start each test without it.
+  def before_setup
+    Fripa.reset_client!
+    Fripa::Resources::Vault.clear_transport_certs!
+    super
+  end
+
   def fripa_client(cassette:)
     Fripa.config = Fripa::Configuration.new(
       host: ENV.fetch("FREEIPA_HOST", "ipa.example.com"),
@@ -36,7 +43,7 @@ module FripaTestHelper
       Fripa::Client.new(
         username: ENV.fetch("FREEIPA_USER", "admin"),
         password: ENV.fetch("FREEIPA_PASSWORD", "password")
-      )
+      ).tap(&:login!)
     end
   end
 

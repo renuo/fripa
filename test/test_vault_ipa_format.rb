@@ -7,16 +7,20 @@ require "openssl"
 # the fake decrypts what fripa sends and encrypts what fripa reads.
 class TestVaultIpaFormat < Minitest::Test
   class FakeKRA
-    attr_reader :calls, :stored
+    attr_reader :calls, :stored, :config
+    attr_accessor :error
 
-    def initialize
+    def initialize(host: "kra.example.com")
       @key = OpenSSL::PKey::RSA.generate(2048)
       @cert = build_cert
       @calls = []
+      @config = Fripa::Configuration.new(host: host)
     end
 
     def call(method, _args = [], options = {})
       @calls << method
+      raise error if error && method != "vaultconfig_show"
+
       { "result" => { "result" => send(method, options) } }
     end
 
@@ -94,6 +98,42 @@ class TestVaultIpaFormat < Minitest::Test
   def test_transport_certificate_is_fetched_once
     @vault.archive("kek", data: "a")
     @vault.retrieve("kek")
+    @vault.retrieve("kek")
+
+    assert_equal 1, @kra.calls.count("vaultconfig_show")
+  end
+
+  def test_transport_certificate_is_shared_by_clients_of_the_same_server
+    @vault.archive("kek", data: "a")
+    Fripa::Resources::Vault.new(@kra).retrieve("kek")
+
+    assert_equal 1, @kra.calls.count("vaultconfig_show")
+  end
+
+  def test_transport_certificate_is_not_shared_between_servers
+    other = FakeKRA.new(host: "other.example.com")
+    @vault.archive("kek", data: "a")
+    Fripa::Resources::Vault.new(other).archive("kek", data: "b")
+
+    assert_equal "b", other.stored
+    assert_equal 1, other.calls.count("vaultconfig_show")
+  end
+
+  def test_transport_certificate_is_fetched_again_after_a_server_error
+    @vault.archive("kek", data: "a")
+    @kra.error = Fripa::ResponseError.new(code: 4301, message: "Certificate operation cannot be completed")
+    assert_raises(Fripa::ResponseError) { @vault.retrieve("kek") }
+    @kra.error = nil
+    @vault.retrieve("kek")
+
+    assert_equal 2, @kra.calls.count("vaultconfig_show")
+  end
+
+  def test_transport_certificate_is_kept_when_vault_is_not_found
+    @vault.archive("kek", data: "a")
+    @kra.error = Fripa::ResponseError.new(code: 4001, message: "vault not found")
+    assert_raises(Fripa::ResponseError) { @vault.retrieve("missing") }
+    @kra.error = nil
     @vault.retrieve("kek")
 
     assert_equal 1, @kra.calls.count("vaultconfig_show")

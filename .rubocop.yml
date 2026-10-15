@@ -30,6 +30,9 @@ Metrics/ClassLength:
     - "test/**/*"
 
 Metrics/MethodLength:
+  # Configuration#initialize only assigns one variable per option.
+  AllowedMethods:
+    - initialize
   Exclude:
     - "test/**/*"
 

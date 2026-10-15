@@ -6,6 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-10-15
+
+### Changed
+- **`Fripa::Client.new` no longer connects.** The client logs in on the first call. Wrong credentials now raise `Fripa::AuthenticationError` on the first call, not in `Client.new`. Call `client.login!` to log in at once. Blank credentials still raise `ArgumentError` in `Client.new`.
+- The vault transport certificate is cached per process and server URL, so all clients share it (before: one fetch per client). It is fetched again after a vault call fails.
+
+### Added
+- `Fripa.client`: one client for the account in `config.username` / `config.password`, shared by the process. It is built on first use and again when the configuration changes. `Fripa.reset_client!` forgets the shared client (e.g. between tests).
+- `Fripa::Client#login!` (returns the session cookie) and `#logged_in?`.
+- `Fripa::Client.new(username:, session_cookie:)` builds a client from an earlier session, without a login request. `password` is now optional. Without a password, an expired session raises `Fripa::AuthenticationError`.
+- `Fripa::Client.new` without `username` uses the credentials from the configuration. With a `username`, it never uses the configured password.
+- `Configuration#inspect` does not show the password.
+
 ## [0.2.0] - 2026-10-12
 
 ### Changed
@@ -59,7 +72,8 @@ Initial release of Fripa - A Ruby client for the FreeIPA JSON-RPC API.
 - Full test suite with VCR cassettes
 - Complete API documentation and usage examples
 
-[Unreleased]: https://github.com/renuo/fripa/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/renuo/fripa/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/renuo/fripa/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/renuo/fripa/compare/v0.1.4...v0.2.0
 [0.1.4]: https://github.com/renuo/fripa/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/renuo/fripa/compare/v0.1.2...v0.1.3

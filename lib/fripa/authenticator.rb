@@ -30,12 +30,12 @@ module Fripa
       "#<#{self.class.name} username=#{client.username.inspect}>"
     end
 
-    private
-
     def validate_credentials!
       raise ArgumentError, "Username cannot be blank" if client.username.to_s.strip.empty?
       raise ArgumentError, "Password cannot be blank" if client.password.to_s.strip.empty?
     end
+
+    private
 
     def perform_login
       client.connection.post(LOGIN_PATH) do |request|

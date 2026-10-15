@@ -37,7 +37,7 @@ class TestAuthenticator < Minitest::Test
   def test_login_with_invalid_credentials
     VCR.use_cassette("authenticator/login_invalid_credentials") do
       error = assert_raises(Fripa::AuthenticationError) do
-        Fripa::Client.new(username: "admin", password: "WrongPassword")
+        Fripa::Client.new(username: "admin", password: "WrongPassword").login!
       end
       assert_match(/Login failed/, error.message)
     end

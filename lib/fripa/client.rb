@@ -12,11 +12,18 @@ module Fripa
     attr_reader :config, :username, :password
     attr_accessor :session_cookie
 
-    def initialize(username:, password:, config: nil)
+    # Does not connect: the client logs in on the first call, or when you call login!.
+    # Without username, it uses config.username and config.password. With a
+    # username, it never uses the password from the configuration.
+    # Give a session_cookie from an earlier login to skip the login request.
+    # Without a password, an expired session raises AuthenticationError.
+    def initialize(username: nil, password: nil, config: nil, session_cookie: nil)
       @config = config || Fripa.config
-      @username = username
-      @password = password
-      @session_cookie = authenticator.login!
+      @username = username || @config.username
+      @password = username ? password : password || @config.password
+      @session_cookie = session_cookie unless session_cookie.to_s.empty?
+      @logged_in = !@session_cookie.nil?
+      authenticator.validate_credentials! unless @logged_in
     end
 
     def users
@@ -35,7 +42,20 @@ module Fripa
       @authenticator ||= Authenticator.new(self)
     end
 
+    # Logs in now and returns the session cookie. Raises AuthenticationError
+    # if the credentials are wrong.
+    def login!
+      self.session_cookie = authenticator.login!
+      @logged_in = true
+      session_cookie
+    end
+
+    def logged_in?
+      @logged_in
+    end
+
     def call(method, args = [], options = {})
+      login! unless logged_in?
       response = perform_request(method, args, options)
       response = reauthenticate_and_retry(method, args, options) if response.status == UNAUTHORIZED
 
@@ -73,7 +93,9 @@ module Fripa
     private
 
     def reauthenticate_and_retry(method, args, options)
-      self.session_cookie = authenticator.login!
+      raise AuthenticationError, "Session expired and no password to log in again" if password.to_s.empty?
+
+      login!
       perform_request(method, args, options)
     end
 

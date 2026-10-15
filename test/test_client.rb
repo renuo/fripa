@@ -205,6 +205,43 @@ class TestClient < Minitest::Test
     ], sent.dig("params", 0)
   end
 
+  def test_initialize_with_session_cookie_skips_login
+    stubs = Faraday::Adapter::Test::Stubs.new
+    connection = Faraday.new { |f| f.adapter :test, stubs }
+
+    Faraday.stub(:new, connection) do
+      client = Fripa::Client.new(username: "employee", session_cookie: "ipa_session=saved")
+
+      assert_equal "ipa_session=saved", client.session_cookie
+    end
+    stubs.verify_stubbed_calls
+  end
+
+  def test_session_cookie_client_raises_authentication_error_when_session_expires
+    client = Fripa::Client.new(username: "employee", session_cookie: "ipa_session=old", config: @client.config)
+    stubs = Faraday::Adapter::Test::Stubs.new { |stub| stub.post("/ipa/session/json") { [401, {}, ""] } }
+
+    with_stubbed_connection(client, stubs) do
+      error = assert_raises(Fripa::AuthenticationError) { client.call("ping") }
+
+      assert_equal "Session expired and no password to log in again", error.message
+    end
+  end
+
+  def test_session_cookie_client_uses_password_to_log_in_again
+    client = Fripa::Client.new(username: "admin", password: "secret", session_cookie: "ipa_session=old",
+                               config: @client.config)
+    responses = [[401, {}, ""], [200, {}, json_rpc_body(result: { result: "pong" })]]
+    stubs = Faraday::Adapter::Test::Stubs.new do |stub|
+      stub.post("/ipa/session/json") { responses.shift }
+      stub.post("/ipa/session/login_password") { [200, { "Set-Cookie" => "ipa_session=new" }, ""] }
+    end
+
+    with_stubbed_connection(client, stubs) { client.call("ping") }
+
+    assert_equal "ipa_session=new", client.session_cookie
+  end
+
   def test_inspect_hides_password_and_session_cookie
     output = @client.inspect
 

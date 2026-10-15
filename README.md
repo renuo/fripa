@@ -114,25 +114,53 @@ end
 
 ### Creating a Client
 
-Create a client instance with user credentials. The client authenticates immediately upon creation:
+#### Service account (shared client)
+
+Put the credentials in the configuration and use `Fripa.client`. It is one
+client for the whole process: it logs in on the first call, keeps the session,
+and logs in again when the session expires. It is built again when the
+configuration changes.
 
 ```ruby
-client = Fripa::Client.new(
-  username: 'your-username',
-  password: 'your-password'
-)
-# Client is now authenticated and ready to use
+Fripa.configure do |config|
+  config.host = 'ipa.example.com'
+  config.username = 'admin'
+  config.password = 'secret'
+end
+
+Fripa.client.users.show('alice')
 ```
 
-If authentication fails, a `Fripa::AuthenticationError` will be raised immediately:
+In tests, call `Fripa.reset_client!` before each test, so no session or test
+double stays from one test to the next.
+
+#### Other accounts
+
+`Fripa::Client.new` creates a client for one account. It does not connect: it
+logs in on the first call. Call `login!` to log in now, for example to check
+credentials. It returns the session cookie.
 
 ```ruby
+client = Fripa::Client.new(username: 'alice', password: 'her-password')
+
 begin
-  client = Fripa::Client.new(username: 'admin', password: 'wrong-password')
+  cookie = client.login!
 rescue Fripa::AuthenticationError => e
   puts "Authentication failed: #{e.message}"
 end
 ```
+
+To skip the login in later requests, build the client from the session cookie
+(e.g. kept in an encrypted session):
+
+```ruby
+client = Fripa::Client.new(username: 'alice', session_cookie: cookie)
+```
+
+A client without a password cannot log in again: when its session expires, it
+raises `Fripa::AuthenticationError`. With a `username`, `Fripa::Client.new`
+never uses the password from the configuration. A client can be shared between
+threads.
 
 ### Making API Calls
 
@@ -228,7 +256,9 @@ client.vault.archive("my-vault", data: "secret", ipa_format: true, shared: true)
 client.vault.retrieve("my-vault", ipa_format: true, shared: true) # => "secret"
 ```
 
-The client fetches the KRA transport certificate once and keeps it.
+The KRA transport certificate is fetched once per process and server, and all
+clients share it (it is public and the same for every account). If the server
+rejects a vault call, the certificate is fetched again on the next call.
 
 #### Batch Calls
 

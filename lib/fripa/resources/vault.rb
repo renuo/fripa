@@ -5,6 +5,28 @@ require "base64"
 module Fripa
   module Resources
     class Vault < Base
+      NOT_FOUND = 4001
+
+      # The KRA transport certificate belongs to the server, not to an account,
+      # and it is public. So all clients of one process share it, per server URL:
+      # a service account and per-user clients fetch it only once.
+      @transport_certs = {}
+      @transport_certs_lock = Mutex.new
+
+      class << self
+        def transport_cert(key)
+          @transport_certs_lock.synchronize { @transport_certs[key] ||= yield }
+        end
+
+        def forget_transport_cert(key)
+          @transport_certs_lock.synchronize { @transport_certs.delete(key) }
+        end
+
+        def clear_transport_certs!
+          @transport_certs_lock.synchronize { @transport_certs.clear }
+        end
+      end
+
       def show(cn, **scope)
         validate_identifier!(cn, "cn")
         call("vault_show", [cn], scope)
@@ -21,8 +43,10 @@ module Fripa
         validate_identifier!(cn, "cn")
         data = VaultTransport.to_ipa_format(data) if ipa_format
         payload = VaultTransport.wrap(data, transport_cert_der)
-        call("vault_archive_internal", [cn],
-             binary_encode(payload).merge(wrapping_algo: VaultTransport::WRAPPING_ALGO).merge(scope))
+        with_transport_cert_refresh do
+          call("vault_archive_internal", [cn],
+               binary_encode(payload).merge(wrapping_algo: VaultTransport::WRAPPING_ALGO).merge(scope))
+        end
       end
 
       # ipa_format: true reads data stored by `ipa vault-archive` (or archive with ipa_format: true).
@@ -53,10 +77,17 @@ module Fripa
 
       private
 
-      # The KRA transport certificate does not change between calls, so we
-      # fetch it once per client (the ipa CLI caches it too).
       def transport_cert_der
-        @transport_cert_der ||= fetch_transport_cert
+        self.class.transport_cert(client.config.base_url.to_s) { fetch_transport_cert }
+      end
+
+      # If the server rejects a payload, its certificate can have changed
+      # (e.g. renewed). Forget it, so that the next call fetches it again.
+      def with_transport_cert_refresh
+        yield
+      rescue ResponseError => e
+        self.class.forget_transport_cert(client.config.base_url.to_s) unless e.code == NOT_FOUND
+        raise
       end
 
       def fetch_transport_cert
@@ -67,10 +98,12 @@ module Fripa
       def call_retrieve(cn, session_key, **scope)
         encrypted_key = VaultTransport.encrypt_session_key(session_key, transport_cert_der)
 
-        call("vault_retrieve_internal", [cn], {
-          session_key: { "__base64__" => Base64.strict_encode64(encrypted_key) },
-          wrapping_algo: VaultTransport::WRAPPING_ALGO
-        }.merge(scope))
+        with_transport_cert_refresh do
+          call("vault_retrieve_internal", [cn], {
+            session_key: { "__base64__" => Base64.strict_encode64(encrypted_key) },
+            wrapping_algo: VaultTransport::WRAPPING_ALGO
+          }.merge(scope))
+        end
       end
 
       def binary_encode(hash)

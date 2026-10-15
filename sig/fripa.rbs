@@ -6,6 +6,8 @@ module Fripa
   def self.config: () -> Configuration
   def self.config=: (Configuration | Hash[Symbol, untyped] value) -> Configuration
   def self.configure: () { (Configuration) -> void } -> void
+  def self.client: () -> Client
+  def self.reset_client!: () -> void
 
   class Configuration
     DEFAULT_API_VERSION: String
@@ -20,10 +22,13 @@ module Fripa
     attr_accessor open_timeout: Numeric?
     attr_accessor adapter: untyped
     attr_accessor raise_on_partial_failure: bool
+    attr_accessor username: String?
+    attr_accessor password: String?
 
     def initialize: (?host: String?, ?port: Integer?, ?scheme: String, ?verify_ssl: bool, ?api_version: String,
                      ?timeout: Numeric?, ?open_timeout: Numeric?, ?adapter: untyped,
-                     ?raise_on_partial_failure: bool) -> void
+                     ?raise_on_partial_failure: bool, ?username: String?, ?password: String?) -> void
+    def options: () -> Hash[Symbol, untyped]
     def base_url: () -> URI::Generic
     def login_url: () -> URI::Generic
     def api_url: () -> URI::Generic
@@ -61,11 +66,13 @@ module Fripa
     UNAUTHORIZED: Integer
 
     attr_reader config: Configuration
-    attr_reader username: String
-    attr_reader password: String
+    attr_reader username: String?
+    attr_reader password: String?
     attr_accessor session_cookie: String?
 
-    def initialize: (username: String, password: String, ?config: Configuration?) -> void
+    def initialize: (?username: String?, ?password: String?, ?config: Configuration?, ?session_cookie: String?) -> void
+    def login!: () -> String?
+    def logged_in?: () -> bool
     def users: () -> Resources::User
     def groups: () -> Resources::Group
     def vault: () -> Resources::Vault
@@ -85,6 +92,7 @@ module Fripa
 
     def initialize: (Client client) -> void
     def login!: () -> String?
+    def validate_credentials!: () -> void
   end
 
   module VaultTransport
@@ -137,6 +145,12 @@ module Fripa
     end
 
     class Vault < Base
+      NOT_FOUND: Integer
+
+      def self.transport_cert: (String key) { () -> String } -> String
+      def self.forget_transport_cert: (String key) -> String?
+      def self.clear_transport_certs!: () -> void
+
       def show: (String cn, **untyped scope) -> json_hash
       def add: (String cn, **untyped scope) -> json_hash
       def archive: (String cn, data: String, ?ipa_format: bool, **untyped scope) -> json_hash
