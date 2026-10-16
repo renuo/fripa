@@ -273,6 +273,27 @@ result.dig("result", "results").each { |r| puts r["error"] || r["result"] }
 ```
 
 `batch` does not raise for errors in a single command. Check `error` in each result.
+`batch!` raises `Fripa::BatchError` when any command failed. `#errors` lists them, with
+the index, method, code, name and message of each:
+
+```ruby
+client.batch!(["vault_del", ["v1"]], ["vault_del", ["v2"]])
+rescue Fripa::BatchError => e
+  e.errors # => [{ index: 1, method: "vault_del", code: 4001, name: "NotFound", message: "v2: vault not found" }]
+```
+
+The vault resource builds batch commands with `add_command`, `archive_command`,
+`add_member_command` and `delete_command`. They take the same arguments as `add`,
+`archive`, `add_member` and `delete`, so you can set up many vaults in one request:
+
+```ruby
+vault = client.vault
+client.batch!(*%w[v1 v2].flat_map do |cn|
+  [vault.add_command(cn, shared: true),
+   vault.archive_command(cn, data: "secret", shared: true),
+   vault.add_member_command(cn, user: ["alice"], shared: true)]
+end)
+```
 
 #### Using Raw API Calls
 

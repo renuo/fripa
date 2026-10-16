@@ -33,20 +33,14 @@ module Fripa
       end
 
       def add(cn, **scope)
-        validate_identifier!(cn, "cn")
-        call("vault_add_internal", [cn], { ipavaulttype: "standard" }.merge(scope))
+        call(*add_command(cn, **scope))
       end
 
       # ipa_format: true stores the data like `ipa vault-archive`, so the ipa CLI can read it.
       # The default (false) stores the raw bytes, as in previous versions.
       def archive(cn, data:, ipa_format: false, **scope)
-        validate_identifier!(cn, "cn")
-        data = VaultTransport.to_ipa_format(data) if ipa_format
-        payload = VaultTransport.wrap(data, transport_cert_der)
-        with_transport_cert_refresh do
-          call("vault_archive_internal", [cn],
-               binary_encode(payload).merge(wrapping_algo: VaultTransport::WRAPPING_ALGO).merge(scope))
-        end
+        command = archive_command(cn, data:, ipa_format:, **scope)
+        with_transport_cert_refresh { call(*command) }
       end
 
       # ipa_format: true reads data stored by `ipa vault-archive` (or archive with ipa_format: true).
@@ -66,13 +60,36 @@ module Fripa
       end
 
       def add_member(cn, **scope)
-        validate_identifier!(cn, "cn")
-        call("vault_add_member", [cn], scope)
+        call(*add_member_command(cn, **scope))
       end
 
       def delete(cn, **scope)
+        call(*delete_command(cn, **scope))
+      end
+
+      # The *_command methods build [method, args, options] for Client#batch, so many vault
+      # operations go in one request. archive_command wraps the data like archive does.
+      def add_command(cn, **scope)
         validate_identifier!(cn, "cn")
-        call("vault_del", [cn], scope)
+        ["vault_add_internal", [cn], { ipavaulttype: "standard" }.merge(scope)]
+      end
+
+      def archive_command(cn, data:, ipa_format: false, **scope)
+        validate_identifier!(cn, "cn")
+        data = VaultTransport.to_ipa_format(data) if ipa_format
+        payload = VaultTransport.wrap(data, transport_cert_der)
+        ["vault_archive_internal", [cn],
+         binary_encode(payload).merge(wrapping_algo: VaultTransport::WRAPPING_ALGO).merge(scope)]
+      end
+
+      def add_member_command(cn, **scope)
+        validate_identifier!(cn, "cn")
+        ["vault_add_member", [cn], scope]
+      end
+
+      def delete_command(cn, **scope)
+        validate_identifier!(cn, "cn")
+        ["vault_del", [cn], scope]
       end
 
       private

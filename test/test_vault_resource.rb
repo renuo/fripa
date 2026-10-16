@@ -109,15 +109,4 @@ class TestVaultResource < Minitest::Test
     error = assert_raises(ArgumentError) { @client.vault.add_member("") }
     assert_equal "cn is required", error.message
   end
-
-  private
-
-  def with_fixed_session_key
-    fixed_key = File.binread(File.expand_path("fixtures/session_key.bin", __dir__))
-    original = Fripa::VaultTransport.method(:generate_session_key)
-    Fripa::VaultTransport.define_singleton_method(:generate_session_key) { fixed_key }
-    yield
-  ensure
-    Fripa::VaultTransport.define_singleton_method(:generate_session_key, &original)
-  end
 end

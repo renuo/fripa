@@ -5,6 +5,8 @@ require "json"
 
 module Fripa
   class Client
+    include Batch
+
     API_PATH = "/ipa/session/json"
     API_VERSION = Configuration::DEFAULT_API_VERSION
     UNAUTHORIZED = 401
@@ -62,16 +64,6 @@ module Fripa
       raise ConnectionError, "API call failed: #{response.status}" unless response.success?
 
       parse_response(response)
-    end
-
-    # Sends several commands in one HTTP request. Each command is
-    # [method, args = [], options = {}]. Per-command errors are not raised:
-    # check result["result"]["results"][i]["error"].
-    def batch(*commands)
-      requests = commands.map do |method, args = [], options = {}|
-        { method: method, params: [args, options.merge(version: config.api_version)] }
-      end
-      call("batch", requests)
     end
 
     # Shared by Authenticator, so login and API calls reuse one connection.

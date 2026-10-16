@@ -55,6 +55,17 @@ module FripaTestHelper
     stubs.verify_stubbed_calls
   end
 
+  # vault.retrieve picks a random session key, but a cassette holds the vault data encrypted with the
+  # key used when it was recorded. Replaying needs that same key.
+  def with_fixed_session_key
+    fixed_key = File.binread(File.expand_path("fixtures/session_key.bin", __dir__))
+    original = Fripa::VaultTransport.method(:generate_session_key)
+    Fripa::VaultTransport.define_singleton_method(:generate_session_key) { fixed_key }
+    yield
+  ensure
+    Fripa::VaultTransport.define_singleton_method(:generate_session_key, &original)
+  end
+
   def json_rpc_body(result: {}, error: nil)
     { result: result, error: error, id: 0 }.to_json
   end

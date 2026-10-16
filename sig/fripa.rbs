@@ -54,6 +54,13 @@ module Fripa
     def initialize: (code: Integer?, message: String?, ?data: untyped) -> void
   end
 
+  class BatchError < ResponseError
+    attr_reader errors: Array[Hash[Symbol, untyped]]
+
+    def initialize: (Array[Hash[Symbol, untyped]] errors, Array[json_hash] results) -> void
+    def self.check!: (Array[Array[untyped]] commands, json_hash response) -> void
+  end
+
   class PartialFailureError < ResponseError
     def initialize: (json_hash failed) -> void
     def self.failures: (untyped failed) -> Array[untyped]
@@ -79,6 +86,7 @@ module Fripa
     def authenticator: () -> Authenticator
     def call: (String method, ?Array[untyped] args, ?Hash[Symbol, untyped] options) -> json_hash
     def batch: (*Array[untyped] commands) -> json_hash
+    def batch!: (*Array[untyped] commands) -> json_hash
     def connection: () -> untyped
     def referer: () -> String
   end
@@ -157,6 +165,10 @@ module Fripa
       def retrieve: (String cn, ?ipa_format: bool, **untyped scope) -> String?
       def add_member: (String cn, **untyped scope) -> json_hash
       def delete: (String cn, **untyped scope) -> json_hash
+      def add_command: (String cn, **untyped scope) -> [String, Array[String], Hash[Symbol, untyped]]
+      def archive_command: (String cn, data: String, ?ipa_format: bool, **untyped scope) -> [String, Array[String], Hash[Symbol, untyped]]
+      def add_member_command: (String cn, **untyped scope) -> [String, Array[String], Hash[Symbol, untyped]]
+      def delete_command: (String cn, **untyped scope) -> [String, Array[String], Hash[Symbol, untyped]]
     end
   end
 end

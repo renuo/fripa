@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- `Fripa::Client#batch!`: like `batch`, but raises `Fripa::BatchError` (a `Fripa::ResponseError`) when any command failed. `#errors` lists each failed command (index, method, code, name, message); `#code` and `#message` are those of the first one.
+- Vault batch commands: `vault.add_command`, `archive_command`, `add_member_command` and `delete_command` return `[method, args, options]` for `Client#batch`, so many vault operations go in one request. `archive_command` wraps the data with the transport certificate, like `archive`. When a transport command fails in `batch!`, the certificate is forgotten and fetched again on the next call, as with `archive`.
+
 ## [0.3.0] - 2026-10-15
 
 ### Changed

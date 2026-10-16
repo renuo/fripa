@@ -9,6 +9,7 @@ require_relative "fripa/resources/user"
 require_relative "fripa/resources/group"
 require_relative "fripa/vault_transport"
 require_relative "fripa/resources/vault"
+require_relative "fripa/batch"
 require_relative "fripa/client"
 
 module Fripa

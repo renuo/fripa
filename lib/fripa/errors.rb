@@ -15,6 +15,31 @@ module Fripa
     end
   end
 
+  # Raised by Client#batch! when one or more commands of the batch failed. #errors lists them:
+  # { index:, method:, code:, name:, message: }. #code and #message are those of the first one.
+  # #data holds every result of the batch.
+  class BatchError < ResponseError
+    attr_reader :errors
+
+    def initialize(errors, results)
+      @errors = errors
+      first = errors.first
+      super(code: first[:code], message: "#{first[:method]}: #{first[:message]}", data: results)
+    end
+
+    # Raises a BatchError if any result of the batch response holds an error.
+    def self.check!(commands, response)
+      results = response.dig("result", "results") || []
+      errors = results.each_with_index.filter_map do |result, index|
+        next unless result["error"]
+
+        { index: index, method: commands[index].first, code: result["error_code"],
+          name: result["error_name"], message: result["error"] }
+      end
+      raise new(errors, results) if errors.any?
+    end
+  end
+
   # Raised when FreeIPA answers without an error but reports per-entry failures,
   # e.g. group_add_member with a user that does not exist or is already a member.
   # Only raised with config.raise_on_partial_failure = true.

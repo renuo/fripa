@@ -1,0 +1,435 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ipa.example.com/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"vaultconfig_show","params":[[],{"all":true,"version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.4
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.example.com/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=26MHELa4Vtryeennec%2f2sPWgKVqFargGHoTmiQ8BcqdnYDnBtLdQbMfd9c%2ffFQNwjarXSR7kxzyh7bF8yL7fFzdmXv8bTAdYpYqmJwoZg3EdCS9uzrfMCGBSYi8ENJAcu2Uc71yW0kKPbUl%2bnM9dha%2fWOnFsl%2bSZ%2fOvPF9cD0MCd9Onhe7EH6HEGYEMyZEnIrbGRMmvqRUngdjtAgHnILEpfX4X0%2fQzZWeIxYt3jEqw%3d
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      date:
+      - Fri, 16 Oct 2026 15:32:04 GMT
+      server:
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
+      www-authenticate:
+      - Negotiate
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      last-modified:
+      - Wed, 21 Aug 2024 15:06:37 GMT
+      accept-ranges:
+      - bytes
+      content-length:
+      - '2719'
+      content-type:
+      - text/html; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: |
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <title>Identity Management</title>
+            <script type="text/javascript" src="../ui/js/libs/loader.js"></script>
+            <script type="text/javascript">
+                var dojoConfig = {
+                    baseUrl: "../ui/js",
+                    has: {
+                        'dojo-firebug': false,
+                        'dojo-debug-messages': true
+                    },
+                    parseOnLoad: false,
+                    async: true,
+                    packages: [
+                        {
+                            name:'dojo',
+                            location:'dojo'
+                        },
+                        {
+                            name: 'freeipa',
+                            location: 'freeipa'
+                        }
+                    ]
+                };
+                (function() {
+                    var icons = [
+                        '../ui/favicon.ico'
+                    ];
+                    var styles = [
+                        '../ui/css/patternfly.css',
+                        '../ui/css/ipa.css'
+                    ];
+                    var scripts = [
+                        '../ui/js/libs/jquery.js',
+                        '../ui/js/libs/jquery.ordered-map.js',
+                        '../ui/js/dojo/dojo.js'
+                    ];
+
+                    ipa_loader.scripts(scripts, function() {
+                        require([
+                            'dojo/dom',
+                            'freeipa/core',
+                            'dojo/domReady!'
+                            ],
+                            function(dom) {
+                                var text = require('freeipa/text');
+                                var msg = text.get('@i18n:unauthorized-page');
+                                if (msg) {
+                                    dom.byId('unauthorized-msg').innerHTML=msg;
+                                }
+                            });
+                    });
+                    ipa_loader.styles(styles);
+                    ipa_loader.icons(icons);
+                })();
+            </script>
+        </head>
+
+        <body class="info-page">
+
+            <nav class="navbar navbar-default navbar-pf" role="navigation">
+            <div class="navbar-header">
+                <a class="brand" href="../ui/index.html"><img src="../ui/images/header-logo.png" alt="Identity Management"></a>
+            </div>
+            </nav>
+
+            <div class="container-fluid">
+            <div class="row">
+            <div class="col-sm-12">
+            <div id="unauthorized-msg">
+            <noscript>
+
+                <h1>Unable to verify your Kerberos credentials</h1>
+                <p>
+                    Please make sure that you have valid Kerberos tickets (obtainable via <strong>kinit</strong>), and that you have configured your browser correctly.
+                </p>
+
+                <h2>Browser configuration</h2>
+
+                <div id="first-time">
+                    <p>
+                        If this is your first time, please <a href="ssbrowser.html">configure your browser</a>.
+                    </p>
+                </div>
+            </noscript>
+            </div>
+            </div>
+            </div>
+            </div>
+
+        </body>
+
+        </html>
+  recorded_at: Fri, 16 Oct 2026 15:32:04 GMT
+- request:
+    method: post
+    uri: https://ipa.example.com/ipa/session/login_password
+    body:
+      encoding: US-ASCII
+      string: user=admin&password=<PASSWORD>
+    headers:
+      User-Agent:
+      - Faraday v2.14.4
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Referer:
+      - https://ipa.example.com/ipa
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Fri, 16 Oct 2026 15:32:04 GMT
+      server:
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
+      set-cookie:
+      - ipa_session=MagBearerToken=I0EK8q1FZ8fgWOkXXBqxxX26wrYZhcM%2baUU%2f97sz%2b3z1byhBzJ9FhPVpz0FDu%2fkxovyprbB6I%2fZuL2QOt3%2bDdX0ODB51yGgaViOZah6fxoWjagjmiWsQRFKNm%2bhoJPEYdc0nn7VdkAtvgBFHvwBe4pMo8DhQSNorGuWWo24DrCKduS48gmjV7VAPhVmoeDt%2fW%2bYRL9hRWD8JzPyETeBjNea8yUNhb%2f1HmBN6sa%2bqBzE%3d;path=/ipa;httponly;secure;
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      content-length:
+      - '20'
+      content-type:
+      - text/plain; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Fri, 16 Oct 2026 15:32:04 GMT
+- request:
+    method: post
+    uri: https://ipa.example.com/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"vaultconfig_show","params":[[],{"all":true,"version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.4
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.example.com/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=I0EK8q1FZ8fgWOkXXBqxxX26wrYZhcM%2baUU%2f97sz%2b3z1byhBzJ9FhPVpz0FDu%2fkxovyprbB6I%2fZuL2QOt3%2bDdX0ODB51yGgaViOZah6fxoWjagjmiWsQRFKNm%2bhoJPEYdc0nn7VdkAtvgBFHvwBe4pMo8DhQSNorGuWWo24DrCKduS48gmjV7VAPhVmoeDt%2fW%2bYRL9hRWD8JzPyETeBjNea8yUNhb%2f1HmBN6sa%2bqBzE%3d
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Fri, 16 Oct 2026 15:32:04 GMT
+      server:
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"result": {"wrapping_supported_algorithms": ["aes-128-cbc",
+        "des-ede3-cbc"], "wrapping_default_algorithm": "aes-128-cbc", "transport_cert":
+        {"__base64__": "MIIEDzCCAnegAwIBAgIBCzANBgkqhkiG9w0BAQsFADA/MR0wGwYDVQQKDBQ4Ni4xMTkuODYuMjMwLk5JUC5JTzEeMBwGA1UEAwwVQ2VydGlmaWNhdGUgQXV0aG9yaXR5MB4XDTI2MDQxNDEyMzQwOFoXDTI4MDQwMzEyMzQwOFowQzEdMBsGA1UECgwUODYuMTE5Ljg2LjIzMC5OSVAuSU8xIjAgBgNVBAMMGUtSQSBUcmFuc3BvcnQgQ2VydGlmaWNhdGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDahYJRzO8uGbWNYxqWey201e0MSItBmtKojnkqoG5EXp/+ysOhVaPrbc4VF9mOiLqPQmvJLLR17BVzW1IxixR5ISsKff0c4mgbGGfyQtQMslB+s4Q2K3jk0YdNjhkIuRB4Uuxj0wdVAclvgjrf7xWKONtHmEqk+rkLn2DY0kw9yeVJcp5TQiCt+PukZQNnnRWLaPrNEuK0XfxVQIM6FES5RZ6jKV6c6BZ4bRQAfEVmbneVdldiA6oF7RMMEAh8urXvXyF6bCaqnIhRBLh8H9U1psl0VljAVBm4bOBj9i5Cs3XeWaNfh4eYuLNLgPn2a7rX75KOtO6dwkz34cGPAK0tAgMBAAGjgZEwgY4wHwYDVR0jBBgwFoAUojZp4kYG/O/fwZp/lpIrbJQV4AcwRgYIKwYBBQUHAQEEOjA4MDYGCCsGAQUFBzABhipodHRwOi8vaXBhLWNhLjg2LjExOS44Ni4yMzAubmlwLmlvL2NhL29jc3AwDgYDVR0PAQH/BAQDAgTwMBMGA1UdJQQMMAoGCCsGAQUFBwMCMA0GCSqGSIb3DQEBCwUAA4IBgQBddZWLk+EYeBgXQEut7dSfC8BpeMIW1usV1TrzcTm1QvB2qi3NFQ+F4FQreApnEtwCt//LMLxYY17xwXsMvnipRrO+L3ukgwK3Vixi687GRffXHbT7bGBxxb3nexBPRNApbyBIdO4iTP7tgNozzwrq3Ts3/AOiIl9k3lQ5SP8dB1ZgJb5UJC2xVCN+qeNrfgOoXZsMzenFbS5U/vobVWU79D9EEM6ZJJrou7g0mis/L8Mc9QBO1SzPPCpJ0c0R6+PdmavjMHkrSm26n+EYJCpLP+OHnfwWvauTFarrRsnSRwaXWmH4QPnTRv1odbSQrw9e2zJhfnv3+6AVXTv9dHS0mvgVqp0P7qGXAnSaLLP0qUR7x9++3GCTUVHUOiYwPOn60iZytMce6vbysR56eORr4BFKJgK+aEzAqdKwHNXjW5725TVBppt5+IXJ4BKOA4wDiSnL1FA98BCNXM9y7U9Fgu3Qbwr9TjFd03qzvtEocbFhmYwNkeYOnRK7E5iDj3c="},
+        "kra_server_server": ["ipa.example.com"]}, "value": null, "summary": null},
+        "error": null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version":
+        "4.12.5"}'
+  recorded_at: Fri, 16 Oct 2026 15:32:04 GMT
+- request:
+    method: post
+    uri: https://ipa.example.com/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"batch","params":[[{"method":"vault_add_internal","params":[["fripa-test-batch-1"],{"ipavaulttype":"standard","version":"2.251"}]},{"method":"vault_archive_internal","params":[["fripa-test-batch-1"],{"vault_data":{"__base64__":"TiRPXou1QtP89YlguIh9fU7j2pNN6D3fj+58ZyH1Q/Q="},"session_key":{"__base64__":"Pol1RhLCU71ypjpu7sjz1fmQXG8CrG0HKs6aOG8htvi1yLjnLFYVrW1T/SuZxUk8W0qnZPSOFDU2xmugjzNCSm2+rzP/ONw/AcCoG18OHrzJ6rMGwYn2EuUhFgxRpy1zunVQnq+iWw+ChqcgKyadtvQJOHscCdYXGCIWiuqC1+jdIa2vZY5vtwkvQoyXEdsn+wa7/df9HaiTlTFoPtn+WiS3/x7Aks7hBb4OULMvftVZhO6N26wuJbVQ8X/VFlI1fLIYjABxJuAuhi4VaGWaUUeunjnX6wy9nf7Rkl+CSiPO3tibiC/hyYrhQ4iJqpEkB6NS8TRXV27CTZhzDzsKdQ=="},"nonce":{"__base64__":"UIM9/ncwVAIQJB3h+Ywm6g=="},"wrapping_algo":"aes-128-cbc","version":"2.251"}]},{"method":"vault_add_member","params":[["fripa-test-batch-1"],{"user":["admin"],"version":"2.251"}]},{"method":"vault_add_internal","params":[["fripa-test-batch-2"],{"ipavaulttype":"standard","version":"2.251"}]},{"method":"vault_archive_internal","params":[["fripa-test-batch-2"],{"vault_data":{"__base64__":"orMlvHgLI5Z4iAnnpGtfj1RtLp6pLkQ6D/gv/cLi9N4="},"session_key":{"__base64__":"wxAr/YRuJ41hJKrf13/X3+RosUxMOl+RjHI3r2TBkg8sgcL2tvAqVEp1VJT8uXNlPJoiAJPZ7WP7ay4AQwYPKRXq1eCg1NjTou+yFghc01j6RLOYIPsP/mtNzTukSetK45MWNWUhi3G8lrz433svxqgNU20gc0LyYPdvsenFDxVbwnP3ln4sMtZ4drnymZrCehBlci9azUvUB9pJ0fIFnaEAiVhqXDYgyL48DOamx7WTfMhyZx/S2n7/XQlTHl6jXytqpHpHja+GE+y+0E4n7dO2Jrd0c6j1FUS6USO3aw82s406INg1qMnI69vmXh+9KZkEetO7Tf1C43GEYJsE6g=="},"nonce":{"__base64__":"nKa2wg+z7u1rS86Cnf3GEw=="},"wrapping_algo":"aes-128-cbc","version":"2.251"}]},{"method":"vault_add_member","params":[["fripa-test-batch-2"],{"user":["admin"],"version":"2.251"}]}],{"version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.4
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.example.com/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=I0EK8q1FZ8fgWOkXXBqxxX26wrYZhcM%2baUU%2f97sz%2b3z1byhBzJ9FhPVpz0FDu%2fkxovyprbB6I%2fZuL2QOt3%2bDdX0ODB51yGgaViOZah6fxoWjagjmiWsQRFKNm%2bhoJPEYdc0nn7VdkAtvgBFHvwBe4pMo8DhQSNorGuWWo24DrCKduS48gmjV7VAPhVmoeDt%2fW%2bYRL9hRWD8JzPyETeBjNea8yUNhb%2f1HmBN6sa%2bqBzE%3d
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Fri, 16 Oct 2026 15:32:04 GMT
+      server:
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"count": 6, "results": [{"result": {"objectclass": ["ipaVault",
+        "top"], "ipavaulttype": ["standard"], "cn": ["fripa-test-batch-1"], "username":
+        "admin", "owner_user": ["admin"], "dn": "cn=fripa-test-batch-1,cn=admin,cn=users,cn=vaults,cn=kra,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        "value": "fripa-test-batch-1", "summary": "Added vault \"fripa-test-batch-1\"",
+        "error": null}, {"value": "fripa-test-batch-1", "result": {}, "summary": "Archived
+        data into vault \"fripa-test-batch-1\"", "error": null}, {"completed": 1,
+        "failed": {"member": {"user": [], "group": [], "services": []}}, "result":
+        {"ipavaulttype": ["standard"], "cn": ["fripa-test-batch-1"], "username": "admin",
+        "owner_user": ["admin"], "member_user": ["admin"], "dn": "cn=fripa-test-batch-1,cn=admin,cn=users,cn=vaults,cn=kra,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        "error": null}, {"result": {"objectclass": ["ipaVault", "top"], "ipavaulttype":
+        ["standard"], "cn": ["fripa-test-batch-2"], "username": "admin", "owner_user":
+        ["admin"], "dn": "cn=fripa-test-batch-2,cn=admin,cn=users,cn=vaults,cn=kra,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        "value": "fripa-test-batch-2", "summary": "Added vault \"fripa-test-batch-2\"",
+        "error": null}, {"value": "fripa-test-batch-2", "result": {}, "summary": "Archived
+        data into vault \"fripa-test-batch-2\"", "error": null}, {"completed": 1,
+        "failed": {"member": {"user": [], "group": [], "services": []}}, "result":
+        {"ipavaulttype": ["standard"], "cn": ["fripa-test-batch-2"], "username": "admin",
+        "owner_user": ["admin"], "member_user": ["admin"], "dn": "cn=fripa-test-batch-2,cn=admin,cn=users,cn=vaults,cn=kra,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        "error": null}]}, "error": null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO",
+        "version": "4.12.5"}'
+  recorded_at: Fri, 16 Oct 2026 15:32:04 GMT
+- request:
+    method: post
+    uri: https://ipa.example.com/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"vault_retrieve_internal","params":[["fripa-test-batch-2"],{"session_key":{"__base64__":"vASpxBqvIUuY/+i0FpNp1j+U1SpCY7Krs3/WjyYNNx7f0oYlKf9FbkP6IBYHopjko72EnsABEbugaAznyBUIGfjwGpOStTL5/mQnXNrQythpuLNUg8qQR+wU9n+JVylqnW43+r8qc0+0QyuqDrPTOqNn9U2moHrlzRRUWF+XUEZLuVsfDIFRhgd6dW4xRtg/gX2kwM0AJM0WJdpf6mZF38TDcPO63GlZDgeS+LfDJjkHxwfdtVv0fHy7FwCwSQWISfiob5dyLrDhzUShdPLKHOB17MVH7XAmUTX5W0zpf9qNQroLAv6nL2vhJw1x+104ooO/MvKZyGmpOEFrREG9jg=="},"wrapping_algo":"aes-128-cbc","version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.4
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.example.com/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=I0EK8q1FZ8fgWOkXXBqxxX26wrYZhcM%2baUU%2f97sz%2b3z1byhBzJ9FhPVpz0FDu%2fkxovyprbB6I%2fZuL2QOt3%2bDdX0ODB51yGgaViOZah6fxoWjagjmiWsQRFKNm%2bhoJPEYdc0nn7VdkAtvgBFHvwBe4pMo8DhQSNorGuWWo24DrCKduS48gmjV7VAPhVmoeDt%2fW%2bYRL9hRWD8JzPyETeBjNea8yUNhb%2f1HmBN6sa%2bqBzE%3d
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Fri, 16 Oct 2026 15:32:04 GMT
+      server:
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"value": "fripa-test-batch-2", "result": {"vault_data":
+        {"__base64__": "RZSXcOd5rkvjJH1FcGJtM97qTUDTsW9ZSCJzigEuwuU="}, "nonce": {"__base64__":
+        "FtrSMzrSl3ZCbJiwjw/d8w=="}}, "summary": "Retrieved data from vault \"fripa-test-batch-2\""},
+        "error": null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version":
+        "4.12.5"}'
+  recorded_at: Fri, 16 Oct 2026 15:32:04 GMT
+- request:
+    method: post
+    uri: https://ipa.example.com/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"vault_show","params":[["fripa-test-batch-1"],{"version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.4
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.example.com/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=I0EK8q1FZ8fgWOkXXBqxxX26wrYZhcM%2baUU%2f97sz%2b3z1byhBzJ9FhPVpz0FDu%2fkxovyprbB6I%2fZuL2QOt3%2bDdX0ODB51yGgaViOZah6fxoWjagjmiWsQRFKNm%2bhoJPEYdc0nn7VdkAtvgBFHvwBe4pMo8DhQSNorGuWWo24DrCKduS48gmjV7VAPhVmoeDt%2fW%2bYRL9hRWD8JzPyETeBjNea8yUNhb%2f1HmBN6sa%2bqBzE%3d
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Fri, 16 Oct 2026 15:32:04 GMT
+      server:
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"result": {"cn": ["fripa-test-batch-1"], "ipavaulttype":
+        ["standard"], "username": "admin", "owner_user": ["admin"], "member_user":
+        ["admin"], "dn": "cn=fripa-test-batch-1,cn=admin,cn=users,cn=vaults,cn=kra,dc=86,dc=119,dc=86,dc=230,dc=nip,dc=io"},
+        "value": "fripa-test-batch-1", "summary": null}, "error": null, "id": 0, "principal":
+        "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
+  recorded_at: Fri, 16 Oct 2026 15:32:05 GMT
+- request:
+    method: post
+    uri: https://ipa.example.com/ipa/session/json
+    body:
+      encoding: UTF-8
+      string: '{"method":"batch","params":[[{"method":"vault_del","params":[["fripa-test-batch-1"],{"version":"2.251"}]},{"method":"vault_del","params":[["fripa-test-batch-2"],{"version":"2.251"}]}],{"version":"2.251"}],"id":0}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.4
+      Content-Type:
+      - application/json
+      Referer:
+      - https://ipa.example.com/ipa
+      Cookie:
+      - ipa_session=MagBearerToken=I0EK8q1FZ8fgWOkXXBqxxX26wrYZhcM%2baUU%2f97sz%2b3z1byhBzJ9FhPVpz0FDu%2fkxovyprbB6I%2fZuL2QOt3%2bDdX0ODB51yGgaViOZah6fxoWjagjmiWsQRFKNm%2bhoJPEYdc0nn7VdkAtvgBFHvwBe4pMo8DhQSNorGuWWo24DrCKduS48gmjV7VAPhVmoeDt%2fW%2bYRL9hRWD8JzPyETeBjNea8yUNhb%2f1HmBN6sa%2bqBzE%3d
+  response:
+    status:
+      code: 200
+      message: Success
+    headers:
+      date:
+      - Fri, 16 Oct 2026 15:32:05 GMT
+      server:
+      - Apache/2.4.66 (Fedora Linux) OpenSSL/3.2.6 mod_auth_gssapi/1.6.5 mod_wsgi/5.0.2
+        Python/3.13
+      x-frame-options:
+      - DENY
+      content-security-policy:
+      - frame-ancestors 'none'
+      cache-control:
+      - no-cache, private
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"result": {"count": 2, "results": [{"result": {"failed": []}, "value":
+        ["fripa-test-batch-1"], "summary": "Deleted vault \"fripa-test-batch-1\"",
+        "error": null}, {"result": {"failed": []}, "value": ["fripa-test-batch-2"],
+        "summary": "Deleted vault \"fripa-test-batch-2\"", "error": null}]}, "error":
+        null, "id": 0, "principal": "admin@86.119.86.230.NIP.IO", "version": "4.12.5"}'
+  recorded_at: Fri, 16 Oct 2026 15:32:05 GMT
+recorded_with: VCR 6.4.0
